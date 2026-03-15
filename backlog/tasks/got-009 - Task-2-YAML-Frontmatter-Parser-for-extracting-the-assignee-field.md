@@ -4,11 +4,13 @@ title: 'Task 2: YAML Frontmatter Parser for extracting the assignee field'
 status: To Do
 assignee: []
 created_date: '2026-03-15 00:52'
+updated_date: '2026-03-15 00:52'
 labels:
   - parser
   - yaml
   - go
-dependencies: []
+dependencies:
+  - GOT-008
 references:
   - >-
     backlog/docs/doc-002 -
