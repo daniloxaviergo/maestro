@@ -1,10 +1,10 @@
 ---
 id: GOT-024
 title: 'Task 5: Create example agent configurations and documentation'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-03-15 18:54'
-updated_date: '2026-03-15 23:20'
+updated_date: '2026-03-15 23:21'
 labels:
   - task
   - docs
