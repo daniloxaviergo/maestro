@@ -4,6 +4,7 @@ title: 'Task 4: Go Workspace/Module Structure Setup'
 status: To Do
 assignee: []
 created_date: '2026-03-15 00:12'
+updated_date: '2026-03-15 00:17'
 labels:
   - workspace
   - modules
@@ -12,6 +13,7 @@ dependencies: []
 references:
   - backlog/docs/doc-001 - PRD-Go-Development-Environment-Setup.md
 priority: medium
+ordinal: 4000
 ---
 
 ## Description
