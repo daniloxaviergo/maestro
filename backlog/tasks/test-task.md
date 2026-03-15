@@ -2,6 +2,6 @@
 id: GOT-011
 title: Test Task
 assignee:
-  - John
+  - Alice
 status: To Do
 ---
