@@ -1,10 +1,10 @@
 ---
 id: GOT-011
 title: 'Task 4: Create Tmux Notifier Types'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15 12:22'
+updated_date: '2026-03-15 12:23'
 labels:
   - tmux
   - notifier
@@ -14,7 +14,7 @@ dependencies:
 references:
   - backlog/docs/doc-003 - PRD-Maestro-Feature-Set-1.md
 priority: high
-ordinal: 1100
+ordinal: 1000
 ---
 
 ## Description
