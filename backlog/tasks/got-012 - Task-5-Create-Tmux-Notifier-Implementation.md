@@ -1,10 +1,10 @@
 ---
 id: GOT-012
 title: 'Task 5: Create Tmux Notifier Implementation'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15'
+updated_date: '2026-03-15 12:33'
 labels:
   - tmux
   - notifier
