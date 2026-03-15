@@ -16,7 +16,7 @@ references:
   - >-
     /home/danilo/scripts/github/maestro/backlog/docs/PRD-Agent-Orchestration-System.md
 priority: medium
-ordinal: 12687.5
+ordinal: 12468.75
 ---
 
 ## Description
