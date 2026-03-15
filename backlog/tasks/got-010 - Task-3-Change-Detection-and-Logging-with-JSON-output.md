@@ -4,7 +4,7 @@ title: 'Task 3: Change Detection and Logging with JSON output'
 status: To Do
 assignee: []
 created_date: '2026-03-15 00:52'
-updated_date: '2026-03-15 00:53'
+updated_date: '2026-03-15 02:00'
 labels:
   - logging
   - json
@@ -81,3 +81,128 @@ Implement change detection logic to compare cached assignee values with current 
 - [ ] #4 Handle assignee additions, removals, and replacements correctly
 - [ ] #5 Handle case where file previously had no cached value (treat as new assignee array)
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### 1. Technical Approach
+
+Implement change detection by comparing current assignee values with cached previous values and logging changes to JSON.
+
+**Architecture Overview:**
+- Extend existing `pkg/cache/` package to store assignee values (not just file state hashes)
+- Add `CompareAndLog()` function to detect assignee changes
+- Create JSON log writer that appends to `./backlog/logs/assignee_changes.log`
+- Integrate with existing watcher via file events and parser output
+
+**Key Design Decisions:**
+- Use in-memory cache (start fresh on each run per requirements)
+- Thread-safe cache with `sync.RWMutex` (already in `pkg/cache/types.go`)
+- Non-blocking log writes via buffered channel to avoid blocking watcher
+- Order-insensitive comparison of assignee arrays
+- Treat uncached files as "all new assignees" for change detection
+
+**Flow:**
+1. Watcher detects file event (WRITE/CREATE) → sends `FileEvent` to channel
+2. Consumer receives event, calls `parser.ParseFile()` → gets `FileData`
+3. Cache lookup: get previous assignee for file path
+4. If no cache entry: store current assignee, skip logging (first run)
+5. If cache entry exists: compare old vs new assignee
+6. If different: format JSON log entry → send to log writer
+7. Update cache with new assignee value
+
+### 2. Files to Modify
+
+| Action | File | Purpose |
+|--------|------|---------|
+| **Create** | `pkg/logs/logger.go` | JSON log writer for assignee changes |
+| **Modify** | `pkg/cache/types.go` | Add `Assignee` field to `FileState` |
+| **Modify** | `pkg/cache/cache.go` | Add `GetAssignee()`, `SetAssignee()`, `RemoveAssignee()` methods |
+| **Create** | `pkg/change_detect/` directory | New package for change detection logic |
+| **Create** | `pkg/change_detect/detector.go` | `CompareAndLog()` function |
+| **Create** | `pkg/change_detect/detector_test.go` | Unit tests |
+| **Modify** | `cmd/monitor/main.go` | Integrate change detection after parsing |
+
+### 3. Dependencies
+
+- **Existing packages**: `pkg/cache`, `pkg/parser`, `pkg/watcher`
+- **Go standard library**: `encoding/json`, `os`, `io`, `sync`, `time`
+- **External**: `gopkg.in/yaml.v3` (already in go.mod)
+- **Prerequisite**: GOT-009 (parser) must be complete to parse assignee values
+- **Prerequisite**: GOT-008 (watcher) provides file events
+
+### 4. Code Patterns
+
+**Follow existing conventions:**
+
+1. **Error handling** (matching `watcher.go`):
+   ```go
+   if err != nil {
+       fmt.Fprintf(os.Stderr, "error: %v\n", err)
+       return
+   }
+   ```
+
+2. **Thread-safe cache** (matching `cache.go`):
+   ```go
+   c.mu.Lock()
+   defer c.mu.Unlock()
+   ```
+
+3. **Type naming**: PascalCase for structs, camelCase for fields
+
+4. **Package structure**: Mirror `pkg/watcher/` and `pkg/cache/` organization
+
+5. **JSON format** (matching task requirements):
+   ```json
+   {
+     "timestamp": "2026-03-14T10:30:00Z",
+     "file": "backlog/tasks/task-001.md",
+     "old_assignee": ["alice"],
+     "new_assignee": ["bob"]
+   }
+   ```
+
+### 5. Testing Strategy
+
+**Unit tests in `pkg/change_detect/detector_test.go`:**
+- Test `CompareAndLog()` with same assignee (no log expected)
+- Test with different assignees (log expected)
+- Test with new file (no log on first run)
+- Test with empty assignee arrays
+- Test with missing cache entry
+- Test JSON output format validity
+
+**Integration test approach:**
+- Run monitor, create test file with assignee → verify no log (first run)
+- Update file with different assignee → verify log entry created
+- Verify JSON is valid and parseable
+- Verify log file created at `./backlog/logs/assignee_changes.log`
+
+**Edge cases:**
+- Concurrent file updates (cache mutex protection)
+- File removed then recreated
+- Parser errors (empty assignee array fallback)
+- Log write errors (logged but don't crash)
+
+### 6. Risks and Considerations
+
+**Blocking issues:**
+- None identified - all dependencies (parser, watcher) are in place
+
+**Trade-offs:**
+- **In-memory only**: Cache doesn't persist across restarts (per requirements)
+- **No deduplication**: Same file with same assignee change won't be deduplicated
+- **Synchronous cache**: Cache operations block briefly (acceptable for <500ms latency goal)
+- **Simple comparison**: Order-insensitive slice comparison (not deep equality)
+
+**Future considerations:**
+- Log rotation not in scope (file grows indefinitely per PRD)
+- No filtering by assignee (logs all changes)
+- No rate limiting (deprecation of rapid writes handled by existing debounce)
+
+**Error handling priorities:**
+1. Log write failure → log to stderr, continue monitoring
+2. Parser failure → use empty assignee array, continue
+3. Cache lock contention → short wait then proceed (low probability)
+<!-- SECTION:PLAN:END -->
