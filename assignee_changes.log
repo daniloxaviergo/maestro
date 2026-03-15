@@ -322,3 +322,35 @@
     "John"
   ]
 }
+{
+  "timestamp": "2026-03-15T16:26:14Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "Alice"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T16:26:51Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "James"
+  ]
+}
+{
+  "timestamp": "2026-03-15T16:26:57Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "James"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T16:26:59Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Alice"
+  ]
+}

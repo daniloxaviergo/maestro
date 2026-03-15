@@ -1,0 +1,2 @@
+script_path: "/home/user/scripts/agent.sh"
+# tmux_session and enabled are missing, should use defaults
