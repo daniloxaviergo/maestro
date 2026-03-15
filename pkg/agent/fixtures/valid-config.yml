@@ -1,0 +1,3 @@
+script_path: "/home/user/scripts/agent.sh"
+tmux_session: "agent-workspace"
+enabled: true

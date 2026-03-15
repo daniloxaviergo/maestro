@@ -1,0 +1,3 @@
+script_path: "/home/user/scripts/agent.sh"
+tmux_session: "invalid yaml [unclosed
+enabled: true
