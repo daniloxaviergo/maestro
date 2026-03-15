@@ -10,7 +10,7 @@ dependencies: []
 references:
   - backlog/docs/doc-004-per-agent-configuration.md
 priority: medium
-ordinal: 12000
+ordinal: 9000
 ---
 
 ## Description
