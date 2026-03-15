@@ -4,7 +4,7 @@ title: 'Task 4: Create Tmux Notifier Types'
 status: In Progress
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15 12:23'
+updated_date: '2026-03-15 12:27'
 labels:
   - tmux
   - notifier
@@ -73,11 +73,11 @@ type AssigneeChangeEvent struct {
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 `pkg/notifier/types.go` created with `Notifier`, `NotificationConfig`, `AssigneeChangeEvent` structs
-- [ ] #2 Error variables defined: `ErrTmuxNotInstalled`, `ErrTmuxCommandFailed`, `ErrTmuxTimeout`
-- [ ] #3 `NotificationConfig` includes `MessageFormat` (string) and `Timeout` (time.Duration) fields
-- [ ] #4 Default `MessageFormat` matches format: `Assignee changed to "[new]" for [file]`
-- [ ] #5 `AssigneeChangeEvent` includes `FilePath`, `OldAssignee`, `NewAssignee` fields
+- [x] #1 `pkg/notifier/types.go` created with `Notifier`, `NotificationConfig`, `AssigneeChangeEvent` structs
+- [x] #2 Error variables defined: `ErrTmuxNotInstalled`, `ErrTmuxCommandFailed`, `ErrTmuxTimeout`
+- [x] #3 `NotificationConfig` includes `MessageFormat` (string) and `Timeout` (time.Duration) fields
+- [x] #4 Default `MessageFormat` matches format: `Assignee changed to "[new]" for [file]`
+- [x] #5 `AssigneeChangeEvent` includes `FilePath`, `OldAssignee`, `NewAssignee` fields
 <!-- AC:END -->
 
 ## Implementation Plan
