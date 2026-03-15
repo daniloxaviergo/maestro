@@ -41,15 +41,6 @@ maestro/
 │   └── watcher/         # fsnotify wrapper for file monitoring
 │       ├── watcher.go
 │       └── events.go
-├── backlog/             # Task management data
-│   ├── tasks/           # Active task files (watched by monitor)
-│   ├── completed/       # Completed task files
-│   ├── archive/         # Archived task files
-│   ├── docs/            # Documentation
-│   ├── decisions/       # Decision records
-│   ├── drafts/          # Draft task files
-│   ├── milestones/      # Milestone definitions
-│   └── config.yml       # Backlog.md configuration
 ├── bin/                 # Compiled binaries
 ├── docs/                # Project documentation
 ├── agents/              # Agent configuration directory (default)
@@ -253,7 +244,7 @@ File write events are debounced with a 50ms cooldown per file to prevent floodin
 
 ## Backlog.md Task Management
 
-This project uses Backlog.md for all task management via MCP tools:
+This project uses Backlog.md for ALL TASK MANAGEMENT VIA MCP tools:
 
 - **Task file format**: Markdown with YAML frontmatter
 - **Task IDs**: `GOT-XXX` (e.g., GOT-008) or prefixed with labels (e.g., AGENT-001)
@@ -309,12 +300,6 @@ This project uses Backlog.md for all task management via MCP tools:
 - **GOT-026+**: Testing and documentation improvements
 - **GOT-027+**: Performance optimizations and metrics
 - **GOT-028+**: Systemd service files for production deployment
-
-## Environment Variables
-
-`.env` file contains API keys (do not commit secrets):
-- `OLLAMA_API_KEY` - Ollama API key
-- `OPENAI_API_KEY` - OpenAI API key
 
 ## Future Extensions (Out of Scope for Current Implementation)
 

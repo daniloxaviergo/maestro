@@ -10,11 +10,11 @@ import (
 
 // Detector compares cached assignee values with current values and logs changes
 type Detector struct {
-	cache    *cache.Cache
-	logger   *logs.Logger
+	cache     *cache.Cache
+	logger    *logs.Logger
 	processed map[string]bool // Track first run for each file
-	notifier *notifier.Notifier
-	matcher  *matcher.Matcher
+	notifier  *notifier.Notifier
+	matcher   *matcher.Matcher
 }
 
 // NewDetector creates a new change detector
@@ -23,12 +23,18 @@ func NewDetector(logger *logs.Logger) *Detector {
 		cache:     cache.NewCache(),
 		logger:    logger,
 		processed: make(map[string]bool),
+		matcher:   nil, // Will be set via SetMatcher if needed
 	}
 }
 
 // SetNotifier sets the notifier to use for assignee change notifications
 func (d *Detector) SetNotifier(n *notifier.Notifier) {
 	d.notifier = n
+}
+
+// SetMatcher sets the matcher to use for agent matching
+func (d *Detector) SetMatcher(m *matcher.Matcher) {
+	d.matcher = m
 }
 
 // ProcessFile processes a parsed file and detects assignee changes
@@ -76,6 +82,13 @@ func (d *Detector) ProcessFile(fileData parser.FileData) (bool, error) {
 
 	// Update cache with new assignee
 	d.cache.SetAssignee(filePath, newAssignee)
+
+	// Execute scripts for matched agents if matcher is configured
+	if d.matcher != nil && d.notifier != nil {
+		matchedAgents := d.matcher.MatchAssignees(newAssignee)
+		d.notifier.ExecuteScriptsForAgents(matchedAgents)
+	}
+
 	return true, nil
 }
 

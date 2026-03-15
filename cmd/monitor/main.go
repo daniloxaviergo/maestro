@@ -10,9 +10,12 @@ import (
 	"syscall"
 	"time"
 
+	"maestro/pkg/agent"
 	"maestro/pkg/cache"
 	"maestro/pkg/change_detect"
+	"maestro/pkg/config"
 	"maestro/pkg/logs"
+	"maestro/pkg/matcher"
 	"maestro/pkg/notifier"
 	"maestro/pkg/parser"
 	"maestro/pkg/watcher"
@@ -36,6 +39,25 @@ func main() {
 
 	// Create change detector
 	detector := change_detect.NewDetector(logger)
+
+	// Load agent configurations from agents directory
+	agentsDir := config.ConfigDirFromEnv()
+	agentConfigs, err := loadAgentConfigs(agentsDir)
+	if err != nil {
+		log.Printf("Warning: failed to load agent configs: %v\n", err)
+	}
+
+	// Create agents and matcher
+	var agents []*agent.Agent
+	for _, cfgPath := range agentConfigs {
+		agentName := extractAgentNameFromPath(cfgPath)
+		a := agent.NewAgent(agentName, cfgPath)
+		a.LoadConfig()
+		agents = append(agents, a)
+	}
+
+	matcher := matcher.NewMatcher(agents)
+	detector.SetMatcher(matcher)
 
 	// Create and wire notifier for tmux notifications
 	notifier := notifier.NewNotifier(notifier.NotificationConfig{})
@@ -117,4 +139,30 @@ func main() {
 	// Stop watcher
 	w.Stop()
 	log.Println("Monitor stopped")
+}
+
+// loadAgentConfigs loads all agent config file paths from the agents directory.
+// Returns a list of config file paths or an error if the directory cannot be read.
+func loadAgentConfigs(agentsDir string) ([]string, error) {
+	entries, err := os.ReadDir(agentsDir)
+	if err != nil {
+		return nil, err
+	}
+
+	var configPaths []string
+	for _, entry := range entries {
+		if entry.IsDir() {
+			cfgPath := filepath.Join(agentsDir, entry.Name(), "config.yml")
+			configPaths = append(configPaths, cfgPath)
+		}
+	}
+
+	return configPaths, nil
+}
+
+// extractAgentNameFromPath extracts the agent name from a config file path.
+// The agent name is the parent directory name of the config file.
+func extractAgentNameFromPath(configPath string) string {
+	dir := filepath.Dir(configPath)
+	return filepath.Base(dir)
 }

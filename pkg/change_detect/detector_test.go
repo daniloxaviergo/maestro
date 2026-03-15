@@ -6,7 +6,11 @@ import (
 	"path/filepath"
 	"testing"
 
+	"maestro/pkg/agent"
+	"maestro/pkg/config"
 	"maestro/pkg/logs"
+	"maestro/pkg/matcher"
+	"maestro/pkg/notifier"
 	"maestro/pkg/parser"
 )
 
@@ -311,4 +315,177 @@ func parseLogEntry(t *testing.T, logPath string) logs.AssigneeChange {
 	}
 
 	return entry
+}
+
+// TestProcessFile_WithMatcher_NoMatch tests that no script execution occurs when no agents match
+func TestProcessFile_WithMatcher_NoMatch(t *testing.T) {
+	logger, logPath := createTempLogger(t)
+
+	// Create an empty matcher (no agents)
+	matcher := matcher.NewMatcher(nil)
+	d := NewDetector(logger)
+	d.SetMatcher(matcher)
+
+	// First process - add to cache
+	firstData := createTestFileData("test.md", []string{"alice"})
+	_, err := d.ProcessFile(firstData)
+	if err != nil {
+		t.Fatalf("First ProcessFile failed: %v", err)
+	}
+
+	// Second process with different assignee (no matching agent)
+	secondData := createTestFileData("test.md", []string{"unknown"})
+
+	changed, err := d.ProcessFile(secondData)
+
+	if err != nil {
+		t.Errorf("ProcessFile returned error: %v", err)
+	}
+	if !changed {
+		t.Errorf("Expected change detected for different assignee, got false")
+	}
+
+	// Verify log file was created
+	entry := parseLogEntry(t, logPath)
+	if len(entry.NewAssignee) != 1 || entry.NewAssignee[0] != "unknown" {
+		t.Errorf("Expected new_assignee to be ['unknown'], got %v", entry.NewAssignee)
+	}
+}
+
+// TestProcessFile_WithMatcher_ScriptExecuted tests that script is executed for matched agent
+func TestProcessFile_WithMatcher_ScriptExecuted(t *testing.T) {
+	logger, logPath := createTempLogger(t)
+
+	// Create a test agent with enabled = true
+	cfg := config.AgentConfig{
+		ScriptPath:  "/nonexistent/script.sh",
+		Enabled:     true,
+		TmuxSession: "test-session",
+	}
+
+	testAgent := agent.NewTestAgent("alice", cfg)
+	matcher := matcher.NewMatcher([]*agent.Agent{testAgent})
+	d := NewDetector(logger)
+	d.SetMatcher(matcher)
+
+	// Set up a notifier (even though script won't actually run, we need it to be set)
+	d.SetNotifier(notifier.NewNotifier(notifier.NotificationConfig{}))
+
+	// First process - add to cache
+	firstData := createTestFileData("test.md", []string{"alice"})
+	_, err := d.ProcessFile(firstData)
+	if err != nil {
+		t.Fatalf("First ProcessFile failed: %v", err)
+	}
+
+	// Second process with matching assignee - should trigger script execution
+	secondData := createTestFileData("test.md", []string{"alice", "bob"})
+
+	changed, err := d.ProcessFile(secondData)
+
+	if err != nil {
+		t.Errorf("ProcessFile returned error: %v", err)
+	}
+	if !changed {
+		t.Errorf("Expected change detected for different assignee, got false")
+	}
+
+	// Verify log file was created
+	entry := parseLogEntry(t, logPath)
+	if len(entry.NewAssignee) != 2 {
+		t.Errorf("Expected new_assignee to have 2 elements, got %v", entry.NewAssignee)
+	}
+}
+
+// TestDetector_SetMatcher tests that the matcher can be set after construction
+func TestDetector_SetMatcher(t *testing.T) {
+	logger, _ := createTempLogger(t)
+	d := NewDetector(logger)
+
+	// Create a matcher
+	matcher := matcher.NewMatcher(nil)
+
+	// Set the matcher - this should not panic
+	d.SetMatcher(matcher)
+}
+
+// TestProcessFile_MultipleAssigneesWithMatcher tests multiple assignees matching multiple agents
+func TestProcessFile_MultipleAssigneesWithMatcher(t *testing.T) {
+	logger, _ := createTempLogger(t)
+
+	// Create multiple agents with disabled configs (won't actually execute)
+	cfg1 := config.AgentConfig{
+		ScriptPath:  "/nonexistent/script1.sh",
+		Enabled:     true,
+		TmuxSession: "test-session",
+	}
+	cfg2 := config.AgentConfig{
+		ScriptPath:  "/nonexistent/script2.sh",
+		Enabled:     true,
+		TmuxSession: "test-session",
+	}
+
+	agent1 := agent.NewTestAgent("alice", cfg1)
+	agent2 := agent.NewTestAgent("bob", cfg2)
+
+	matcher := matcher.NewMatcher([]*agent.Agent{agent1, agent2})
+	d := NewDetector(logger)
+	d.SetMatcher(matcher)
+	
+	// First process - add to cache
+	firstData := createTestFileData("test.md", []string{"alice"})
+	_, err := d.ProcessFile(firstData)
+	if err != nil {
+		t.Fatalf("First ProcessFile failed: %v", err)
+	}
+
+	// Second process with both assignees matching
+	secondData := createTestFileData("test.md", []string{"alice", "bob"})
+
+	changed, err := d.ProcessFile(secondData)
+
+	if err != nil {
+		t.Errorf("ProcessFile returned error: %v", err)
+	}
+	if !changed {
+		t.Errorf("Expected change detected for different assignees, got false")
+	}
+}
+
+// TestProcessFile_AgentDisabled tests that disabled agent's script is not executed
+func TestProcessFile_AgentDisabled(t *testing.T) {
+	logger, _ := createTempLogger(t)
+
+	// Create an agent with disabled = true
+	cfg := config.AgentConfig{
+		ScriptPath:  "/nonexistent/script.sh",
+		Enabled:     false,
+		TmuxSession: "test-session",
+	}
+
+	testAgent := agent.NewTestAgent("alice", cfg)
+	matcher := matcher.NewMatcher([]*agent.Agent{testAgent})
+	d := NewDetector(logger)
+	d.SetMatcher(matcher)
+	d.SetNotifier(notifier.NewNotifier(notifier.NotificationConfig{}))
+
+	// First process - add to cache
+	firstData := createTestFileData("test.md", []string{"alice"})
+	_, err := d.ProcessFile(firstData)
+	if err != nil {
+		t.Fatalf("First ProcessFile failed: %v", err)
+	}
+
+	// Second process with same assignee - no change, so no script
+	secondData := createTestFileData("test.md", []string{"alice"})
+
+	changed, err := d.ProcessFile(secondData)
+
+	if err != nil {
+		t.Errorf("ProcessFile returned error: %v", err)
+	}
+	// No change expected
+	if changed {
+		t.Errorf("Expected no change for same assignee, got true")
+	}
 }

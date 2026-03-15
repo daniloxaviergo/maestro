@@ -60,3 +60,13 @@ func (a *Agent) GetName() string {
 func (a *Agent) GetConfigPath() string {
 	return a.path
 }
+
+// NewTestAgent creates a new Agent for testing purposes.
+// This should only be used in tests as it bypasses normal config loading.
+func NewTestAgent(name string, cfg config.AgentConfig) *Agent {
+	return &Agent{
+		name: name,
+		path: "/test/path/" + name,
+		cfg:  cfg,
+	}
+}
