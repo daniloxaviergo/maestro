@@ -4,6 +4,7 @@ title: 'Task 1: Go Installation and Version Management'
 status: To Do
 assignee: []
 created_date: '2026-03-15 00:12'
+updated_date: '2026-03-15 00:15'
 labels:
   - go
   - installation
@@ -22,10 +23,7 @@ Implement Go installation using gvm with version switching support
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Script installs gvm successfully on Ubuntu/Debian and CentOS/RHEL distributions
-- [ ] #2 Script installs Go without requiring manual intervention
-- [ ] #3 go version command works after installation
-- [ ] #4 Multiple Go versions can be installed and switched between
-- [ ] #5 Go binary is in the user's PATH
-- [ ] #6 Version switching completes in under 1 second
+- [ ] #1 Script installs Go without requiring manual intervention
+- [ ] #2 go version command works after installation
+- [ ] #3 Multiple Go versions can be installed and switched between
 <!-- AC:END -->
