@@ -1,7 +1,7 @@
 ---
 id: GOT-020
 title: 'Task 1: Agent Matching Engine - Match assignee names to configured agents'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-03-15 18:52'
 updated_date: '2026-03-15 20:12'
