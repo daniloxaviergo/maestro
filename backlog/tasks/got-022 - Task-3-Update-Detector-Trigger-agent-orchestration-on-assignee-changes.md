@@ -46,7 +46,7 @@ Task 3: Update Detector to trigger agent orchestration on assignee changes
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 #1 Verify detector.go has complete agent orchestration integration (matcher + notifier)
+- [x] #1 #1 Verify detector.go has complete agent orchestration integration (matcher + notifier)
 <!-- AC:END -->
 
 ## Implementation Plan
