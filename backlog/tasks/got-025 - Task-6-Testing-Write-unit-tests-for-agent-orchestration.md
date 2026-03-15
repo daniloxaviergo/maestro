@@ -1,10 +1,10 @@
 ---
 id: GOT-025
 title: 'Task 6: Testing - Write unit tests for agent orchestration'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-15 18:54'
-updated_date: '2026-03-15 23:26'
+updated_date: '2026-03-15 23:27'
 labels:
   - task
   - orchestration
@@ -16,7 +16,7 @@ references:
   - >-
     /home/danilo/scripts/github/maestro/backlog/docs/PRD-Agent-Orchestration-System.md
 priority: medium
-ordinal: 12468.75
+ordinal: 1000
 ---
 
 ## Description
