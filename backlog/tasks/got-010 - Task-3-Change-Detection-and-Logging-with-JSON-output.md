@@ -2,7 +2,8 @@
 id: GOT-010
 title: 'Task 3: Change Detection and Logging with JSON output'
 status: Done
-assignee: []
+assignee:
+  - Bob
 created_date: '2026-03-15 00:52'
 updated_date: '2026-03-15 11:36'
 labels:
