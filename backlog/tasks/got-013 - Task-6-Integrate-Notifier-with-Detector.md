@@ -1,10 +1,10 @@
 ---
 id: GOT-013
 title: 'Task 6: Integrate Notifier with Detector'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15'
+updated_date: '2026-03-15 12:44'
 labels:
   - tmux
   - notifier
@@ -203,4 +203,176 @@ func (d *Detector) CompareAndLog(filePath string, currentAssignee []string) erro
 **Future considerations:**
 - Could add notification queue for high-frequency changes
 - Could add metrics for notification success rate
+
+### 1. Technical Approach
+
+Integrate the tmux notifier with the existing change detector by making the notifier an optional field in the `Detector` struct.
+
+**Architecture Overview:**
+- Add optional `*notifier.Notifier` field to `Detector` struct
+- Add `SetNotifier()` method to wire the notifier after detector creation
+- In `ProcessFile()`, after detecting an assignee change, call `notifier.Notify()` with an `AssigneeChangeEvent`
+- The notifier handles all async execution internally (goroutine + timeout)
+- Detector doesn't wait for or check notification result
+
+**Key Design Decisions:**
+- Notifier is optional (can be nil) - allows running without tmux
+- Detector calls notifier without error checking (notifier handles its own errors)
+- Event creation happens inside detector; notifier receives pre-formatted event
+- Non-blocking: notifier.Notify() returns immediately, async execution inside
+
+**Integration Flow:**
+1. Detector detects assignee change in `ProcessFile()`
+2. Detector creates `notifier.AssigneeChangeEvent` with current data
+3. Detector calls `d.notifier.Notify(event)` if notifier is not nil
+4. Notifier formats message, executes tmux in goroutine with timeout
+
+### 2. Files to Modify
+
+| Action | File | Purpose |
+|--------|------|---------|
+| **Modify** | `pkg/change_detect/detector.go` | Add notifier field, SetNotifier() method, call Notify() on change |
+| **Create** | `pkg/change_detect/detector_test.go` | Add tests for notifier integration |
+| **Create** | `cmd/monitor/main.go` (modify) | Wire notifier to detector in main()
+
+### 3. Dependencies
+
+- **Existing package**: `pkg/change_detect/detector.go` (GOT-010) - detector logic
+- **Existing package**: `pkg/notifier/` (GOT-011, GOT-012) - Notifier type and Notify() method
+- **Go standard library**: None new
+
+### 4. Code Patterns
+
+**Follow existing conventions:**
+
+1. **Error handling in detector** (matching existing `ProcessFile()`):
+   - Don't check notifier errors (notifier handles internally)
+   - Log warnings from notifier to stderr only
+
+2. **Optional dependency pattern** (matching `watcher.go`):
+   ```go
+   if d.notifier != nil {
+       d.notifier.Notify(event)
+   }
+   ```
+
+3. **Event creation** (matching `notifier.go`):
+   ```go
+   event := notifier.AssigneeChangeEvent{
+       FilePath:    filePath,
+       OldAssignee: cachedAssignee,
+       NewAssignee: newAssignee,
+   }
+   ```
+
+4. **Thread safety**: Detector already uses cache's mutex; notifier uses goroutine
+
+### 5. Testing Strategy
+
+**Unit tests in `pkg/change_detect/detector_test.go`:**
+- Test `ProcessFile()` without notifier (current behavior preserved)
+- Test `ProcessFile()` with notifier ( Notify() called once per change )
+- Test `SetNotifier()` with nil notifier (no panic, graceful)
+- Test with same assignee (no notify call expected)
+- Test with different assignees (notify called with correct event data)
+
+**Integration test approach:**
+- Run monitor with detector and notifier
+- Update a task file's assignee field
+- Verify tmux notification would be triggered (check stderr for warnings if tmux not installed)
+- Verify detector continues working normally
+
+**Edge cases:**
+- Notifier is nil: detector works normally, no panic
+- Notifier errors: logged to stderr only, detector continues
+- Multiple rapid changes: each triggers separate notification (async)
+
+### 6. Risks and Considerations
+
+**Blocking issues:**
+- None - notifier is optional and non-blocking
+
+**Trade-offs:**
+- Notifier is optional: some deployments may not use tmux notifications
+- No feedback to detector about notification success/failure
+- Detector doesn't handle notifier errors (they're internal to notifier)
+- No rate limiting for rapid changes (each triggers separate tmux call)
+
+**Performance considerations:**
+- Detector not affected by tmux latency (async call via goroutine)
+- No buffering or batching of notifications per file
+- Each change triggers independent notification
+
+**Future considerations:**
+- Could add notification queue for high-frequency changes to same file
+- Could add metrics for notification success rate
+- Could add optional callback for notification completion status
+
+### 7. Implementation Steps
+
+1. **Read current detector.go structure** - understand existing fields and ProcessFile() flow
+2. **Add notifier field** to Detector struct: `notifier *notifier.Notifier`
+3. **Add SetNotifier() method** to allow wiring the notifier after construction
+4. **Modify ProcessFile()** to call notifier after detecting change:
+   - After change is logged, create AssigneeChangeEvent
+   - Call d.notifier.Notify(event) if notifier is not nil
+5. **Update cmd/monitor/main.go** to wire notifier:
+   - Create notifier with config
+   - Call detector.SetNotifier(notifier) before watching
+6. **Update tests** in detector_test.go to cover notifier integration
+
+### 8. Example Code Changes
+
+**pkg/change_detect/detector.go:**
+```go
+type Detector struct {
+    cache      *cache.Cache
+    logger     *logs.Logger
+    processed  map[string]bool
+    notifier   *notifier.Notifier  // NEW: optional notifier
+}
+
+func (d *Detector) SetNotifier(n *notifier.Notifier) {
+    d.notifier = n
+}
+
+func (d *Detector) ProcessFile(fileData parser.FileData) (bool, error) {
+    // ... existing logic ...
+    
+    // Assignee changed - log the change
+    if err := d.logger.LogAssigneeChange(filePath, cachedAssignee, newAssignee); err != nil {
+        return false, err
+    }
+    
+    // NEW: Notify tmux if notifier is configured
+    if d.notifier != nil {
+        event := notifier.AssigneeChangeEvent{
+            FilePath:    filePath,
+            OldAssignee: cachedAssignee,
+            NewAssignee: newAssignee,
+        }
+        d.notifier.Notify(event)
+    }
+    
+    // Update cache with new assignee
+    d.cache.SetAssignee(filePath, newAssignee)
+    return true, nil
+}
+```
+
+**cmd/monitor/main.go:**
+```go
+func main() {
+    // ... existing logger setup ...
+    
+    // Create change detector
+    detector := change_detect.NewDetector(logger)
+    
+    // NEW: Create and wire notifier
+    notifier := notifier.NewNotifier(notifier.NotificationConfig{})
+    detector.SetNotifier(notifier)
+    
+    // ... rest of setup ...
+}
+```
 <!-- SECTION:PLAN:END -->
