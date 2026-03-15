@@ -1,7 +1,7 @@
 ---
 id: GOT-001
 title: 'Task 1: Go Installation and Version Management'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-15 00:12'
 updated_date: '2026-03-15 00:19'
