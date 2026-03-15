@@ -4,7 +4,7 @@ title: 'Task 7: Update Monitor Main to Use Notifier'
 status: In Progress
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15 17:20'
+updated_date: '2026-03-15 17:24'
 labels:
   - tmux
   - notifier
@@ -73,6 +73,7 @@ Update the monitor main application to initialize and wire the tmux notifier to 
 - [ ] #3 Notifier wired to change detector via `SetNotifier()`
 - [ ] #4 Notify() called on assignee change events
 - [ ] #5 Integration test: tmux notification triggered when assignee changes
+- [ ] #6 #1 `cmd/monitor/main.go` imports `pkg/notifier`
 <!-- AC:END -->
 
 ## Implementation Plan
