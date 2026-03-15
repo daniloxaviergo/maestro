@@ -2,7 +2,7 @@ project_name: "maestro"
 default_status: "To Do"
 statuses: ["To Do", "In Progress", "Done"]
 labels: []
-definition_of_done: []
+definition_of_done: ["Code follows existing project conventions package structure naming error handling", "go vet passes with no warnings", "go build succeeds without errors", "Unit tests added or updated for new or changed functionality", "go test ... passes with no failures", "Code comments added for non-obvious logic", "README or docs updated if public behavior changes", "make build succeeds", "make run works as expected", "Errors are logged not silently ignored", "Graceful degradation monitor continues if individual file processing fails", "No resource leaks channels closed files closed goroutines stopped"]
 date_format: yyyy-mm-dd
 max_column_width: 20
 default_editor: "vim"
