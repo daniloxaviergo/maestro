@@ -1,10 +1,10 @@
 ---
 id: GOT-015
 title: '[CONFIG] Create pkg/config package - load and parse agent configuration files'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-03-15 17:16'
-updated_date: '2026-03-15 17:38'
+updated_date: '2026-03-15 17:40'
 labels: []
 dependencies: []
 references:
@@ -132,6 +132,61 @@ Definition of Done checks: #1 Code follows project conventions, #2 go vet passes
 
 DoD #7 (README/docs) - Not applicable as this is internal package with no public API changes; #9 (make run) - Verified the monitor still builds and runs correctly after config package integration; All tests passing with go test ./...
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+## Summary
+
+Created new `pkg/config` package for loading and parsing agent YAML configuration files.
+
+## What Changed
+
+**New Files Created:**
+- `pkg/config/types.go` - `AgentConfig` struct with `ScriptPath`, `TmuxSession`, `Enabled` fields
+- `pkg/config/config.go` - `LoadConfig`, `AgentNameFromEnv`, `ConfigDirFromEnv` functions
+- `pkg/config/config_test.go` - 8 unit tests covering all public functions
+- `pkg/config/fixtures/valid-config.yml` - Complete valid config fixture
+- `pkg/config/fixtures/partial-config.yml` - Missing fields fixture
+- `pkg/config/fixtures/invalid-yaml.yml` - Malformed YAML fixture
+
+## Why
+
+Implements task GOT-015 to create configuration loading and parsing package for agent YAML files. Follows existing project patterns from `pkg/parser` package.
+
+## Tests Run
+
+All tests pass:
+```
+ok      maestro/pkg/config      0.002s
+go test ./...             # All packages pass
+go vet ./...              # No warnings
+go build ./...            # Success
+make build                # bin/monitor created
+```
+
+## Risks & Follow-ups
+
+**Completed:**
+- [x] Code follows project conventions (package structure, naming, error handling)
+- [x] go vet passes with no warnings
+- [x] go build succeeds
+- [x] Unit tests added for all functions
+- [x] All tests pass
+- [x] Code comments added
+- [x] make build succeeds
+- [x] Errors logged not silently ignored
+- [x] Graceful degradation (returns default config on error)
+- [x] No resource leaks (simple read-only operations)
+
+**Not Applicable:**
+- README/docs update - internal package, no public API changes
+- make run - not applicable to library package (monitor still builds and runs)
+
+**Future:**
+- Consider adding config validation if agent requirements expand
+- Consider adding config caching if file reads become frequent
+<!-- SECTION:FINAL_SUMMARY:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
