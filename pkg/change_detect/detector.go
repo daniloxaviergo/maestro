@@ -3,16 +3,18 @@ package change_detect
 import (
 	"maestro/pkg/cache"
 	"maestro/pkg/logs"
+	"maestro/pkg/matcher"
 	"maestro/pkg/notifier"
 	"maestro/pkg/parser"
 )
 
 // Detector compares cached assignee values with current values and logs changes
 type Detector struct {
-	cache      *cache.Cache
-	logger     *logs.Logger
-	processed  map[string]bool // Track first run for each file
-	notifier   *notifier.Notifier
+	cache    *cache.Cache
+	logger   *logs.Logger
+	processed map[string]bool // Track first run for each file
+	notifier *notifier.Notifier
+	matcher  *matcher.Matcher
 }
 
 // NewDetector creates a new change detector
