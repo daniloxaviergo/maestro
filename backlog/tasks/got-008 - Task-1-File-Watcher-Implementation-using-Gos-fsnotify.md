@@ -4,7 +4,7 @@ title: 'Task 1: File Watcher Implementation using Go''s fsnotify'
 status: To Do
 assignee: []
 created_date: '2026-03-15 00:52'
-updated_date: '2026-03-15 00:55'
+updated_date: '2026-03-15 01:13'
 labels:
   - monitoring
   - filesystem
@@ -69,11 +69,11 @@ pkg/
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Watcher detects file write events in ./backlog/tasks
-- [ ] #2 Watcher handles recursive monitoring of subdirectories
-- [ ] #3 Watcher properly handles concurrent file changes without race conditions
-- [ ] #4 Watcher gracefully handles file permission errors and other I/O issues
-- [ ] #5 Watcher stops cleanly on interrupt signals (SIGINT, SIGTERM)
+- [x] #1 Watcher detects file write events in ./backlog/tasks
+- [x] #2 Watcher handles recursive monitoring of subdirectories
+- [x] #3 Watcher properly handles concurrent file changes without race conditions
+- [x] #4 Watcher gracefully handles file permission errors and other I/O issues
+- [x] #5 Watcher stops cleanly on interrupt signals (SIGINT, SIGTERM)
 <!-- AC:END -->
 
 ## Implementation Plan
