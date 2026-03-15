@@ -1,10 +1,10 @@
 ---
 id: GOT-017
 title: '[NOTIFY] Modify pkg/notifier to execute bash scripts in tmux sessions'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-03-15 17:17'
-updated_date: '2026-03-15 18:39'
+updated_date: '2026-03-15 18:40'
 labels: []
 dependencies: []
 references:
@@ -220,10 +220,10 @@ The implementation follows the existing `Notify()` pattern:
 - [x] #4 Unit tests added or updated for new or changed functionality
 - [x] #5 go test ... passes with no failures
 - [x] #6 Code comments added for non-obvious logic
-- [ ] #7 README or docs updated if public behavior changes
-- [ ] #8 make build succeeds
-- [ ] #9 make run works as expected
-- [ ] #10 Errors are logged not silently ignored
-- [ ] #11 Graceful degradation monitor continues if individual file processing fails
-- [ ] #12 No resource leaks channels closed files closed goroutines stopped
+- [x] #7 README or docs updated if public behavior changes
+- [x] #8 make build succeeds
+- [x] #9 make run works as expected
+- [x] #10 Errors are logged not silently ignored
+- [x] #11 Graceful degradation monitor continues if individual file processing fails
+- [x] #12 No resource leaks channels closed files closed goroutines stopped
 <!-- DOD:END -->
