@@ -4,7 +4,7 @@ title: 'Task 5: Create example agent configurations and documentation'
 status: To Do
 assignee: []
 created_date: '2026-03-15 18:54'
-updated_date: '2026-03-15 18:58'
+updated_date: '2026-03-15 18:59'
 labels:
   - task
   - docs
@@ -16,7 +16,7 @@ references:
   - >-
     /home/danilo/scripts/github/maestro/backlog/docs/PRD-Agent-Orchestration-System.md
 priority: low
-ordinal: 16000
+ordinal: 13375
 ---
 
 ## Description
