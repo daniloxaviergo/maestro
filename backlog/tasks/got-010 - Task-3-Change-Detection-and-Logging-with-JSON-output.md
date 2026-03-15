@@ -1,10 +1,10 @@
 ---
 id: GOT-010
 title: 'Task 3: Change Detection and Logging with JSON output'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-03-15 00:52'
-updated_date: '2026-03-15 02:02'
+updated_date: '2026-03-15 10:56'
 labels:
   - logging
   - json
@@ -206,3 +206,47 @@ Implement change detection by comparing current assignee values with cached prev
 2. Parser failure → use empty assignee array, continue
 3. Cache lock contention → short wait then proceed (low probability)
 <!-- SECTION:PLAN:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+This task implements change detection for assignee field modifications with JSON logging.
+
+## What Changed
+
+### New Files Created
+- `pkg/logs/logger.go` - JSON log writer for assignee changes with thread-safe file appending
+- `pkg/change_detect/detector.go` - Change detection logic that compares cached vs current assignees
+- `pkg/change_detect/detector_test.go` - 8 comprehensive unit tests covering all scenarios
+
+### Modified Files
+- `pkg/cache/types.go` - Added `Assignee []string` field to `FileState` struct
+- `pkg/cache/cache.go` - Added `GetAssignee()`, `SetAssignee()`, `RemoveAssignee()` methods with proper locking
+- `cmd/monitor/main.go` - Integrated change detection: parses files, detects changes, logs to JSON
+
+## Key Implementation Details
+
+1. **Change Detection Logic**: Compares cached assignee values with current values using order-insensitive slice comparison
+2. **First-Run Handling**: Files without cached values are processed but not logged (treats as "new assignees")
+3. **JSON Logging**: Human-readable, indented JSON output to `./backlog/logs/assignee_changes.log`
+4. **Thread Safety**: All cache operations protected by `sync.RWMutex`
+5. **Error Handling**: Parser errors don't crash; assignee write errors logged to stderr
+
+## Acceptance Criteria Status
+- [x] #1 Log event includes: file path, timestamp, old assignee (array), new assignee (array)
+- [x] #2 Log format is human-readable and machine-parsable (JSON)
+- [x] #3 Log output goes to `./backlog/logs/assignee_changes.log`
+- [x] #4 Handle assignee additions, removals, and replacements correctly
+- [x] #5 Handle case where file previously had no cached value (treat as new assignee array)
+
+## Testing Results
+- All 8 unit tests pass
+- `go vet ./...` - no warnings
+- Build successful
+- Integration test: Create file with assignee → update assignee → verify JSON log entry
+
+## Risks/Follow-ups
+- No log rotation (file grows indefinitely)
+- Cache doesn't persist across restarts (per requirements)
+- No rate limiting for rapid writes (handled by existing debounce)
+<!-- SECTION:FINAL_SUMMARY:END -->
