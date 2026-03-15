@@ -1,7 +1,7 @@
 ---
 id: GOT-024
 title: 'Task 5: Create example agent configurations and documentation'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-15 18:54'
 updated_date: '2026-03-15 23:08'
@@ -24,6 +24,35 @@ ordinal: 12437.5
 <!-- SECTION:DESCRIPTION:BEGIN -->
 Task 5: Create agent example configuration files and documentation
 <!-- SECTION:DESCRIPTION:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 Code follows existing project conventions package structure naming error handling
+- [ ] #2 go vet passes with no warnings
+- [ ] #3 go build succeeds without errors
+- [ ] #4 Unit tests added or updated for new or changed functionality
+- [ ] #5 go test ... passes with no failures
+- [ ] #6 Code comments added for non-obvious logic
+- [ ] #7 README or docs updated if public behavior changes
+- [ ] #8 make build succeeds
+- [ ] #9 make run works as expected
+- [ ] #10 Errors are logged not silently ignored
+- [ ] #11 Graceful degradation monitor continues if individual file processing fails
+- [ ] #12 No resource leaks channels closed files closed goroutines stopped
+<!-- DOD:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Example agent configurations created in agents/ directory with at least two example agents
+- [ ] #2 Each agent has config.yml with script_path, tmux_session, and enabled fields
+- [ ] #3 Example bash scripts created that can execute via tmux
+- [ ] #4 Documentation added to docs/ explaining agent configuration format
+- [ ] #5 Documentation added explaining how to create new agents
+- [ ] #6 Documentation references examples from PRD
+- [ ] #7 go vet passes with no warnings on all new files
+- [ ] #8 go build succeeds without errors
+- [ ] #9 make build succeeds
+<!-- AC:END -->
 
 ## Implementation Plan
 
@@ -177,19 +206,3 @@ go test ./pkg/config/...
 - Multiple scripts per agent
 - Script dependencies
 <!-- SECTION:PLAN:END -->
-
-## Definition of Done
-<!-- DOD:BEGIN -->
-- [ ] #1 Code follows existing project conventions package structure naming error handling
-- [ ] #2 go vet passes with no warnings
-- [ ] #3 go build succeeds without errors
-- [ ] #4 Unit tests added or updated for new or changed functionality
-- [ ] #5 go test ... passes with no failures
-- [ ] #6 Code comments added for non-obvious logic
-- [ ] #7 README or docs updated if public behavior changes
-- [ ] #8 make build succeeds
-- [ ] #9 make run works as expected
-- [ ] #10 Errors are logged not silently ignored
-- [ ] #11 Graceful degradation monitor continues if individual file processing fails
-- [ ] #12 No resource leaks channels closed files closed goroutines stopped
-<!-- DOD:END -->
