@@ -6,6 +6,40 @@ This document describes how to set up and run the file monitor for the Maestro p
 
 The file monitor watches the `./backlog/tasks` directory for changes to markdown files and outputs events in real-time.
 
+## Agent Orchestration
+
+Maestro supports an agent orchestration system that automatically executes scripts when tasks are assigned to specific agents.
+
+### Prerequisites
+
+- tmux installed (`tmux --version` to verify)
+- Agent configurations in `agents/` directory (see [Agent Configuration](agent-configuration.md))
+- At least one agent configured with `enabled: true` and `script_path` set
+
+### How It Works
+
+1. The monitor detects assignee changes in task files
+2. Agent names are matched against configured agents (case-insensitive)
+3. Matching agents with `enabled: true` and `script_path` configured have their scripts executed
+4. Scripts run in their configured tmux session
+
+### Quick Start
+
+1. Create an agent configuration (see [Agent Orchestration Quickstart](agent-orchestration-quickstart.md))
+2. Start the monitor: `make run`
+3. Update a task file's `assignee` field to match your agent name
+4. Watch tmux session for script execution
+
+### Configuration
+
+See [Agent Configuration](agent-configuration.md) for detailed configuration options.
+
+### Environment Variables
+
+- `AGENTS_CONFIG_DIR`: Override agents directory (default: `./agents`)
+
+For full agent orchestration setup, see [Agent Orchestration Quickstart](agent-orchestration-quickstart.md).
+
 ## Prerequisites
 
 - Go 1.20 or higher installed

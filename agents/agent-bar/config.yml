@@ -1,0 +1,6 @@
+# Agent-bar configuration
+# This agent processes tasks assigned to it by executing a script in tmux
+
+script_path: "./agents/agent-bar/script.sh"
+tmux_session: "agent-bar"
+enabled: true

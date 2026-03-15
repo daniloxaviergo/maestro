@@ -131,6 +131,51 @@ Define and enforce the agent config directory structure.
 - **Maintainability**: Clear separation between detection, matching, and execution
 - **Observability**: All agent matching decisions logged with debug level
 
+## Implementation
+
+### Files Created
+
+| Path | Purpose |
+|------|---------|
+| `agents/` | Directory for agent configurations and scripts |
+| `docs/agent-configuration.md` | Agent configuration format documentation |
+| `docs/agent-orchestration-quickstart.md` | Step-by-step agent setup guide |
+
+### Example Agents
+
+Example agent configurations are provided in the `agents/` directory:
+
+```
+agents/
+├── agent-foo/
+│   ├── config.yml      # Agent configuration
+│   └── script.sh       # Executable bash script
+├── agent-bar/
+│   ├── config.yml
+│   └── script.sh
+└── ...
+```
+
+#### Example Configuration
+
+```yaml
+script_path: "./agents/agent-foo/script.sh"
+tmux_session: "agent-foo"
+enabled: true
+```
+
+#### Example Script
+
+```bash
+#!/bin/bash
+TASK_FILE="$1"
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+echo "[$TIMESTAMP] agent-foo: Processing task: $TASK_FILE"
+# Add custom processing logic here
+```
+
+See [docs/agent-orchestration-quickstart.md](../docs/agent-orchestration-quickstart.md) for detailed setup instructions.
+
 ## Scope
 
 ### In Scope
