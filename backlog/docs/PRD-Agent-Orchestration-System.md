@@ -1,9 +1,3 @@
----
-id: doc-005
-title: 'PRD: Agent Orchestration System - Assignee-Based Agent Command Routing'
-type: other
-created_date: '2026-03-15 18:50'
----
 # PRD: Agent Orchestration System - Assignee-Based Agent Command Routing
 
 ## Overview
@@ -65,7 +59,7 @@ Add an orchestration layer that:
 Create a module that matches assignee names to configured agents.
 
 ##### User Flows
-1. Assignee change detected in task file (e.g., `assignee: [agent-foo]`)
+1. Assignee change detected in task file (e.g., `assignee: ["agent-foo"]`)
 2. System searches for agent with matching name in agent configs
 3. If found, retrieve agent's script path and tmux session
 4. If not found, log warning and skip

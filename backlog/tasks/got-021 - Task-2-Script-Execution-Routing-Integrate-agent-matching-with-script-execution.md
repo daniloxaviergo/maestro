@@ -6,6 +6,7 @@ title: >-
 status: To Do
 assignee: []
 created_date: '2026-03-15 18:52'
+updated_date: '2026-03-15 18:58'
 labels:
   - task
   - orchestration
@@ -15,6 +16,7 @@ references:
   - >-
     /home/danilo/scripts/github/maestro/backlog/docs/PRD-Agent-Orchestration-System.md
 priority: high
+ordinal: 12000
 ---
 
 ## Description

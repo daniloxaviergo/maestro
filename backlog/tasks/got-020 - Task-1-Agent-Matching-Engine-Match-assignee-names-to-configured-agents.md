@@ -4,6 +4,7 @@ title: 'Task 1: Agent Matching Engine - Match assignee names to configured agent
 status: To Do
 assignee: []
 created_date: '2026-03-15 18:52'
+updated_date: '2026-03-15 18:58'
 labels:
   - task
   - agent
@@ -15,6 +16,7 @@ references:
   - >-
     /home/danilo/scripts/github/maestro/backlog/docs/PRD-Agent-Orchestration-System.md
 priority: high
+ordinal: 11000
 ---
 
 ## Description
