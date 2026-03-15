@@ -1,10 +1,10 @@
 ---
 id: GOT-020
 title: 'Task 1: Agent Matching Engine - Match assignee names to configured agents'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-15 18:52'
-updated_date: '2026-03-15 19:00'
+updated_date: '2026-03-15 19:03'
 labels:
   - task
   - agent
@@ -16,7 +16,7 @@ references:
   - >-
     /home/danilo/scripts/github/maestro/backlog/docs/PRD-Agent-Orchestration-System.md
 priority: high
-ordinal: 11000
+ordinal: 1000
 ---
 
 ## Description
