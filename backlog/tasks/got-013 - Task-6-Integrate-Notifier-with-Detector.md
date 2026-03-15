@@ -4,7 +4,7 @@ title: 'Task 6: Integrate Notifier with Detector'
 status: In Progress
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15 15:10'
+updated_date: '2026-03-15 15:45'
 labels:
   - tmux
   - notifier
@@ -68,7 +68,7 @@ Integrate the tmux notifier with the change detector to notify on assignee chang
 - [x] #2 Detector calls `notifier.Notify()` with `AssigneeChangeEvent` on assignee change
 - [x] #3 Non-blocking: detector doesn't wait for notification to complete
 - [x] #4 Notifier handles all errors internally (detector doesn't see errors)
-- [ ] #5 Integration test: assignee change triggers tmux notification
+- [x] #5 Integration test: assignee change triggers tmux notification
 <!-- AC:END -->
 
 ## Implementation Plan
