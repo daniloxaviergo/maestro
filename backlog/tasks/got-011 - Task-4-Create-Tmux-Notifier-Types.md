@@ -4,7 +4,7 @@ title: 'Task 4: Create Tmux Notifier Types'
 status: To Do
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15 12:19'
+updated_date: '2026-03-15 12:22'
 labels:
   - tmux
   - notifier
@@ -85,42 +85,66 @@ type AssigneeChangeEvent struct {
 <!-- SECTION:PLAN:BEGIN -->
 ### 1. Technical Approach
 
-Create `pkg/notifier/types.go` with all necessary type definitions for the tmux notifier package.
+Create `pkg/notifier/types.go` with all type definitions for the tmux notifier package. This is the foundational types task for the tmux notifier system.
 
 **Implementation Steps:**
 1. Create `pkg/notifier/` directory
-2. Create `types.go` with struct definitions
-3. Define error variables using `errors.New()`
-4. Define default configuration values
+2. Create `pkg/notifier/types.go` with:
+   - `NotificationConfig` struct (MessageFormat, Timeout fields)
+   - `Notifier` struct (holds config)
+   - `AssigneeChangeEvent` struct (FilePath, OldAssignee, NewAssignee fields)
+   - Error variables: `ErrTmuxNotInstalled`, `ErrTmuxCommandFailed`, `ErrTmuxTimeout`
+3. Define default values for `NotificationConfig`
 
 **Design Decisions:**
-- `Notifier` holds `NotificationConfig` for easy configuration
-- `NotificationConfig` allows customization of message format and timeout
-- `AssigneeChangeEvent` mirrors the change detector's output format
-- Errors are package-level variables for easy comparison with `errors.Is()`
+- `Notifier` holds `NotificationConfig` for easy configuration and extensibility
+- `NotificationConfig` allows customization of message format and timeout per notifier instance
+- `AssigneeChangeEvent` mirrors the change detector's output format for seamless integration
+- Errors are package-level variables using `errors.New()` for easy comparison with `errors.Is()`
+- Follow existing patterns from `pkg/watcher/` (error variables) and `pkg/cache/` (struct definitions)
+
+**Why This Approach:**
+- Simple, minimal types that meet the PRD requirements
+- Non-blocking by design (implementation in Task 5 will use goroutines)
+- Extensible for future features (can add Priority, Metadata fields later)
+- Aligns with existing package structure and patterns
 
 ### 2. Files to Create/Modify
 
 | Action | File | Purpose |
 |--------|------|---------|
-| Create | `pkg/notifier/types.go` | Type definitions: Notifier, NotificationConfig, AssigneeChangeEvent, errors |
-| Create | `pkg/notifier/notifier.go` | (Task 2) Implementation of Notify() method |
-| Create | `pkg/notifier/notifier_test.go` | Unit tests for type definitions |
+| Create | `pkg/notifier/types.go` | Core type definitions for tmux notifier |
+| Create | `pkg/notifier/notifier.go` | (Task 5: Implementation) Tmux command execution |
+| Create | `pkg/notifier/notifier_test.go` | (Task 5: Testing) Unit tests for notifier |
+| Modify | `pkg/change_detect/detector.go` | (Task 6: Integration) Add notifier callback |
+
+**Files to Reference (Read-Only):**
+- `pkg/cache/types.go` - Example of type definitions with sync patterns
+- `pkg/cache/cache.go` - Example of struct-based cache with mutex
+- `pkg/watcher/watcher.go` - Example of error variables and struct definitions
+- `pkg/logs/logger.go` - Example of Logger struct with file handling
+- `pkg/parser/types.go` - Example of data structures for file data
 
 ### 3. Dependencies
 
-- **Go standard library**: `errors`, `time`
-- **Prerequisite**: GOT-010 (change detection) - provides `AssigneeChangeEvent` data
+- **Go standard library**: `errors`, `time`, `sync` (optional, for future extensibility)
+- **Prerequisite**: GOT-010 (change detection) - provides event data and defines `AssigneeChangeEvent` structure
+- **No external dependencies** - uses only standard library
+
+**Configuration Requirements:**
+- No environment variables required for types
+- Default timeout: 2 seconds (for command execution in Task 5)
+- Default message format: `Assignee changed to "[new]" for [file]`
 
 ### 4. Code Patterns
 
 **Follow existing project conventions:**
-- Package structure mirrors `pkg/watcher/` and `pkg/cache/`
-- Error variables use `Err` prefix (matching `watcher.go`)
-- Exported types use PascalCase
-- Unexported types use lowercase
+- Package name: `notifier` (lowercase)
+- Type names: PascalCase (`NotificationConfig`, `Notifier`, `AssigneeChangeEvent`)
+- Error variables: `Err` prefix (`ErrTmuxNotInstalled`, etc.)
+- Field names: PascalCase for exported, camelCase for unexported (future-proofing)
 
-**Example code:**
+**Structure Pattern (mirrors `pkg/cache/` and `pkg/watcher/`):**
 ```go
 package notifier
 
@@ -129,54 +153,86 @@ import (
     "time"
 )
 
-var (
-    ErrTmuxNotInstalled   = errors.New("tmux not installed")
-    ErrTmuxCommandFailed  = errors.New("tmux command failed")
-    ErrTmuxTimeout        = errors.New("tmux command timed out")
-)
-
+// Configuration struct
 type NotificationConfig struct {
     MessageFormat string
     Timeout       time.Duration
 }
 
+// Notifier struct holding state
+type Notifier struct {
+    config NotificationConfig
+}
+
+// Event struct for change data
 type AssigneeChangeEvent struct {
     FilePath    string
     OldAssignee []string
     NewAssignee []string
 }
 
-type Notifier struct {
-    config NotificationConfig
-}
+// Error variables
+var (
+    ErrTmuxNotInstalled   = errors.New("tmux not installed")
+    ErrTmuxCommandFailed  = errors.New("tmux command failed")
+    ErrTmuxTimeout        = errors.New("tmux command timed out")
+)
 ```
+
+**Naming Conventions:**
+- Exported types: `NotificationConfig`, `Notifier`, `AssigneeChangeEvent`
+- Unexported fields (if added later): `config`, `mutex`
+- Error variables: `ErrTmuxNotInstalled`, `ErrTmuxCommandFailed`, `ErrTmuxTimeout`
 
 ### 5. Testing Strategy
 
 **Unit tests in `pkg/notifier/notifier_test.go`:**
-- Test `NotificationConfig` default values
-- Test `AssigneeChangeEvent` struct initialization
-- Verify error variables are unique
-- Test config with custom message format
+1. Test `NotificationConfig` struct initialization with defaults
+2. Test `NotificationConfig` with custom values (MessageFormat, Timeout)
+3. Test `AssigneeChangeEvent` struct initialization
+4. Verify error variables are unique (not equal to each other)
+5. Test `Notifier` constructor with default config
+6. Test `Notifier` constructor with custom config
 
-**Verification:**
-- `go build ./pkg/notifier/...`
-- `go test ./pkg/notifier/...`
-- `go vet ./pkg/notifier/...`
+**Test Scenarios:**
+- Empty config uses defaults
+- Custom config values are stored correctly
+- Event with empty assignees works
+- Event with multiple assignees works
+- All errors are distinct
+
+**Verification Commands:**
+```bash
+go build ./pkg/notifier/...
+go vet ./pkg/notifier/...
+go test ./pkg/notifier/... -v
+```
 
 ### 6. Risks and Considerations
 
-**Blocking issues:**
-- None - standalone types task
+**Blocking Issues:**
+- None - this is a standalone types definition task
 
 **Trade-offs:**
-- `Timeout` is per-call (not cumulative for multiple tmux calls)
-- `MessageFormat` is simple string template (no complex templating engine)
-- `AssigneeChangeEvent` fields are all exported for flexibility
+- `Timeout` is per-`Notify()` call (not cumulative for multiple tmux calls in future)
+- `MessageFormat` is a simple string template (no complex templating engine like text/template)
+- All fields in `AssigneeChangeEvent` are exported for flexibility (could be made unexported if needed)
 
-**Future considerations:**
-- Could add `Priority` field to event for different notification behaviors
-- Could add `Metadata` map for extensibility
+**Design Decisions:**
+- No mutex in `Notifier` yet (Task 5 will handle synchronization for command execution)
+- No logger in `Notifier` (Task 5 will handle logging of errors)
+- `NotificationConfig` is passed by value (immutable, thread-safe for reading)
+
+**Future Considerations:**
+- Could add `Priority` field to `AssigneeChangeEvent` for different notification behaviors
+- Could add `Metadata` map[string]string for extensibility without breaking changes
+- Could use `sync/atomic` for counters if needed
+- Template engine (text/template) could be added later for complex formatting
+
+**Integration Notes:**
+- Task 5 (`notifier.go`) will implement the actual tmux command execution
+- Task 6 (integration) will wire the notifier to the change detector
+- This task only defines the types - no implementation beyond type declarations
 <!-- SECTION:PLAN:END -->
 
 ## Definition of Done
