@@ -4,6 +4,7 @@ title: 'Task 3: Go Development Tools Installation'
 status: To Do
 assignee: []
 created_date: '2026-03-15 00:12'
+updated_date: '2026-03-15 00:16'
 labels:
   - tools
   - linters
@@ -27,6 +28,5 @@ Install essential Go development tools (linters, formatters, debuggers)
 - [ ] #2 goimports is installed for import management
 - [ ] #3 A linter (golint or golangci-lint) is installed
 - [ ] #4 Delve (dlv) debugger is installed
-- [ ] #5 Tools are in the user's PATH
-- [ ] #6 All tools work with the installed Go version
+- [ ] #5 All tools work with the installed Go version
 <!-- AC:END -->
