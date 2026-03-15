@@ -1,10 +1,10 @@
 ---
 id: GOT-009
 title: 'Task 2: YAML Frontmatter Parser for extracting the assignee field'
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-03-15 00:52'
-updated_date: '2026-03-15 01:50'
+updated_date: '2026-03-15 01:51'
 labels:
   - parser
   - yaml
@@ -74,11 +74,11 @@ type FileData struct {
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 #1 Successfully parse YAML frontmatter from valid markdown files
-- [ ] #2 #2 Extract assignee field as a slice of strings (array)
-- [ ] #3 #3 Handle files without frontmatter (treat as empty assignee array
-- [ ] #4 #4 Handle malformed YAML gracefully with error logging
-- [ ] #5 #5 Support empty assignee arrays (assignee: [] or assignee:)
+- [x] #1 Successfully parse YAML frontmatter from valid markdown files
+- [x] #2 Extract assignee field as a slice of strings (array)
+- [x] #3 Handle files without frontmatter (treat as empty assignee array)
+- [x] #4 Handle malformed YAML gracefully with error logging
+- [x] #5 Support empty assignee arrays (assignee: [] or assignee:)
 <!-- AC:END -->
 
 ## Implementation Plan
