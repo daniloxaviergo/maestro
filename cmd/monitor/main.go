@@ -13,6 +13,7 @@ import (
 	"maestro/pkg/cache"
 	"maestro/pkg/change_detect"
 	"maestro/pkg/logs"
+	"maestro/pkg/notifier"
 	"maestro/pkg/parser"
 	"maestro/pkg/watcher"
 )
@@ -35,6 +36,10 @@ func main() {
 
 	// Create change detector
 	detector := change_detect.NewDetector(logger)
+
+	// Create and wire notifier for tmux notifications
+	notifier := notifier.NewNotifier(notifier.NotificationConfig{})
+	detector.SetNotifier(notifier)
 
 	// Create watcher
 	w, err := watcher.NewWatcher()

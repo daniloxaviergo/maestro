@@ -292,3 +292,33 @@
   ],
   "new_assignee": []
 }
+{
+  "timestamp": "2026-03-15T15:50:10Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "James"
+  ],
+  "new_assignee": [
+    "Bob"
+  ]
+}
+{
+  "timestamp": "2026-03-15T15:50:16Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "Bob"
+  ],
+  "new_assignee": [
+    "Alice"
+  ]
+}
+{
+  "timestamp": "2026-03-15T15:50:25Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "Alice"
+  ],
+  "new_assignee": [
+    "John"
+  ]
+}

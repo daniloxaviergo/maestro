@@ -3,14 +3,16 @@ package change_detect
 import (
 	"maestro/pkg/cache"
 	"maestro/pkg/logs"
+	"maestro/pkg/notifier"
 	"maestro/pkg/parser"
 )
 
 // Detector compares cached assignee values with current values and logs changes
 type Detector struct {
-	cache   *cache.Cache
-	logger  *logs.Logger
-	processed map[string]bool // Track first run for each file
+	cache      *cache.Cache
+	logger     *logs.Logger
+	processed  map[string]bool // Track first run for each file
+	notifier   *notifier.Notifier
 }
 
 // NewDetector creates a new change detector
@@ -20,6 +22,11 @@ func NewDetector(logger *logs.Logger) *Detector {
 		logger:    logger,
 		processed: make(map[string]bool),
 	}
+}
+
+// SetNotifier sets the notifier to use for assignee change notifications
+func (d *Detector) SetNotifier(n *notifier.Notifier) {
+	d.notifier = n
 }
 
 // ProcessFile processes a parsed file and detects assignee changes
@@ -53,6 +60,16 @@ func (d *Detector) ProcessFile(fileData parser.FileData) (bool, error) {
 	// Assignee changed - log the change
 	if err := d.logger.LogAssigneeChange(filePath, cachedAssignee, newAssignee); err != nil {
 		return false, err
+	}
+
+	// Notify tmux if notifier is configured
+	if d.notifier != nil {
+		event := notifier.AssigneeChangeEvent{
+			FilePath:    filePath,
+			OldAssignee: cachedAssignee,
+			NewAssignee: newAssignee,
+		}
+		d.notifier.Notify(event)
 	}
 
 	// Update cache with new assignee

@@ -1,6 +1,7 @@
 # Build output
 bin/
 
+assignee_changes.log
 *.out
 coverage/
 *.test
