@@ -1,10 +1,10 @@
 ---
 id: GOT-014
 title: 'Task 7: Update Monitor Main to Use Notifier'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15'
+updated_date: '2026-03-15 17:20'
 labels:
   - tmux
   - notifier
@@ -17,7 +17,7 @@ dependencies:
 references:
   - backlog/docs/doc-003 - PRD-Maestro-Feature-Set-1.md
 priority: high
-ordinal: 1400
+ordinal: 1000
 ---
 
 ## Description
@@ -71,8 +71,8 @@ Update the monitor main application to initialize and wire the tmux notifier to 
 - [ ] #1 `cmd/monitor/main.go` imports `pkg/notifier`
 - [ ] #2 Notifier initialized with default config (2s timeout, default format)
 - [ ] #3 Notifier wired to change detector via `SetNotifier()`
-- [ ] #2 Notify() called on assignee change events
-- [ ] #3 Integration test: tmux notification triggered when assignee changes
+- [ ] #4 Notify() called on assignee change events
+- [ ] #5 Integration test: tmux notification triggered when assignee changes
 <!-- AC:END -->
 
 ## Implementation Plan
