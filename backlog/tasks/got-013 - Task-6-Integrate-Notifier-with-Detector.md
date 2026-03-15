@@ -1,10 +1,10 @@
 ---
 id: GOT-013
 title: 'Task 6: Integrate Notifier with Detector'
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15 15:45'
+updated_date: '2026-03-15 15:46'
 labels:
   - tmux
   - notifier
@@ -420,3 +420,34 @@ All acceptance criteria checked off.
 - [x] #4 `go build ./cmd/monitor/...` passes
 - [x] #5 Binary builds successfully
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Integrated tmux notifier with change detector to notify on assignee changes.
+
+**Changes Made:**
+- **pkg/change_detect/detector.go**: Added optional `notifier` field, `SetNotifier()` method, and calls `notifier.Notify()` after detecting assignee changes
+- **cmd/monitor/main.go**: Created notifier and wired it to detector via `SetNotifier()`
+
+**Key Features:**
+- Notifier is optional (nil-safe: checks `if d.notifier != nil`)
+- Non-blocking: notifier handles async execution via goroutine with 2-second timeout
+- Detector doesn't see notifier errors (they're handled internally)
+
+**Verification:**
+- All 8 change_detect tests pass
+- All 10 notifier tests pass  
+- All 8 parser tests pass
+- `go vet ./...` passes with no warnings
+- Binary builds successfully
+- Implementation follows existing code patterns (optional dependency, nil checks)
+<!-- SECTION:FINAL_SUMMARY:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 All acceptance criteria checked off
+- [ ] #2 All tests pass (go test ./...)
+- [ ] #3 go vet ./... passes with no warnings
+- [ ] #4 Binary builds successfully (go build -o bin/monitor cmd/monitor/main.go)
+<!-- DOD:END -->
