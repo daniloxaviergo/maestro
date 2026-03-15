@@ -1,10 +1,10 @@
 ---
 id: GOT-023
 title: 'Task 4: Update Monitor Main - Integrate agent orchestration'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-15 18:53'
-updated_date: '2026-03-15 18:58'
+updated_date: '2026-03-15 22:52'
 labels:
   - task
   - orchestration
@@ -13,7 +13,7 @@ references:
   - >-
     /home/danilo/scripts/github/maestro/backlog/docs/PRD-Agent-Orchestration-System.md
 priority: medium
-ordinal: 12375
+ordinal: 1000
 ---
 
 ## Description
