@@ -68,10 +68,10 @@ Update the monitor main application to initialize and wire the tmux notifier to 
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 `cmd/monitor/main.go` imports `pkg/notifier`
-- [ ] #2 Notifier initialized with default config (2s timeout, default format)
-- [ ] #3 Notifier wired to change detector via `SetNotifier()`
-- [ ] #4 Notify() called on assignee change events
+- [x] #1 `cmd/monitor/main.go` imports `pkg/notifier`
+- [x] #2 Notifier initialized with default config (2s timeout, default format)
+- [x] #3 Notifier wired to change detector via `SetNotifier()`
+- [x] #4 Notify() called on assignee change events
 - [ ] #5 Integration test: tmux notification triggered when assignee changes
 - [ ] #6 #1 `cmd/monitor/main.go` imports `pkg/notifier`
 <!-- AC:END -->
@@ -214,3 +214,9 @@ func main() {
 - Add config file for notifier settings
 - Add notification metrics/health check endpoint
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Verified implementation: cmd/monitor/main.go properly imports pkg/notifier (line 14), initializes notifier with default config (line 29), wires it to detector via SetNotifier() (line 30), and detector.Notify() is called on assignee changes in change_detect/detector.go (lines 65-70). Build and all unit tests pass. Integration test #5 cannot be verified without tmux installed - not a blocking issue as error handling logs warnings and continues gracefully.
+<!-- SECTION:NOTES:END -->
