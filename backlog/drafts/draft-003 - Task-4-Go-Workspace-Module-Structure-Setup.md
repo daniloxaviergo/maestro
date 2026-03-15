@@ -1,10 +1,10 @@
 ---
-id: GOT-004
+id: DRAFT-003
 title: 'Task 4: Go Workspace/Module Structure Setup'
-status: To Do
+status: Draft
 assignee: []
 created_date: '2026-03-15 00:12'
-updated_date: '2026-03-15 00:18'
+updated_date: '2026-03-15 00:23'
 labels:
   - workspace
   - modules
@@ -12,7 +12,7 @@ labels:
 dependencies: []
 references:
   - backlog/docs/doc-001 - PRD-Go-Development-Environment-Setup.md
-priority: medium
+priority: low
 ordinal: 6000
 ---
 
