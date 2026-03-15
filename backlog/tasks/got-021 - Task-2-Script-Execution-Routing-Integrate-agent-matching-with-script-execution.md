@@ -3,10 +3,10 @@ id: GOT-021
 title: >-
   Task 2: Script Execution Routing - Integrate agent matching with script
   execution
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-03-15 18:52'
-updated_date: '2026-03-15 20:17'
+updated_date: '2026-03-15 22:21'
 labels:
   - task
   - orchestration
@@ -167,3 +167,39 @@ The Script Execution Routing will integrate agent matching with script execution
 3. Can be rolled out without downtime
 4. Existing agents will automatically start executing scripts when assigned tasks
 <!-- SECTION:PLAN:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Script execution routing has been integrated with agent matching in the change detection flow. The implementation adds support for executing agent scripts when assignee changes occur.
+
+**Changes made:**
+
+1. **`pkg/change_detect/detector.go`**: 
+   - Already had `matcher *matcher.Matcher` field and `SetMatcher()` method
+   - `ProcessFile()` now calls `matcher.MatchAssignees(newAssignee)` after assignee change detection
+   - Triggers `notifier.ExecuteScriptsForAgents(matchedAgents)` for matched agents
+
+2. **`pkg/notifier/notifier.go`**:
+   - `ExecuteScriptsForAgents(agents []*agent.Agent)` - multi-agent script execution method
+   - `executeScriptForAgent(agent *agent.Agent, cfg config.AgentConfig)` - helper for single agent
+   - Skips disabled agents and agents without script path
+   - Non-blocking execution via goroutines with per-agent error handling
+
+3. **`cmd/monitor/main.go`**:
+   - Creates `Matcher` with loaded agents
+   - Wires matcher to detector via `detector.SetMatcher(matcher)`
+
+4. **`pkg/change_detect/detector_test.go`**:
+   - Fixed test calls to use `SetMatcher()` instead of constructor argument
+   - Tests cover: no match, script execution, multiple agents, disabled agents
+
+**Testing:**
+- All tests pass: `go test ./...` - 26 tests pass
+- Build succeeds: `make build` - no errors
+- Static analysis: `go vet ./...` - no warnings
+
+**Risks/Follow-ups:**
+- Concurrent script execution when multiple agents match (intentional per PRD)
+- No cleanup of goroutines on shutdown (consistent with existing codebase)
+<!-- SECTION:FINAL_SUMMARY:END -->
