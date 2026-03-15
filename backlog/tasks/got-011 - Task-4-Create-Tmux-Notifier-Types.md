@@ -4,7 +4,7 @@ title: 'Task 4: Create Tmux Notifier Types'
 status: To Do
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15'
+updated_date: '2026-03-15 12:19'
 labels:
   - tmux
   - notifier
@@ -178,3 +178,10 @@ type Notifier struct {
 - Could add `Priority` field to event for different notification behaviors
 - Could add `Metadata` map for extensibility
 <!-- SECTION:PLAN:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 #1 go build ./pkg/notifier/... passes
+- [ ] #2 #2 go vet ./pkg/notifier/... passes with no issues
+- [ ] #3 #3 go test ./pkg/notifier/... passes (unit tests for type definitions)
+<!-- DOD:END -->
