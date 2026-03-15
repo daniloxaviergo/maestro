@@ -1,0 +1,9 @@
+# Build output
+bin/
+
+*.out
+coverage/
+*.test
+
+# Go language server
+.gopls/
