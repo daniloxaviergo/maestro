@@ -4,7 +4,7 @@ title: 'Task 6: Testing - Write unit tests for agent orchestration'
 status: In Progress
 assignee: []
 created_date: '2026-03-15 18:54'
-updated_date: '2026-03-15 23:27'
+updated_date: '2026-03-15 23:59'
 labels:
   - task
   - orchestration
@@ -24,6 +24,32 @@ ordinal: 1000
 <!-- SECTION:DESCRIPTION:BEGIN -->
 Task 6: Update the PRD with implementation notes and acceptance criteria
 <!-- SECTION:DESCRIPTION:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 Code follows existing project conventions package structure naming error handling
+- [ ] #2 go vet passes with no warnings
+- [ ] #3 go build succeeds without errors
+- [ ] #4 Unit tests added or updated for new or changed functionality
+- [ ] #5 go test ... passes with no failures
+- [ ] #6 Code comments added for non-obvious logic
+- [ ] #7 README or docs updated if public behavior changes
+- [ ] #8 make build succeeds
+- [ ] #9 make run works as expected
+- [ ] #10 Errors are logged not silently ignored
+- [ ] #11 Graceful degradation monitor continues if individual file processing fails
+- [ ] #12 No resource leaks channels closed files closed goroutines stopped
+<!-- DOD:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Unit tests added for agent orchestration components
+- [ ] #2 Integration tests cover full detector+matcher+notifier flow
+- [ ] #3 Tests verify error handling and graceful degradation
+- [ ] #4 go vet passes with no warnings
+- [ ] #5 go build succeeds without errors
+- [ ] #6 go test ./... passes with all tests
+<!-- AC:END -->
 
 ## Implementation Plan
 
@@ -171,19 +197,3 @@ The testing will follow the existing patterns in the codebase:
 - Integration tests for detector+matcher+notifier flow
 - Documentation of expected behaviors via test cases
 <!-- SECTION:PLAN:END -->
-
-## Definition of Done
-<!-- DOD:BEGIN -->
-- [ ] #1 Code follows existing project conventions package structure naming error handling
-- [ ] #2 go vet passes with no warnings
-- [ ] #3 go build succeeds without errors
-- [ ] #4 Unit tests added or updated for new or changed functionality
-- [ ] #5 go test ... passes with no failures
-- [ ] #6 Code comments added for non-obvious logic
-- [ ] #7 README or docs updated if public behavior changes
-- [ ] #8 make build succeeds
-- [ ] #9 make run works as expected
-- [ ] #10 Errors are logged not silently ignored
-- [ ] #11 Graceful degradation monitor continues if individual file processing fails
-- [ ] #12 No resource leaks channels closed files closed goroutines stopped
-<!-- DOD:END -->
