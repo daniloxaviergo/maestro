@@ -4,11 +4,14 @@ title: 'Task 3: Change Detection and Logging with JSON output'
 status: To Do
 assignee: []
 created_date: '2026-03-15 00:52'
+updated_date: '2026-03-15 00:52'
 labels:
   - logging
   - json
   - go
-dependencies: []
+dependencies:
+  - GOT-008
+  - GOT-009
 references:
   - >-
     backlog/docs/doc-002 -
