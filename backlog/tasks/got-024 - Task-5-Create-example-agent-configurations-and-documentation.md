@@ -4,7 +4,7 @@ title: 'Task 5: Create example agent configurations and documentation'
 status: In Progress
 assignee: []
 created_date: '2026-03-15 18:54'
-updated_date: '2026-03-15 23:08'
+updated_date: '2026-03-15 23:18'
 labels:
   - task
   - docs
@@ -43,15 +43,15 @@ Task 5: Create agent example configuration files and documentation
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Example agent configurations created in agents/ directory with at least two example agents
-- [ ] #2 Each agent has config.yml with script_path, tmux_session, and enabled fields
-- [ ] #3 Example bash scripts created that can execute via tmux
-- [ ] #4 Documentation added to docs/ explaining agent configuration format
-- [ ] #5 Documentation added explaining how to create new agents
-- [ ] #6 Documentation references examples from PRD
-- [ ] #7 go vet passes with no warnings on all new files
-- [ ] #8 go build succeeds without errors
-- [ ] #9 make build succeeds
+- [x] #1 Example agent configurations created in agents/ directory with at least two example agents
+- [x] #2 Each agent has config.yml with script_path, tmux_session, and enabled fields
+- [x] #3 Example bash scripts created that can execute via tmux
+- [x] #4 Documentation added to docs/ explaining agent configuration format
+- [x] #5 Documentation added explaining how to create new agents
+- [x] #6 Documentation references examples from PRD
+- [x] #7 go vet passes with no warnings on all new files
+- [x] #8 go build succeeds without errors
+- [x] #9 make build succeeds
 <!-- AC:END -->
 
 ## Implementation Plan
