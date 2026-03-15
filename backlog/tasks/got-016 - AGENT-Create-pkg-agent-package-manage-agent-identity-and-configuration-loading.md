@@ -6,7 +6,7 @@ title: >-
 status: In Progress
 assignee: []
 created_date: '2026-03-15 17:16'
-updated_date: '2026-03-15 17:45'
+updated_date: '2026-03-15 17:59'
 labels: []
 dependencies: []
 references:
@@ -23,14 +23,14 @@ Create agent package to manage agent identity and configuration loading
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 pkg/agent/agent.go with Agent struct to manage agent identity and configuration
-- [ ] #2 Agent.LoadConfig() method to load config from configured path
-- [ ] #3 Agent.GetConfig() method to return loaded configuration
-- [ ] #4 Agent.GetName() method to return agent name
-- [ ] #5 Default config directory is ./agents/ configurable via AGENTS_CONFIG_DIR
-- [ ] #6 Agent name from AGENT_NAME environment variable
-- [ ] #7 Missing config file logs warning but doesn't crash agent
-- [ ] #8 Config file path is {config_dir}/{agent_name}/config.yml
+- [x] #1 pkg/agent/agent.go with Agent struct to manage agent identity and configuration
+- [x] #2 Agent.LoadConfig() method to load config from configured path
+- [x] #3 Agent.GetConfig() method to return loaded configuration
+- [x] #4 Agent.GetName() method to return agent name
+- [x] #5 Default config directory is ./agents/ configurable via AGENTS_CONFIG_DIR
+- [x] #6 Agent name from AGENT_NAME environment variable
+- [x] #7 Missing config file logs warning but doesn't crash agent
+- [x] #8 Config file path is {config_dir}/{agent_name}/config.yml
 <!-- AC:END -->
 
 ## Implementation Plan
