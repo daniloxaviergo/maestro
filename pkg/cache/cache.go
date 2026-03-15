@@ -116,19 +116,21 @@ func (c *Cache) GetAssignee(path string) ([]string, bool) {
 }
 
 // SetAssignee updates the cached assignee for a file
+// If the file doesn't exist, it creates a new entry
 func (c *Cache) SetAssignee(path string, assignee []string) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	if state, exists := c.files[path]; exists {
-		state.Assignee = assignee
+	state, exists := c.files[path]
+	if !exists {
+		state = &FileState{}
+		c.files[path] = state
 	}
+	state.Assignee = assignee
 }
 
 // RemoveAssignee removes the assignee entry for a file
 func (c *Cache) RemoveAssignee(path string) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	if state, exists := c.files[path]; exists {
-		state.Assignee = nil
-	}
+	delete(c.files, path)
 }

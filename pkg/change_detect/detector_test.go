@@ -1,6 +1,7 @@
 package change_detect
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"testing"
@@ -123,17 +124,13 @@ func TestProcessFile_DifferentAssigneeChange(t *testing.T) {
 		t.Errorf("Expected change detected for different assignee, got false")
 	}
 
-	// Verify log file was created
-	logContent, err := os.ReadFile(logPath)
-	if err != nil {
-		t.Fatalf("Failed to read log file: %v", err)
+	// Verify log file was created and contains correct data
+	entry := parseLogEntry(t, logPath)
+	if len(entry.OldAssignee) != 1 || entry.OldAssignee[0] != "alice" {
+		t.Errorf("Expected old_assignee to be ['alice'], got %v", entry.OldAssignee)
 	}
-	logStr := string(logContent)
-	if !contains(logStr, `"old_assignee":["alice"]`) {
-		t.Errorf("Expected log to contain old_assignee ['alice'], got: %s", logStr)
-	}
-	if !contains(logStr, `"new_assignee":["bob"]`) {
-		t.Errorf("Expected log to contain new_assignee ['bob'], got: %s", logStr)
+	if len(entry.NewAssignee) != 1 || entry.NewAssignee[0] != "bob" {
+		t.Errorf("Expected new_assignee to be ['bob'], got %v", entry.NewAssignee)
 	}
 }
 
@@ -160,17 +157,13 @@ func TestProcessFile_EmptyToNonEmpty(t *testing.T) {
 		t.Errorf("Expected change detected for empty to non-empty, got false")
 	}
 
-	// Verify log file was created
-	logContent, err := os.ReadFile(logPath)
-	if err != nil {
-		t.Fatalf("Failed to read log file: %v", err)
+	// Verify log file was created and contains correct data
+	entry := parseLogEntry(t, logPath)
+	if len(entry.OldAssignee) != 0 {
+		t.Errorf("Expected old_assignee to be empty, got %v", entry.OldAssignee)
 	}
-	logStr := string(logContent)
-	if !contains(logStr, `"old_assignee":[]`) {
-		t.Errorf("Expected log to contain empty old_assignee, got: %s", logStr)
-	}
-	if !contains(logStr, `"new_assignee":["bob"]`) {
-		t.Errorf("Expected log to contain new_assignee ['bob'], got: %s", logStr)
+	if len(entry.NewAssignee) != 1 || entry.NewAssignee[0] != "bob" {
+		t.Errorf("Expected new_assignee to be ['bob'], got %v", entry.NewAssignee)
 	}
 }
 
@@ -197,17 +190,13 @@ func TestProcessFile_NonEmptyToEmpty(t *testing.T) {
 		t.Errorf("Expected change detected for non-empty to empty, got false")
 	}
 
-	// Verify log file was created
-	logContent, err := os.ReadFile(logPath)
-	if err != nil {
-		t.Fatalf("Failed to read log file: %v", err)
+	// Verify log file was created and contains correct data
+	entry := parseLogEntry(t, logPath)
+	if len(entry.OldAssignee) != 1 || entry.OldAssignee[0] != "alice" {
+		t.Errorf("Expected old_assignee to be ['alice'], got %v", entry.OldAssignee)
 	}
-	logStr := string(logContent)
-	if !contains(logStr, `"old_assignee":["alice"]`) {
-		t.Errorf("Expected log to contain old_assignee ['alice'], got: %s", logStr)
-	}
-	if !contains(logStr, `"new_assignee":[]`) {
-		t.Errorf("Expected log to contain empty new_assignee, got: %s", logStr)
+	if len(entry.NewAssignee) != 0 {
+		t.Errorf("Expected new_assignee to be empty, got %v", entry.NewAssignee)
 	}
 }
 
@@ -267,17 +256,13 @@ func TestProcessFile_AdditionOfAssignee(t *testing.T) {
 		t.Errorf("Expected change detected for added assignee, got false")
 	}
 
-	// Verify log file was created
-	logContent, err := os.ReadFile(logPath)
-	if err != nil {
-		t.Fatalf("Failed to read log file: %v", err)
+	// Verify log file was created and contains correct data
+	entry := parseLogEntry(t, logPath)
+	if len(entry.OldAssignee) != 1 || entry.OldAssignee[0] != "alice" {
+		t.Errorf("Expected old_assignee to be ['alice'], got %v", entry.OldAssignee)
 	}
-	logStr := string(logContent)
-	if !contains(logStr, `"old_assignee":["alice"]`) {
-		t.Errorf("Expected log to contain old_assignee ['alice'], got: %s", logStr)
-	}
-	if !contains(logStr, `"new_assignee":["alice","bob"]`) {
-		t.Errorf("Expected log to contain new_assignee ['alice','bob'], got: %s", logStr)
+	if len(entry.NewAssignee) != 2 || entry.NewAssignee[0] != "alice" || entry.NewAssignee[1] != "bob" {
+		t.Errorf("Expected new_assignee to be ['alice','bob'], got %v", entry.NewAssignee)
 	}
 }
 
@@ -310,4 +295,20 @@ func contains(s, substr string) bool {
 			}
 			return false
 		}())
+}
+
+// parseLogEntry parses a JSON log entry from a log file
+func parseLogEntry(t *testing.T, logPath string) logs.AssigneeChange {
+	t.Helper()
+	content, err := os.ReadFile(logPath)
+	if err != nil {
+		t.Fatalf("Failed to read log file: %v", err)
+	}
+
+	var entry logs.AssigneeChange
+	if err := json.Unmarshal(content, &entry); err != nil {
+		t.Fatalf("Failed to parse log entry: %v", err)
+	}
+
+	return entry
 }

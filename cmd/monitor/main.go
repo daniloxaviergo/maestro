@@ -25,7 +25,7 @@ func main() {
 	log.Println("Starting file monitor...")
 
 	// Create log directory and logger
-	logDir := "./backlog/logs"
+	logDir := "."
 	logPath := filepath.Join(logDir, "assignee_changes.log")
 	logger, err := logs.NewLogger(logPath)
 	if err != nil {

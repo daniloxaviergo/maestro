@@ -1,0 +1,294 @@
+{
+  "timestamp": "2026-03-15T11:06:07Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-log.md",
+  "old_assignee": [
+    "alice"
+  ],
+  "new_assignee": [
+    "bob"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:08:49Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "bob"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:09:01Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "alice"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:12:31Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "alice"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:12:37Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "james"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:12:54Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "james"
+  ],
+  "new_assignee": [
+    "bob"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:13:00Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "bob"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:13:26Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "bob"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:13:34Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "bob"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:13:50Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "John"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:17:24Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-changes.md",
+  "old_assignee": [
+    "Bob"
+  ],
+  "new_assignee": [
+    "Alice"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:17:25Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-changes.md",
+  "old_assignee": [
+    "Alice"
+  ],
+  "new_assignee": [
+    "James"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:17:26Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-changes.md",
+  "old_assignee": [
+    "James"
+  ],
+  "new_assignee": [
+    "John"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:29:33Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-format.md",
+  "old_assignee": [
+    "Bob"
+  ],
+  "new_assignee": [
+    "Alice"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:33:32Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "Alice"
+  ],
+  "new_assignee": [
+    "James"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:33:44Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "James"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:33:50Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Bob"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:33:57Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "Bob"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:34:32Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "James"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:34:40Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Bob"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:34:41Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "Bob"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:34:41Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Bob"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:34:42Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "Bob"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:34:42Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Bob"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:34:43Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "Bob"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:35:13Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-log.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "james"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:35:14Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-log.md",
+  "old_assignee": [
+    "james"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:35:14Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-log.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "james"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:35:14Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-log.md",
+  "old_assignee": [
+    "james"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:35:15Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-log.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "james"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:35:15Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-log.md",
+  "old_assignee": [
+    "james"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:36:15Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-010 - Task-3-Change-Detection-and-Logging-with-JSON-output.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "James"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:36:23Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-010 - Task-3-Change-Detection-and-Logging-with-JSON-output.md",
+  "old_assignee": [
+    "James"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T11:36:35Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-010 - Task-3-Change-Detection-and-Logging-with-JSON-output.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Bob"
+  ]
+}
+{
+  "timestamp": "2026-03-15T11:36:43Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-010 - Task-3-Change-Detection-and-Logging-with-JSON-output.md",
+  "old_assignee": [
+    "Bob"
+  ],
+  "new_assignee": []
+}
