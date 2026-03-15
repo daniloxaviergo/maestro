@@ -1,10 +1,10 @@
 ---
-id: GOT-002
+id: DRAFT-001
 title: 'Task 2: Editor Configuration (vim/neovim)'
-status: To Do
+status: Draft
 assignee: []
 created_date: '2026-03-15 00:12'
-updated_date: '2026-03-15 00:17'
+updated_date: '2026-03-15 00:21'
 labels:
   - editor
   - vim
@@ -13,7 +13,7 @@ labels:
 dependencies: []
 references:
   - backlog/docs/doc-001 - PRD-Go-Development-Environment-Setup.md
-priority: high
+priority: low
 ordinal: 3000
 ---
 
@@ -26,9 +26,10 @@ Configure vim/neovim with Go plugins for development
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 vim or neovim is installed (if not already present)
-- [ ] #2 Go plugins are installed and configured (vim-go, gopls)
-- [ ] #3 Syntax highlighting works for Go files
-- [ ] #4 gopls language server is configured for autocomplete
-- [ ] #5 Code formatting shortcuts are available
-- [ ] #6 LSP integration works correctly
+- [ ] #2 Go plugins are installed and configured (vim-go
+- [ ] #3 gopls)
+- [ ] #4 Syntax highlighting works for Go files
+- [ ] #5 gopls language server is configured for autocomplete
+- [ ] #6 Code formatting shortcuts are available
+- [ ] #7 LSP integration works correctly
 <!-- AC:END -->
