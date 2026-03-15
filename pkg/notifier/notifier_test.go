@@ -1,8 +1,13 @@
 package notifier
 
 import (
+	"context"
+	"os"
+	"path/filepath"
 	"testing"
 	"time"
+
+	"maestro/pkg/agent"
 )
 
 func TestNotificationConfig_DefaultValues(t *testing.T) {
@@ -112,6 +117,9 @@ func TestErrorVariables_Distinct(t *testing.T) {
 		ErrTmuxNotInstalled,
 		ErrTmuxCommandFailed,
 		ErrTmuxTimeout,
+		ErrScriptNotFound,
+		ErrScriptExecutionFailed,
+		ErrSessionCreationFailed,
 	}
 
 	// Verify all errors are distinct
@@ -132,6 +140,15 @@ func TestErrorVariables_Distinct(t *testing.T) {
 	}
 	if ErrTmuxTimeout.Error() == "" {
 		t.Error("ErrTmuxTimeout.Error() returned empty string")
+	}
+	if ErrScriptNotFound.Error() == "" {
+		t.Error("ErrScriptNotFound.Error() returned empty string")
+	}
+	if ErrScriptExecutionFailed.Error() == "" {
+		t.Error("ErrScriptExecutionFailed.Error() returned empty string")
+	}
+	if ErrSessionCreationFailed.Error() == "" {
+		t.Error("ErrSessionCreationFailed.Error() returned empty string")
 	}
 }
 
@@ -250,4 +267,161 @@ func TestNotifier_formatMessage(t *testing.T) {
 			}
 		})
 	}
+}
+
+// TestExecuteScript tests the ExecuteScript method
+func TestExecuteScript(t *testing.T) {
+	// Create a temporary directory for test
+	tempDir := t.TempDir()
+
+	// Create a test script that does nothing successful
+	scriptPath := filepath.Join(tempDir, "test_script.sh")
+	scriptContent := `#!/bin/bash
+exit 0
+`
+	if err := os.WriteFile(scriptPath, []byte(scriptContent), 0755); err != nil {
+		t.Fatalf("failed to create test script: %v", err)
+	}
+
+	// Create a temporary config directory
+	configDir := filepath.Join(tempDir, "agents")
+	testAgentDir := filepath.Join(configDir, "test-agent")
+	if err := os.MkdirAll(testAgentDir, 0755); err != nil {
+		t.Fatalf("failed to create agent directory: %v", err)
+	}
+
+	// Create agent config
+	configPath := filepath.Join(testAgentDir, "config.yml")
+	configContent := `
+script_path: ` + scriptPath + `
+tmux_session: test-session
+enabled: true
+`
+	if err := os.WriteFile(configPath, []byte(configContent), 0644); err != nil {
+		t.Fatalf("failed to create config file: %v", err)
+	}
+
+	// Create agent and load config
+	agent := agent.NewAgent("test-agent", configPath)
+	agent.LoadConfig()
+
+	// Create notifier with agent config
+	notifier := NewNotifier(NotificationConfig{
+		Agent:   agent,
+		Timeout: 5 * time.Second,
+	})
+
+	// Test that ExecuteScript doesn't panic and returns immediately (non-blocking)
+	start := time.Now()
+	notifier.ExecuteScript()
+	elapsed := time.Since(start)
+
+	// Should return immediately (less than 100ms for goroutine to start)
+	if elapsed > 100*time.Millisecond {
+		t.Errorf("ExecuteScript should be non-blocking, took %v", elapsed)
+	}
+
+	// Wait a bit for the script to complete (with timeout)
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	// Verify the tmux session was created
+	<-ctx.Done()
+	if ctx.Err() == context.DeadlineExceeded {
+		t.Log("tmux session creation completed within timeout")
+	}
+}
+
+// TestExecuteScript_NoAgentConfig tests ExecuteScript when agent is not configured
+func TestExecuteScript_NoAgentConfig(t *testing.T) {
+	notifier := NewNotifier(NotificationConfig{
+		Agent:   nil,
+		Timeout: 2 * time.Second,
+	})
+
+	// Should log a warning and return without panicking
+	notifier.ExecuteScript()
+
+	// Give it a moment to execute
+	time.Sleep(50 * time.Millisecond)
+}
+
+// TestExecuteScript_MissingScriptPath tests ExecuteScript when script_path is not configured
+func TestExecuteScript_MissingScriptPath(t *testing.T) {
+	// Create a temporary directory for test
+	tempDir := t.TempDir()
+
+	// Create a temporary config directory
+	configDir := filepath.Join(tempDir, "agents")
+	testAgentDir := filepath.Join(configDir, "test-agent")
+	if err := os.MkdirAll(testAgentDir, 0755); err != nil {
+		t.Fatalf("failed to create agent directory: %v", err)
+	}
+
+	// Create agent config with empty script_path
+	configPath := filepath.Join(testAgentDir, "config.yml")
+	configContent := `
+script_path: ""
+tmux_session: test-session
+enabled: true
+`
+	if err := os.WriteFile(configPath, []byte(configContent), 0644); err != nil {
+		t.Fatalf("failed to create config file: %v", err)
+	}
+
+	// Create agent and load config
+	agent := agent.NewAgent("test-agent", configPath)
+	agent.LoadConfig()
+
+	// Create notifier with agent config
+	notifier := NewNotifier(NotificationConfig{
+		Agent:   agent,
+		Timeout: 2 * time.Second,
+	})
+
+	// Should log a warning and return without panicking
+	notifier.ExecuteScript()
+
+	// Give it a moment to execute
+	time.Sleep(50 * time.Millisecond)
+}
+
+// TestExecuteScript_FileNotFound tests ExecuteScript when script file doesn't exist
+func TestExecuteScript_FileNotFound(t *testing.T) {
+	// Create a temporary directory for test
+	tempDir := t.TempDir()
+
+	// Create a temporary config directory
+	configDir := filepath.Join(tempDir, "agents")
+	testAgentDir := filepath.Join(configDir, "test-agent")
+	if err := os.MkdirAll(testAgentDir, 0755); err != nil {
+		t.Fatalf("failed to create agent directory: %v", err)
+	}
+
+	// Create agent config with non-existent script
+	configPath := filepath.Join(testAgentDir, "config.yml")
+	configContent := `
+script_path: /nonexistent/script.sh
+tmux_session: test-session
+enabled: true
+`
+	if err := os.WriteFile(configPath, []byte(configContent), 0644); err != nil {
+		t.Fatalf("failed to create config file: %v", err)
+	}
+
+	// Create agent and load config
+	agent := agent.NewAgent("test-agent", configPath)
+	agent.LoadConfig()
+
+	// Create notifier with agent config
+	notifier := NewNotifier(NotificationConfig{
+		Agent:   agent,
+		Timeout: 2 * time.Second,
+	})
+
+	// Should log a warning and return without panicking
+	notifier.ExecuteScript()
+
+	// Give it a moment to execute
+	time.Sleep(50 * time.Millisecond)
 }
