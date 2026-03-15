@@ -13,7 +13,7 @@ dependencies: []
 references:
   - backlog/docs/doc-001 - PRD-Go-Development-Environment-Setup.md
 priority: high
-ordinal: 6000
+ordinal: 2250
 ---
 
 ## Description
