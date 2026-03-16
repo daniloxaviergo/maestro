@@ -4,7 +4,7 @@ title: agent running
 status: In Progress
 assignee: []
 created_date: '2026-03-16 14:35'
-updated_date: '2026-03-16 15:07'
+updated_date: '2026-03-16 15:13'
 labels: []
 dependencies: []
 ordinal: 1000
@@ -139,6 +139,20 @@ The script will check agent status by:
 - ✅ #12 No resource leaks - bash script exits cleanly, no goroutines
 <!-- SECTION:PLAN:END -->
 
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+[2026-03-16] Implementation complete
+
+Script Location: scripts/agent_status.sh
+
+Implementation Decisions: Log-based status detection, default log path, status classification, config parsing with grep/sed, output formats (human-readable and JSON), error handling with set -euo pipefail
+
+Test Results: agent-bar RUNNING, agent-foo IDLE, catarina IDLE
+
+Makefile Updates: Added make agent-status and make agent-status-json targets
+<!-- SECTION:NOTES:END -->
+
 ## Definition of Done
 <!-- DOD:BEGIN -->
 - [ ] #1 Code follows existing project conventions package structure naming error handling
@@ -153,4 +167,6 @@ The script will check agent status by:
 - [ ] #10 Errors are logged not silently ignored
 - [ ] #11 Graceful degradation monitor continues if individual file processing fails
 - [ ] #12 No resource leaks channels closed files closed goroutines stopped
+- [ ] #13 #13 Script is executable and works with `./scripts/agent_status.sh`
+- [ ] #14 #14 Integration with Makefile via `make agent-status`
 <!-- DOD:END -->
