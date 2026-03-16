@@ -2,9 +2,10 @@
 id: GOT-028
 title: test
 status: To Do
-assignee: []
+assignee:
+  - Catarina
 created_date: '2026-03-16 11:14'
-updated_date: '2026-03-16 14:17'
+updated_date: '2026-03-16 14:18'
 labels: []
 dependencies: []
 ordinal: 6250
