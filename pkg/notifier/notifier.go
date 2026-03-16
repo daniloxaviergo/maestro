@@ -13,6 +13,40 @@ import (
 	"maestro/pkg/config"
 )
 
+// sessionExists checks if a tmux session with the given name exists.
+// Returns true if the session exists, false otherwise.
+// If tmux list-sessions fails, returns false with an error (graceful degradation).
+func sessionExists(sessionName string) (bool, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	defer cancel()
+
+	cmd := exec.CommandContext(ctx, "tmux", "list-sessions")
+	output, err := cmd.Output()
+	if err != nil {
+		return false, fmt.Errorf("failed to list tmux sessions: %w", err)
+	}
+
+	// Parse output to check if session exists
+	// Output format: "sessionName:windows=..."
+	// Session name appears at the start of each line followed by a colon
+	lines := strings.Split(string(output), "\n")
+	for _, line := range lines {
+		if line == "" {
+			continue
+		}
+		// Extract session name from line (before the first colon)
+		colonIndex := strings.Index(line, ":")
+		if colonIndex > 0 {
+			name := line[:colonIndex]
+			if name == sessionName {
+				return true, nil
+			}
+		}
+	}
+
+	return false, nil
+}
+
 // NewNotifier creates a new tmux notifier with the given config
 func NewNotifier(config NotificationConfig) *Notifier {
 	if config.Timeout == 0 {
@@ -80,11 +114,19 @@ func (n *Notifier) ExecuteScript(filePath string) {
 		ctx, cancel := context.WithTimeout(context.Background(), n.config.Timeout)
 		defer cancel()
 
-		// Create session if it doesn't exist
-		createCmd := exec.CommandContext(ctx, "tmux", "new-session", "-d", "-s", sessionName)
-		if err := createCmd.Run(); err != nil {
-			fmt.Fprintf(os.Stderr, "warning: %v: %v\n", ErrSessionCreationFailed, err)
-			return
+		// Check if session exists before creating
+		if exists, err := sessionExists(sessionName); err != nil {
+			log.Printf("Warning: failed to check tmux session existence: %v", err)
+			// Continue with attempt to create session (graceful degradation)
+		} else if exists {
+			log.Printf("Session %s already exists, skipping creation", sessionName)
+		} else {
+			// Create session if it doesn't exist
+			createCmd := exec.CommandContext(ctx, "tmux", "new-session", "-d", "-s", sessionName)
+			if err := createCmd.Run(); err != nil {
+				fmt.Fprintf(os.Stderr, "warning: %v: %v\n", ErrSessionCreationFailed, err)
+				return
+			}
 		}
 
 		// Execute script via tmux send-keys with file path as argument
@@ -152,11 +194,19 @@ func (n *Notifier) executeScriptForAgent(agent *agent.Agent, cfg config.AgentCon
 	ctx, cancel := context.WithTimeout(context.Background(), n.config.Timeout)
 	defer cancel()
 
-	// Create session if it doesn't exist
-	createCmd := exec.CommandContext(ctx, "tmux", "new-session", "-d", "-s", sessionName)
-	if err := createCmd.Run(); err != nil {
-		log.Printf("Warning: %v: %v", ErrSessionCreationFailed, err)
-		return
+	// Check if session exists before creating
+	if exists, err := sessionExists(sessionName); err != nil {
+		log.Printf("Warning: failed to check tmux session existence for agent %s: %v", agent.GetName(), err)
+		// Continue with attempt to create session (graceful degradation)
+	} else if exists {
+		log.Printf("Session %s already exists for agent %s, skipping creation", sessionName, agent.GetName())
+	} else {
+		// Create session if it doesn't exist
+		createCmd := exec.CommandContext(ctx, "tmux", "new-session", "-d", "-s", sessionName)
+		if err := createCmd.Run(); err != nil {
+			log.Printf("Warning: %v: %v", ErrSessionCreationFailed, err)
+			return
+		}
 	}
 
 	// Execute script via tmux send-keys with file path as argument

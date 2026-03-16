@@ -3,6 +3,7 @@ package notifier
 import (
 	"context"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"testing"
 	"time"
@@ -655,4 +656,84 @@ enabled: true
 	notifier.ExecuteScriptsForAgents([]*agent.Agent{agentInstance}, "/test/path.md")
 
 	time.Sleep(50 * time.Millisecond)
+}
+
+// TestSessionExists tests the sessionExists helper function
+func TestSessionExists(t *testing.T) {
+	tests := []struct {
+		name           string
+		sessionName    string
+		prepareSession bool
+		wantExists     bool
+		wantErr        bool
+	}{
+		{
+			name:           "session does not exist",
+			sessionName:    "nonexistent-session-12345",
+			prepareSession: false,
+			wantExists:     false,
+			wantErr:        false,
+		},
+		{
+			name:           "session exists",
+			sessionName:    "existing-session-67890",
+			prepareSession: true,
+			wantExists:     true,
+			wantErr:        false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// Prepare session if needed
+			if tt.prepareSession {
+				cmd := exec.Command("tmux", "new-session", "-d", "-s", tt.sessionName)
+				if err := cmd.Run(); err != nil {
+					t.Fatalf("failed to create test session: %v", err)
+				}
+				defer func() {
+					// Cleanup session after test
+					exec.Command("tmux", "kill-session", "-t", tt.sessionName).Run()
+				}()
+			}
+
+			// Give tmux time to create session
+			if tt.prepareSession {
+				time.Sleep(100 * time.Millisecond)
+			}
+
+			exists, err := sessionExists(tt.sessionName)
+
+			if (err != nil) != tt.wantErr {
+				t.Errorf("sessionExists() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+
+			if exists != tt.wantExists {
+				t.Errorf("sessionExists() = %v, want %v", exists, tt.wantExists)
+			}
+		})
+	}
+}
+
+// TestSessionExists_SessionNameParsing tests that session names are parsed correctly
+func TestSessionExists_SessionNameParsing(t *testing.T) {
+	// Create a test session
+	sessionName := "test-parse-session"
+	cmd := exec.Command("tmux", "new-session", "-d", "-s", sessionName)
+	if err := cmd.Run(); err != nil {
+		t.Skipf("tmux not available for testing: %v", err)
+	}
+	defer exec.Command("tmux", "kill-session", "-t", sessionName).Run()
+
+	time.Sleep(100 * time.Millisecond)
+
+	exists, err := sessionExists(sessionName)
+	if err != nil {
+		t.Fatalf("sessionExists() returned error: %v", err)
+	}
+
+	if !exists {
+		t.Errorf("sessionExists() = false, expected true for existing session")
+	}
 }
