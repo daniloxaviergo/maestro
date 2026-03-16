@@ -2,7 +2,7 @@
 bin/
 
 agents/*/execution.log
-assignee_changes.log
+./assignee_changes.log
 *.out
 coverage/
 *.test

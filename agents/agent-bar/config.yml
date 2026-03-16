@@ -3,4 +3,4 @@
 
 script_path: "./agents/agent-bar/script.sh"
 tmux_session: "agent-bar"
-enabled: true
+enabled: false

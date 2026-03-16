@@ -902,3 +902,27 @@
   ],
   "new_assignee": []
 }
+{
+  "timestamp": "2026-03-16T17:36:26Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-033 - Add-config-YML-to-maestro.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T17:39:30Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-033 - Add-config-YML-to-maestro.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T17:39:40Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-033 - Add-config-YML-to-maestro.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}

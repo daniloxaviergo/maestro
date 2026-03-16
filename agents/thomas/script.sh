@@ -43,8 +43,8 @@ echo "#############################################"
 notify-send \
   -i /home/danilo/scripts/github/maestro/agents/thomas/icon.png \
   -a "Maestro" \
-  "thomas" \
-  "Plan the task: $TASK_ID"
+  "Thomas" \
+  "Exec the task: $TASK_ID"
 
 echo $PROJECT_PATH
 cd $PROJECT_PATH
@@ -64,5 +64,5 @@ notify-send \
   -i /home/danilo/scripts/github/maestro/agents/thomas/icon.png \
   -w \
   -a "Maestro" \
-  "thomas" \
+  "Thomas" \
   "Finished task: $TASK_ID ${ELAPSED_MINUTES}m"
