@@ -4,7 +4,7 @@ title: Check if tmux session exists before creating new session in notifier
 status: To Do
 assignee: []
 created_date: '2026-03-16 11:47'
-updated_date: '2026-03-16 11:51'
+updated_date: '2026-03-16 12:09'
 labels:
   - bug
   - tmux
@@ -37,13 +37,13 @@ Implement a session existence check before creating new tmux sessions in the not
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Given the tmux session does not exist, ExecuteScript creates the session successfully
-- [ ] #2 Given the tmux session already exists, ExecuteScript does not attempt to create a new session and executes the script in the existing session
-- [ ] #3 Given the tmux session does not exist, ExecuteScriptsForAgents creates the session successfully
-- [ ] #4 Given the tmux session already exists, ExecuteScriptsForAgents does not attempt to create a new session and executes scripts in the existing session
-- [ ] #5 When a user is attached to a tmux session and the monitor runs, no error is logged about session creation failure
-- [ ] #6 The session existence check uses 'tmux list-sessions' command
-- [ ] #7 All existing acceptance criteria for ExecuteScript and ExecuteScriptsForAgents remain valid
+- [x] #1 Given the tmux session does not exist, ExecuteScript creates the session successfully
+- [x] #2 Given the tmux session already exists, ExecuteScript does not attempt to create a new session and executes the script in the existing session
+- [x] #3 Given the tmux session does not exist, ExecuteScriptsForAgents creates the session successfully
+- [x] #4 Given the tmux session already exists, ExecuteScriptsForAgents does not attempt to create a new session and executes scripts in the existing session
+- [x] #5 When a user is attached to a tmux session and the monitor runs, no error is logged about session creation failure
+- [x] #6 The session existence check uses 'tmux list-sessions' command
+- [x] #7 All existing acceptance criteria for ExecuteScript and ExecuteScriptsForAgents remain valid
 <!-- AC:END -->
 
 ## Implementation Plan
