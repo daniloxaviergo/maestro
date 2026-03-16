@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - qwen-code
 created_date: '2026-03-16 00:48'
-updated_date: '2026-03-16 02:04'
+updated_date: '2026-03-16 10:10'
 labels: []
 dependencies: []
 references:
@@ -21,6 +21,47 @@ ordinal: 1000
 <!-- SECTION:DESCRIPTION:BEGIN -->
 Implement bash script for tmux session attachment
 <!-- SECTION:DESCRIPTION:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 Code follows existing project conventions package structure naming error handling
+- [ ] #2 go vet passes with no warnings
+- [ ] #3 go build succeeds without errors
+- [ ] #4 Unit tests added or updated for new or changed functionality
+- [ ] #5 go test ... passes with no failures
+- [ ] #6 Code comments added for non-obvious logic
+- [ ] #7 README or docs updated if public behavior changes
+- [ ] #8 make build succeeds
+- [ ] #9 make run works as expected
+- [ ] #10 Errors are logged not silently ignored
+- [ ] #11 Graceful degradation monitor continues if individual file processing fails
+- [ ] #12 No resource leaks channels closed files closed goroutines stopped
+<!-- DOD:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Script scans agents/ directory recursively for subdirectories
+- [ ] #2 Script reads config.yml from each agent directory
+- [ ] #3 Script extracts tmux_session value from YAML config
+- [ ] #4 Script displays fzf menu with agent names and session names
+- [ ] #5 Script attaches to selected tmux session
+- [ ] #6 Script exits with code 1 if selected session doesn't exist
+- [ ] #7 Script exits with code 0 on successful attach
+- [ ] #8 Script handles missing agents/ directory gracefully
+- [ ] #9 Script handles missing or invalid config files (skips with warning)
+- [ ] #10 Script handles missing tmux_session field (skips with warning)
+- [ ] #11 Script handles fzf cancellation (exits cleanly with code 130)
+- [ ] #12 Script handles tmux not installed (graceful error message)
+- [ ] #13 Script handles fzf not installed (graceful error message)
+- [ ] #14 Makefile target: attach (runs the script)
+- [ ] #15 Makefile target: attach-list (lists all agents and sessions without fzf)
+- [ ] #16 Code follows existing project conventions (package structure, naming, error handling)
+- [ ] #17 go vet passes with no warnings
+- [ ] #18 go build succeeds without errors
+- [ ] #19 Code comments added for non-obvious logic
+- [ ] #20 Errors are logged not silently ignored
+- [ ] #21 Graceful degradation monitor continues if individual file processing fails
+<!-- AC:END -->
 
 ## Implementation Plan
 
@@ -137,19 +178,3 @@ make attach-list
 
 **No Blocking Issues**: All requirements are well-defined and implementation is straightforward bash scripting.
 <!-- SECTION:PLAN:END -->
-
-## Definition of Done
-<!-- DOD:BEGIN -->
-- [ ] #1 Code follows existing project conventions package structure naming error handling
-- [ ] #2 go vet passes with no warnings
-- [ ] #3 go build succeeds without errors
-- [ ] #4 Unit tests added or updated for new or changed functionality
-- [ ] #5 go test ... passes with no failures
-- [ ] #6 Code comments added for non-obvious logic
-- [ ] #7 README or docs updated if public behavior changes
-- [ ] #8 make build succeeds
-- [ ] #9 make run works as expected
-- [ ] #10 Errors are logged not silently ignored
-- [ ] #11 Graceful degradation monitor continues if individual file processing fails
-- [ ] #12 No resource leaks channels closed files closed goroutines stopped
-<!-- DOD:END -->
