@@ -5,7 +5,7 @@ status: To Do
 assignee:
   - Catarina
 created_date: '2026-03-16 15:28'
-updated_date: '2026-03-16 15:31'
+updated_date: '2026-03-16 15:42'
 labels: []
 dependencies: []
 ---
@@ -45,7 +45,7 @@ avg duration - average time spend to process task
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Output table has 5 columns: Name, Status, Processing In, Task Count, Avg Duration
+- [x] #1 Output table has 5 columns: Name, Status, Processing In, Task Count, Avg Duration
 <!-- AC:END -->
 
 ## Implementation Plan
