@@ -1,9 +1,11 @@
 package matcher
 
 import (
+	"fmt"
 	"testing"
 
 	"maestro/pkg/agent"
+	"maestro/pkg/config"
 )
 
 // createTestAgent creates a test agent with the given name
@@ -189,5 +191,102 @@ func TestMatchAssignees_ReturnsOriginalAgentOrder(t *testing.T) {
 		if matched[i].GetName() != name {
 			t.Errorf("Expected matched agent %d to be %q, got %q", i, name, matched[i].GetName())
 		}
+	}
+}
+
+// TestNewMatcher_NilAgents tests creating a matcher with nil agents
+func TestNewMatcher_NilAgents(t *testing.T) {
+	matcher := NewMatcher(nil)
+	if matcher == nil {
+		t.Fatal("Expected matcher to be non-nil")
+	}
+
+	// Matching with nil agents should return empty slice
+	matched := matcher.MatchAssignees([]string{"alice"})
+	if len(matched) != 0 {
+		t.Errorf("Expected no matches, got %d", len(matched))
+	}
+}
+
+// TestNewMatcher_SingleAgentEmptyName tests creating a matcher with an agent with empty name
+func TestNewMatcher_SingleAgentEmptyName(t *testing.T) {
+	// Use the NewTestAgent helper to create agent with empty name
+	agentInstance := agent.NewTestAgent("", config.AgentConfig{})
+
+	agents := []*agent.Agent{agentInstance}
+	matcher := NewMatcher(agents)
+
+	// Matching with empty name should work if assignee is also empty
+	matched := matcher.MatchAssignees([]string{""})
+	if len(matched) != 1 {
+		t.Errorf("Expected 1 match for empty assignee, got %d", len(matched))
+	}
+}
+
+// TestMatchAssignees_SpecialCharacters tests matching with special characters in agent names
+func TestMatchAssignees_SpecialCharacters(t *testing.T) {
+	// Create agents with special characters
+	specialChars := []string{"alice Smith", "bob_jones", "charlie.brown", "dave123"}
+	var agents []*agent.Agent
+	for _, name := range specialChars {
+		agents = append(agents, createTestAgent(name))
+	}
+
+	matcher := NewMatcher(agents)
+
+	for _, assignee := range specialChars {
+		matched := matcher.MatchAssignees([]string{assignee})
+		if len(matched) != 1 {
+			t.Errorf("Expected 1 match for %q, got %d", assignee, len(matched))
+		}
+	}
+}
+
+// TestMatchAssignees_WhitespaceHandling tests handling of leading/trailing whitespace
+func TestMatchAssignees_WhitespaceHandling(t *testing.T) {
+	agents := []*agent.Agent{
+		createTestAgent("alice"),
+	}
+	matcher := NewMatcher(agents)
+
+	// Exact match should work
+	matched := matcher.MatchAssignees([]string{"alice"})
+	if len(matched) != 1 {
+		t.Errorf("Expected 1 match for 'alice', got %d", len(matched))
+	}
+}
+
+// TestMatchAssignees_LargeAssigneeList tests with a large number of assignees
+func TestMatchAssignees_LargeAssigneeList(t *testing.T) {
+	var agents []*agent.Agent
+	var assignees []string
+
+	// Create 100 agents
+	for i := 0; i < 100; i++ {
+		name := fmt.Sprintf("agent%d", i)
+		agents = append(agents, createTestAgent(name))
+		assignees = append(assignees, name)
+	}
+
+	matcher := NewMatcher(agents)
+
+	matched := matcher.MatchAssignees(assignees)
+	if len(matched) != 100 {
+		t.Errorf("Expected 100 matches, got %d", len(matched))
+	}
+}
+
+// TestNewMatcher_DuplicateAgents tests handling of duplicate agents in input
+func TestNewMatcher_DuplicateAgents(t *testing.T) {
+	agent1 := createTestAgent("alice")
+	agent2 := createTestAgent("alice") // Same name
+
+	agents := []*agent.Agent{agent1, agent2}
+	matcher := NewMatcher(agents)
+
+	// The last one should overwrite the first in the map
+	matched := matcher.MatchAssignees([]string{"alice"})
+	if len(matched) != 1 {
+		t.Errorf("Expected 1 match (duplicate agent names), got %d", len(matched))
 	}
 }

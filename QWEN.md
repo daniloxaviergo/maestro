@@ -32,6 +32,8 @@ maestro/
 │   │   └── config.go
 │   ├── logs/            # JSON logging for assignee changes
 │   │   └── logger.go
+│   ├── matcher/         # Agent-assignee matching logic
+│   │   └── matcher.go
 │   ├── notifier/        # Tmux notification and script execution
 │   │   ├── notifier.go
 │   │   └── types.go
@@ -47,7 +49,6 @@ maestro/
 ├── go.mod               # Go module definition
 ├── go.sum               # Go dependencies checksum
 ├── Makefile             # Build and run commands
-└── .env                 # Environment variables (API keys)
 ```
 
 ### Architecture
@@ -75,6 +76,12 @@ The system uses a layered, composable architecture:
    - Sends tmux `display-message` notifications
    - Executes bash scripts in tmux sessions for complex actions
    - Non-blocking (async) execution via goroutines
+7. **pkg/matcher** - Agent assignment matching:
+   - Matches assignee names from task frontmatter to configured agents
+   - Case-insensitive matching for robustness
+8. **pkg/agent** - Agent identity and configuration:
+   - Manages agent identity and config file paths
+   - Loads agent configuration from YAML files
 
 ### File Event Types
 
@@ -95,8 +102,11 @@ Events are output in format: `[timestamp] TYPE: /absolute/path/to/file.md`
 5. If changed:
    - Log entry written to `assignee_changes.log` (JSON format)
    - Tmux notification sent (if configured)
+   - Agent matcher runs to find matching agents
+   - Agent scripts execute (if configured)
    - Cache updated with new assignee
-6. If agent is configured, associated script may execute
+6. If unchanged:
+   - Cache simply updated with current assignee
 
 ### Configuration
 
@@ -109,6 +119,10 @@ script_path: "/path/to/script.sh"
 tmux_session: "maestro-agent"
 enabled: true
 ```
+
+- **script_path**: Path to bash script to execute when agent is assigned a task
+- **tmux_session**: Session name for script execution (default: "default")
+- **enabled**: Whether script execution is active (default: false)
 
 ## Building and Running
 
@@ -133,6 +147,9 @@ go build ./...
 
 # Run static analysis
 go vet ./...
+
+# Verify dependencies
+go mod tidy
 ```
 
 ### Running
@@ -150,7 +167,8 @@ The monitor will:
 2. Output file events to stdout in real-time
 3. Log assignee changes to `assignee_changes.log` (JSON)
 4. Send tmux notifications for assignee changes (if configured)
-5. Continue until SIGINT (Ctrl+C) or SIGTERM
+5. Execute agent scripts for matched assignees (if configured)
+6. Continue until SIGINT (Ctrl+C) or SIGTERM
 
 ### Tmux Notifications
 
@@ -179,9 +197,6 @@ go test ./...
 # Static analysis
 go vet ./...
 
-# Dependency management
-go mod tidy
-
 # Full build with analysis
 make build && go vet ./...
 ```
@@ -194,11 +209,28 @@ make run
 
 # Terminal 2: Trigger events
 touch backlog/tasks/test-task.md          # CREATE
-echo "content" >> backlog/tasks/test.md   # WRITE
+echo "---\nassignee: [qwen-code]\n---\ntask" > backlog/tasks/test.md
+# Wait 50ms then modify to trigger debounced write
+echo "new content" >> backlog/tasks/test.md
 rm backlog/tasks/test-task.md             # REMOVE
 
 # Terminal 3: Check log file
 cat assignee_changes.log
+```
+
+### Environment Setup
+
+```bash
+# Create necessary directories
+mkdir -p backlog/tasks agents
+
+# Create a sample agent config
+mkdir -p agents/qwen-code
+cat > agents/qwen-code/config.yml <<EOF
+script_path: "/path/to/script.sh"
+tmux_session: "maestro-agent"
+enabled: true
+EOF
 ```
 
 ## Development Conventions
@@ -219,6 +251,7 @@ cat assignee_changes.log
   - `parser/` - YAML frontmatter extraction
   - `change_detect/` - Assignee change detection logic
   - `notifier/` - Tmux notification and script execution
+  - `matcher/` - Agent-assignee matching logic
   - `config/` - Configuration loading
   - `agent/` - Agent identity and config management
   - `logs/` - JSON logging
@@ -230,6 +263,7 @@ cat assignee_changes.log
 - **Mutex protection** for concurrent access (`sync.RWMutex`)
 - **Context for cancellation** (available for future extension)
 - **Non-blocking notifications** via goroutines
+- **Debouncing** to coalesce rapid successive writes (50ms cooldown)
 
 ### Debouncing
 
@@ -241,6 +275,7 @@ File write events are debounced with a 50ms cooldown per file to prevent floodin
 - File not found errors on removal are handled gracefully
 - Permission errors are logged and monitoring continues
 - Failed notifications are logged with exit codes
+- Invalid agent configs return defaults with warning logs
 
 ## Backlog.md Task Management
 
@@ -251,6 +286,7 @@ This project uses Backlog.md for ALL TASK MANAGEMENT VIA MCP tools:
 - **Config**: `backlog/config.yml` defines project settings
 - **Statuses**: To Do, In Progress, Done
 - **Milestones**: Managed via `backlog/milestones/` directory
+- **Task Directory**: `backlog/tasks/` contains active task files
 
 ### Task Workflow
 
@@ -320,3 +356,5 @@ This project uses Backlog.md for ALL TASK MANAGEMENT VIA MCP tools:
 3. **Debouncing**: Rapid successive writes are coalesced to prevent duplicate notifications
 4. **Log format**: JSON with RFC3339 timestamps for structured logging
 5. **Tmux non-blocking**: Notifications execute asynchronously to avoid blocking the monitor
+6. **Agent matching**: Agents are matched case-insensitively to assignees
+7. **Graceful degradation**: Missing configs/scripts are logged as warnings, not errors

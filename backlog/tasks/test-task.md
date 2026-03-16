@@ -2,6 +2,6 @@
 id: GOT-011
 title: Test Task
 assignee:
-  - Alice
+  - agent-bar
 status: To Do
 ---

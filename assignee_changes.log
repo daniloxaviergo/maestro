@@ -354,3 +354,177 @@
     "Alice"
   ]
 }
+{
+  "timestamp": "2026-03-15T23:51:06Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "my-agent"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T23:51:10Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "my-agent"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:51:15Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "my-agent"
+  ],
+  "new_assignee": [
+    "myagent"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:51:18Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "myagent"
+  ],
+  "new_assignee": [
+    "my-agent"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:52:13Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "my-agent"
+  ],
+  "new_assignee": [
+    "agent-bar"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:52:48Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-bar"
+  ],
+  "new_assignee": [
+    "agent-barr"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:52:50Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-barr"
+  ],
+  "new_assignee": [
+    "agent-bar"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:54:45Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-bar"
+  ],
+  "new_assignee": [
+    "agent-barr"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:54:50Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-barr"
+  ],
+  "new_assignee": [
+    "agent-bar"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:55:44Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-bar"
+  ],
+  "new_assignee": [
+    "agent-barr"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:55:48Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-barr"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T23:56:25Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-bars"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T23:56:34Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "agentbar"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:56:37Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agentbar"
+  ],
+  "new_assignee": [
+    "agent-bar"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:56:49Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-bar"
+  ],
+  "new_assignee": [
+    "agentBar"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:56:54Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agentBar"
+  ],
+  "new_assignee": [
+    "agent-bar"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:57:20Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-bar"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-15T23:57:20Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "agent-bar"
+  ]
+}
+{
+  "timestamp": "2026-03-15T23:57:21Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-bar"
+  ],
+  "new_assignee": []
+}
