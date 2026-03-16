@@ -1,4 +1,4 @@
-.PHONY: build run clean tmux
+.PHONY: build run clean tmux attach
 
 # Build the monitor binary
 build:
@@ -11,6 +11,16 @@ run:
 # Clean build artifacts
 clean:
 	rm -rf bin/monitor
+
+# --- Agent session management ---
+
+# Attach to an agent tmux session via fzf selection
+attach:
+	./scripts/attach.sh
+
+# List all agent sessions without fzf
+attach-list:
+	./scripts/attach.sh --list
 
 # --- Tmux commands for testing notifications ---
 

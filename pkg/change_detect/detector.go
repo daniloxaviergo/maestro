@@ -86,7 +86,7 @@ func (d *Detector) ProcessFile(fileData parser.FileData) (bool, error) {
 	// Execute scripts for matched agents if matcher is configured
 	if d.matcher != nil && d.notifier != nil {
 		matchedAgents := d.matcher.MatchAssignees(newAssignee)
-		d.notifier.ExecuteScriptsForAgents(matchedAgents)
+		d.notifier.ExecuteScriptsForAgents(matchedAgents, filePath)
 	}
 
 	return true, nil

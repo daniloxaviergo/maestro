@@ -528,3 +528,53 @@
   ],
   "new_assignee": []
 }
+{
+  "timestamp": "2026-03-16T00:26:11Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "agent-barr"
+  ]
+}
+{
+  "timestamp": "2026-03-16T00:26:13Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-barr"
+  ],
+  "new_assignee": [
+    "agent-bar"
+  ]
+}
+{
+  "timestamp": "2026-03-16T00:52:08Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-027 - Implement-tmux-session-attacher-with-fzf-selection.md",
+  "old_assignee": [
+    "qwen-code"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T00:58:30Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-027 - Implement-tmux-session-attacher-with-fzf-selection.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "qwen-code"
+  ]
+}
+{
+  "timestamp": "2026-03-16T00:58:52Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-027 - Implement-tmux-session-attacher-with-fzf-selection.md",
+  "old_assignee": [
+    "qwen-code"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T02:02:50Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-027 - Implement-tmux-session-attacher-with-fzf-selection.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "qwen-code"
+  ]
+}
