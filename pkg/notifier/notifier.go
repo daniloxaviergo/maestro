@@ -48,7 +48,7 @@ func (n *Notifier) Notify(change AssigneeChangeEvent) {
 // ExecuteScript executes a bash script in the configured tmux session.
 // This method is non-blocking - it executes the script in a goroutine.
 // The script is run via tmux send-keys and output is captured but not displayed.
-func (n *Notifier) ExecuteScript() {
+func (n *Notifier) ExecuteScript(filePath string) {
 	go func() {
 		// Check if agent is configured
 		if n.config.Agent == nil {
@@ -87,8 +87,8 @@ func (n *Notifier) ExecuteScript() {
 			return
 		}
 
-		// Execute script via tmux send-keys
-		execCmd := exec.CommandContext(ctx, "tmux", "send-keys", "-t", sessionName, fmt.Sprintf("bash %s", cfg.ScriptPath), "Enter")
+		// Execute script via tmux send-keys with file path as argument
+		execCmd := exec.CommandContext(ctx, "tmux", "send-keys", "-t", sessionName, fmt.Sprintf("bash %s %s", cfg.ScriptPath, filePath), "Enter")
 
 		if err := execCmd.Run(); err != nil {
 			if ctx.Err() == context.DeadlineExceeded {
@@ -114,7 +114,7 @@ func (n *Notifier) formatMessage(change AssigneeChangeEvent) string {
 // ExecuteScriptsForAgents executes scripts for the given agents concurrently.
 // This method is non-blocking - each script is executed in a goroutine.
 // Disabled agents are skipped. Missing scripts or execution errors are logged as warnings.
-func (n *Notifier) ExecuteScriptsForAgents(agents []*agent.Agent) {
+func (n *Notifier) ExecuteScriptsForAgents(agents []*agent.Agent, filePath string) {
 	for _, a := range agents {
 		// Skip disabled agents
 		cfg := a.GetConfig()
@@ -130,13 +130,13 @@ func (n *Notifier) ExecuteScriptsForAgents(agents []*agent.Agent) {
 		}
 
 		// Execute script for this agent (non-blocking)
-		go n.executeScriptForAgent(a, cfg)
+		go n.executeScriptForAgent(a, cfg, filePath)
 	}
 }
 
 // executeScriptForAgent executes a script for a specific agent.
 // This is a helper method that contains the actual script execution logic.
-func (n *Notifier) executeScriptForAgent(agent *agent.Agent, cfg config.AgentConfig) {
+func (n *Notifier) executeScriptForAgent(agent *agent.Agent, cfg config.AgentConfig, filePath string) {
 	// Check if script file exists
 	if _, err := os.Stat(cfg.ScriptPath); os.IsNotExist(err) {
 		log.Printf("Warning: %v: %s", ErrScriptNotFound, cfg.ScriptPath)
@@ -159,8 +159,8 @@ func (n *Notifier) executeScriptForAgent(agent *agent.Agent, cfg config.AgentCon
 		return
 	}
 
-	// Execute script via tmux send-keys
-	execCmd := exec.CommandContext(ctx, "tmux", "send-keys", "-t", sessionName, fmt.Sprintf("bash %s", cfg.ScriptPath), "Enter")
+	// Execute script via tmux send-keys with file path as argument
+	execCmd := exec.CommandContext(ctx, "tmux", "send-keys", "-t", sessionName, fmt.Sprintf("bash %s %s", cfg.ScriptPath, filePath), "Enter")
 
 	if err := execCmd.Run(); err != nil {
 		if ctx.Err() == context.DeadlineExceeded {
