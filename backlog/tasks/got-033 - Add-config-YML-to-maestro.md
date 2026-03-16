@@ -2,7 +2,8 @@
 id: GOT-033
 title: Add config YML to maestro
 status: In Progress
-assignee: []
+assignee:
+  - Thomas
 created_date: '2026-03-16 17:36'
 updated_date: '2026-03-16 17:39'
 labels: []
