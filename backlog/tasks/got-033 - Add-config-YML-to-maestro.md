@@ -1,7 +1,7 @@
 ---
 id: GOT-033
 title: Add config YML to maestro
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-16 17:36'
 updated_date: '2026-03-16 17:39'
