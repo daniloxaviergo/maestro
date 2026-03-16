@@ -2,8 +2,10 @@
 id: GOT-033
 title: Add config YML to maestro
 status: To Do
-assignee: []
+assignee:
+  - Catarina
 created_date: '2026-03-16 17:36'
+updated_date: '2026-03-16 17:36'
 labels: []
 dependencies: []
 ---
