@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - Thomas
 created_date: '2026-03-16 17:36'
-updated_date: '2026-03-16 17:39'
+updated_date: '2026-03-16 17:53'
 labels: []
 dependencies: []
 ---
@@ -35,12 +35,12 @@ the file should be in ./
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Config file maestro.yml created at project root with watch_paths field
-- [ ] #2 pkg/config package exports MaestroConfig struct and LoadMaestroConfig function
-- [ ] #3 cmd/monitor/main.go loads config and uses configured watch paths
-- [ ] #4 Default behavior preserved when config file is missing
-- [ ] #5 go vet passes with no warnings
-- [ ] #6 go build succeeds without errors
+- [x] #1 Config file maestro.yml created at project root with watch_paths field
+- [x] #2 pkg/config package exports MaestroConfig struct and LoadMaestroConfig function
+- [x] #3 cmd/monitor/main.go loads config and uses configured watch paths
+- [x] #4 Default behavior preserved when config file is missing
+- [x] #5 go vet passes with no warnings
+- [x] #6 go build succeeds without errors
 - [ ] #7 Unit tests added for config loading
 - [ ] #8 make build and make run work correctly
 <!-- AC:END -->
