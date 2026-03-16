@@ -1,0 +1,6 @@
+# Agent-foo configuration
+# This agent processes tasks assigned to it by executing a script in tmux
+
+script_path: "./agents/catarina/script.sh"
+tmux_session: "catarina"
+enabled: true
