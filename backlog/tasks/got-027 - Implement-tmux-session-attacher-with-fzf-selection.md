@@ -40,27 +40,27 @@ Implement bash script for tmux session attachment
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Script scans agents/ directory recursively for subdirectories
-- [ ] #2 Script reads config.yml from each agent directory
-- [ ] #3 Script extracts tmux_session value from YAML config
-- [ ] #4 Script displays fzf menu with agent names and session names
-- [ ] #5 Script attaches to selected tmux session
-- [ ] #6 Script exits with code 1 if selected session doesn't exist
-- [ ] #7 Script exits with code 0 on successful attach
-- [ ] #8 Script handles missing agents/ directory gracefully
-- [ ] #9 Script handles missing or invalid config files (skips with warning)
-- [ ] #10 Script handles missing tmux_session field (skips with warning)
-- [ ] #11 Script handles fzf cancellation (exits cleanly with code 130)
-- [ ] #12 Script handles tmux not installed (graceful error message)
-- [ ] #13 Script handles fzf not installed (graceful error message)
-- [ ] #14 Makefile target: attach (runs the script)
+- [x] #1 Script scans agents/ directory recursively for subdirectories
+- [x] #2 Script reads config.yml from each agent directory
+- [x] #3 Script extracts tmux_session value from YAML config
+- [x] #4 Script displays fzf menu with agent names and session names
+- [x] #5 Script attaches to selected tmux session
+- [x] #6 Script exits with code 1 if selected session doesn't exist
+- [x] #7 Script exits with code 0 on successful attach
+- [x] #8 Script handles missing agents/ directory gracefully
+- [x] #9 Script handles missing or invalid config files (skips with warning)
+- [x] #10 Script handles missing tmux_session field (skips with warning)
+- [x] #11 Script handles fzf cancellation (exits cleanly with code 130)
+- [x] #12 Script handles tmux not installed (graceful error message)
+- [x] #13 Script handles fzf not installed (graceful error message)
+- [x] #14 Makefile target: attach (runs the script)
 - [ ] #15 Makefile target: attach-list (lists all agents and sessions without fzf)
 - [ ] #16 Code follows existing project conventions (package structure, naming, error handling)
-- [ ] #17 go vet passes with no warnings
-- [ ] #18 go build succeeds without errors
-- [ ] #19 Code comments added for non-obvious logic
-- [ ] #20 Errors are logged not silently ignored
-- [ ] #21 Graceful degradation monitor continues if individual file processing fails
+- [x] #17 go vet passes with no warnings
+- [x] #18 go build succeeds without errors
+- [x] #19 Code comments added for non-obvious logic
+- [x] #20 Errors are logged not silently ignored
+- [x] #21 Graceful degradation monitor continues if individual file processing fails
 <!-- AC:END -->
 
 ## Implementation Plan
