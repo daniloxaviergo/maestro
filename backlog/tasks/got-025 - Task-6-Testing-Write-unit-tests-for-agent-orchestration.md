@@ -4,7 +4,7 @@ title: 'Task 6: Testing - Write unit tests for agent orchestration'
 status: Done
 assignee: []
 created_date: '2026-03-15 18:54'
-updated_date: '2026-03-16 11:02'
+updated_date: '2026-03-16 17:29'
 labels:
   - task
   - orchestration
@@ -16,7 +16,7 @@ references:
   - >-
     /home/danilo/scripts/github/maestro/backlog/docs/PRD-Agent-Orchestration-System.md
 priority: medium
-ordinal: 2000
+ordinal: 3000
 ---
 
 ## Description

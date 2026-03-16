@@ -4,13 +4,14 @@ title: Check if tmux session exists before creating new session in notifier
 status: Done
 assignee: []
 created_date: '2026-03-16 11:47'
-updated_date: '2026-03-16 12:14'
+updated_date: '2026-03-16 17:29'
 labels:
   - bug
   - tmux
   - notifier
 dependencies: []
 priority: high
+ordinal: 22000
 ---
 
 ## Description

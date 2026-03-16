@@ -1,12 +1,13 @@
 ---
 id: GOT-032
 title: Improve agent_status.sh with more information about agents
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-03-16 15:28'
-updated_date: '2026-03-16 17:13'
+updated_date: '2026-03-16 17:29'
 labels: []
 dependencies: []
+ordinal: 23000
 ---
 
 ## Description

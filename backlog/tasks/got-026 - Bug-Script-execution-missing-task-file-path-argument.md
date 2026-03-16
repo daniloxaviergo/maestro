@@ -4,7 +4,7 @@ title: 'Bug: Script execution missing task file path argument'
 status: Done
 assignee: []
 created_date: '2026-03-16 00:30'
-updated_date: '2026-03-16 11:02'
+updated_date: '2026-03-16 17:29'
 labels:
   - bug
   - script-execution
@@ -12,7 +12,7 @@ dependencies: []
 documentation:
   - backlog/docs/doc-006.md
 priority: high
-ordinal: 20000
+ordinal: 21000
 ---
 
 ## Description

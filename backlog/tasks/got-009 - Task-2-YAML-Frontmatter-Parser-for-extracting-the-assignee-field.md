@@ -4,7 +4,7 @@ title: 'Task 2: YAML Frontmatter Parser for extracting the assignee field'
 status: Done
 assignee: []
 created_date: '2026-03-15 00:52'
-updated_date: '2026-03-16 11:02'
+updated_date: '2026-03-16 17:29'
 labels:
   - parser
   - yaml
@@ -16,7 +16,7 @@ references:
     backlog/docs/doc-002 -
     PRD-Monitor-File-Changes-in-.-backlog-tasks-When-assignee-Field-Is-Modified.md
 priority: high
-ordinal: 15000
+ordinal: 16000
 ---
 
 ## Description

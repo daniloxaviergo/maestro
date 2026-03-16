@@ -4,7 +4,7 @@ title: 'Task 3: Update Detector - Trigger agent orchestration on assignee change
 status: Done
 assignee: []
 created_date: '2026-03-15 18:53'
-updated_date: '2026-03-16 11:02'
+updated_date: '2026-03-16 17:29'
 labels:
   - task
   - orchestration
@@ -14,7 +14,7 @@ references:
   - >-
     /home/danilo/scripts/github/maestro/backlog/docs/PRD-Agent-Orchestration-System.md
 priority: high
-ordinal: 17000
+ordinal: 18000
 ---
 
 ## Description

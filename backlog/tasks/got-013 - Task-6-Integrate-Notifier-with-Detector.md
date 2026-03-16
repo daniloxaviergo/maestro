@@ -4,7 +4,7 @@ title: 'Task 6: Integrate Notifier with Detector'
 status: Done
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-16 11:02'
+updated_date: '2026-03-16 17:29'
 labels:
   - tmux
   - notifier
@@ -17,7 +17,7 @@ dependencies:
 references:
   - backlog/docs/doc-003 - PRD-Maestro-Feature-Set-1.md
 priority: high
-ordinal: 12000
+ordinal: 13000
 ---
 
 ## Description

@@ -4,13 +4,13 @@ title: '[NOTIFY] Modify pkg/notifier to execute bash scripts in tmux sessions'
 status: Done
 assignee: []
 created_date: '2026-03-15 17:17'
-updated_date: '2026-03-16 11:02'
+updated_date: '2026-03-16 17:29'
 labels: []
 dependencies: []
 references:
   - backlog/docs/doc-004-per-agent-configuration.md
 priority: high
-ordinal: 5000
+ordinal: 6000
 ---
 
 ## Description
