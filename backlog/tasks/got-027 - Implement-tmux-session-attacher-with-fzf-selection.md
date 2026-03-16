@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - qwen-code
 created_date: '2026-03-16 00:48'
-updated_date: '2026-03-16 10:10'
+updated_date: '2026-03-16 10:11'
 labels: []
 dependencies: []
 references:
@@ -54,8 +54,8 @@ Implement bash script for tmux session attachment
 - [x] #12 Script handles tmux not installed (graceful error message)
 - [x] #13 Script handles fzf not installed (graceful error message)
 - [x] #14 Makefile target: attach (runs the script)
-- [ ] #15 Makefile target: attach-list (lists all agents and sessions without fzf)
-- [ ] #16 Code follows existing project conventions (package structure, naming, error handling)
+- [x] #15 Makefile target: attach-list (lists all agents and sessions without fzf)
+- [x] #16 Code follows existing project conventions (package structure, naming, error handling)
 - [x] #17 go vet passes with no warnings
 - [x] #18 go build succeeds without errors
 - [x] #19 Code comments added for non-obvious logic
