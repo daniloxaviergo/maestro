@@ -578,3 +578,327 @@
     "qwen-code"
   ]
 }
+{
+  "timestamp": "2026-03-16T10:44:25Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-bar"
+  ],
+  "new_assignee": [
+    "agent-foo"
+  ]
+}
+{
+  "timestamp": "2026-03-16T10:45:17Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/test-task.md",
+  "old_assignee": [
+    "agent-foo"
+  ],
+  "new_assignee": [
+    "agent-bar"
+  ]
+}
+{
+  "timestamp": "2026-03-16T11:28:08Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T11:28:24Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T11:29:07Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T11:29:15Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T11:35:33Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T11:35:38Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T12:18:17Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T12:18:20Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T12:18:24Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T12:18:33Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T12:19:18Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T12:19:27Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T12:19:34Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T12:19:38Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T12:19:43Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T12:19:44Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T12:20:17Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T12:20:35Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T12:20:39Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T13:29:36Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T13:29:40Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T13:31:45Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T13:31:49Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T14:17:33Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T14:18:16Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T14:22:37Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T14:22:54Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-028 - test.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T14:31:14Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-030 - Get-correct-task-id-and-workdir.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T14:32:00Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-030 - Get-correct-task-id-and-workdir.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T14:32:05Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-030 - Get-correct-task-id-and-workdir.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T14:39:06Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-030 - Get-correct-task-id-and-workdir.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T14:40:02Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-030 - Get-correct-task-id-and-workdir.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T14:47:33Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-030 - Get-correct-task-id-and-workdir.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T14:47:38Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-030 - Get-correct-task-id-and-workdir.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T14:59:48Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-031 - agent-running.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T15:07:09Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-031 - agent-running.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T15:28:41Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-032 - Improve-agent_status.sh-with-more-information-about-agents.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T17:13:02Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-032 - Improve-agent_status.sh-with-more-information-about-agents.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}

@@ -1,6 +1,7 @@
 # Build output
 bin/
 
+agents/*/execution.log
 assignee_changes.log
 *.out
 coverage/
