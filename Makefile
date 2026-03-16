@@ -22,6 +22,16 @@ attach:
 attach-list:
 	./scripts/attach.sh --list
 
+# --- Agent status management ---
+
+# Check agent status (human-readable)
+agent-status:
+	./scripts/agent_status.sh
+
+# Check agent status (JSON format)
+agent-status-json:
+	./scripts/agent_status.sh --json
+
 # --- Tmux commands for testing notifications ---
 
 # Start a detached tmux session for notifications
