@@ -4,7 +4,7 @@ title: Check if tmux session exists before creating new session in notifier
 status: To Do
 assignee: []
 created_date: '2026-03-16 11:47'
-updated_date: '2026-03-16 11:49'
+updated_date: '2026-03-16 11:51'
 labels:
   - bug
   - tmux
@@ -45,6 +45,128 @@ Implement a session existence check before creating new tmux sessions in the not
 - [ ] #6 The session existence check uses 'tmux list-sessions' command
 - [ ] #7 All existing acceptance criteria for ExecuteScript and ExecuteScriptsForAgents remain valid
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+## Implementation Plan
+
+### 1. Technical Approach
+
+Implement a session existence check before creating new tmux sessions in the notifier package. The approach uses `tmux list-sessions` to check if a session already exists before attempting to create it.
+
+**Key Changes:**
+1. Create a `sessionExists(sessionName string) (bool, error)` helper method that:
+   - Executes `tmux list-sessions` to retrieve all sessions
+   - Parses output to check if the session name exists (matches start of line format `sessionName:`)
+   - Returns `true` if found, `false` otherwise
+   - Returns error if command fails (for graceful fallback)
+
+2. Update `ExecuteScript` to:
+   - Call `sessionExists()` before creating session
+   - Only execute `tmux new-session` if session does not exist
+   - Log when session already exists (debug level)
+
+3. Update `executeScriptForAgent` to apply the same pattern
+
+**Design Decision:** Use `tmux list-sessions` parsing instead of `tmux has-session` for broader tmux version compatibility and more predictable output format.
+
+### 2. Files to Modify
+
+**Modified Files:**
+- `pkg/notifier/notifier.go`:
+  - Add `sessionExists(sessionName string) (bool, error)` method
+  - Update `ExecuteScript` to check session existence before creation
+  - Update `executeScriptForAgent` to check session existence before creation
+  - Add debug log when session already exists
+
+**No Changes Required:**
+- `pkg/notifier/types.go` - No type changes needed
+- `pkg/notifier/notifier_test.go` - Add unit tests for `sessionExists()` function
+
+### 3. Dependencies
+
+**No New Dependencies:**
+- Uses existing `os/exec` package for command execution
+- Uses `strings` package for output parsing
+- No external YAML or configuration changes
+
+**Prerequisites:**
+- Verify `tmux` is installed (existing check via `ErrTmuxNotInstalled`)
+- Verify `tmux list-sessions` command works (graceful degradation if command fails)
+
+### 4. Code Patterns
+
+**Error Handling:**
+- If `tmux list-sessions` fails, log warning and skip session creation check (fallback to current behavior)
+- Log when session already exists using `log.Printf` (consistent with `executeScriptForAgent`)
+- Continue execution if session exists (do not return error)
+
+**Session Name:**
+- Use `cfg.TmuxSession` with fallback to `"default"`
+- Consistent with existing code pattern
+
+**Logging:**
+- Debug level when session already exists: `log.Printf("Session %s already exists, skipping creation", sessionName)`
+- Warning level when `tmux list-sessions` fails: `log.Printf("Warning: failed to list tmux sessions: %v", err)`
+
+**Code Style:**
+- Match existing function naming: `executeScriptForAgent` (lowercase helper)
+- Use `log.Printf` for non-critical warnings (consistent with agent orchestration code)
+- No changes to error types (existing `ErrSessionCreationFailed` still used)
+
+### 5. Testing Strategy
+
+**Unit Tests to Add:**
+- `TestSessionExists_SessionDoesNotExist` - Verify returns `false, nil` for non-existent session
+- `TestSessionExists_SessionExists` - Verify returns `true, nil` for existing session
+- `TestSessionExists_TmuxNotInstalled` - Verify graceful error handling
+
+**Integration Tests (already covered by acceptance criteria):**
+1. Start tmux session manually, run monitor, verify no session creation error
+2. No tmux session, run monitor, verify session is created successfully
+
+**Edge Cases:**
+- Session does not exist (should create)
+- Session exists and user is attached (should not fail)
+- Session exists but is detached (should not fail)
+- `tmux list-sessions` command fails (should fallback gracefully)
+- Multiple agents with same session name (check once per session, not per script)
+
+**Verification Commands:**
+```bash
+# Test with session exists
+tmux new-session -d -s default
+make build && ./monitor
+# Check no session creation error in output
+
+# Test with session does not exist
+tmux kill-session -t default 2>/dev/null || true
+make build && ./monitor
+# Verify session is created and script executes
+```
+
+### 6. Risks and Considerations
+
+**Known Risks:**
+
+1. **tmux list-sessions parsing**: Output format may vary across tmux versions
+   - *Mitigation*: Parse using `strings.HasPrefix` to match `sessionName:` at line start
+   - *Alternative fallback*: If parsing fails, log warning and skip check
+
+2. **Race condition**: Session could be destroyed between check and creation
+   - *Mitigation*: Accept as edge case; existing error handling catches this
+
+3. **Performance**: Extra command execution for every script run
+   - *Mitigation*: Minimal overhead; session existence is checked once per agent (not per script in batch)
+
+**No Blocking Issues**: Implementation is straightforward and follows existing error handling patterns in the codebase.
+
+**Testing Considerations:**
+- Tests require tmux to be installed (existing test infrastructure handles this)
+- Unit tests may need to mock `os/exec` for isolation
+- Integration tests should verify actual tmux behavior
+<!-- SECTION:PLAN:END -->
 
 ## Implementation Notes
 
