@@ -5,7 +5,7 @@ status: To Do
 assignee:
   - Catarina
 created_date: '2026-03-16 11:14'
-updated_date: '2026-03-16 12:20'
+updated_date: '2026-03-16 13:29'
 labels: []
 dependencies: []
 ordinal: 6250
@@ -14,7 +14,8 @@ ordinal: 6250
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-dont implement this task, only test
+create a new version of README and save on UPDATED_README.md
+Cover all aspects of project
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Definition of Done
