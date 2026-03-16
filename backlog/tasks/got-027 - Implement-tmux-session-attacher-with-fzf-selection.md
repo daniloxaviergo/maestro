@@ -1,7 +1,7 @@
 ---
 id: GOT-027
 title: Implement tmux session attacher with fzf selection
-status: To Do
+status: In Progress
 assignee:
   - qwen-code
 created_date: '2026-03-16 00:48'
