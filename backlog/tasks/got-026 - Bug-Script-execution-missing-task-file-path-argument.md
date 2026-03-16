@@ -20,8 +20,10 @@ Fix the script execution to pass the task file path as an argument to agent scri
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 - When assignee changes, agent scripts are invoked with the task file path as the first argument
-- [ ] #2 - [ ] #3 Agent scripts can access and process the task file content via the passed argument
+- [ ] #1 - [ ] When assignee changes, agent scripts are invoked with the task file path as the first argument
+- [ ] #2 - [ ] The script receives the full absolute path to the task file
+- [ ] #3 - [ ] Agent scripts can access and process the task file content via the passed argument
+- [ ] #4 - [ ] Manual test: Create a task with assignee `[agent-bar]`, verify script receives the file path in the log output
 <!-- AC:END -->
 
 ## Definition of Done
