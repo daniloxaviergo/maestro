@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - qwen-code
 created_date: '2026-03-16 00:48'
-updated_date: '2026-03-16 10:11'
+updated_date: '2026-03-16 10:12'
 labels: []
 dependencies: []
 references:
@@ -185,3 +185,23 @@ make attach-list
 
 **No Blocking Issues**: All requirements are well-defined and implementation is straightforward bash scripting.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Implementation completed 2026-03-16.
+
+Created scripts/attach.sh with full fzf-based session discovery and attachment.
+
+Script uses pure bash with grep/sed for YAML parsing (no external dependencies).
+
+Added attach and attach-list Makefile targets.
+
+All acceptance criteria verified: bash -n passes, go vet passes, make build succeeds.
+
+Tested manual scenarios with existing agents (agent-foo, agent-bar).
+
+Tested error handling: missing agents dir, missing configs, fzf cancellation.
+
+Script exits with code 130 on fzf cancellation, code 1 for non-existent sessions, code 0 on success.
+<!-- SECTION:NOTES:END -->
