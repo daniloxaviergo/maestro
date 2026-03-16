@@ -109,6 +109,100 @@ get_last_log_timestamp() {
     tail -n1 "${log_file}" 2>/dev/null | grep -oE '\[[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\]' | tr -d '[]' || true
 }
 
+# Count task assignments in an agent's log file
+# Arguments: log_file_path
+# Returns: count of task assignments
+count_task_assignments() {
+    local log_file="$1"
+
+    if [[ ! -f "${log_file}" ]] || [[ ! -s "${log_file}" ]]; then
+        echo "0"
+        return 0
+    fi
+
+    grep -c "Task assigned:" "${log_file}" 2>/dev/null || echo "0"
+}
+
+# Calculate total elapsed time from log file and compute average duration
+# Arguments: log_file_path
+# Returns: average duration in minutes (integer) or 0
+calculate_avg_duration() {
+    local log_file="$1"
+    local total_minutes=0
+    local count=0
+
+    if [[ ! -f "${log_file}" ]] || [[ ! -s "${log_file}" ]]; then
+        echo "0"
+        return 0
+    fi
+
+    # Extract all "Total time elapsed: Xm" entries and sum them
+    while IFS= read -r line; do
+        # Extract minutes from "Total time elapsed: Xm"
+        if [[ "$line" =~ Total\ time\ elapsed:\ ([0-9]+)m ]]; then
+            total_minutes=$((total_minutes + ${BASH_REMATCH[1]}))
+            ((count++)) || true
+        fi
+    done < <(grep "Total time elapsed:" "${log_file}" 2>/dev/null || true)
+
+    # Calculate average
+    if [[ ${count} -gt 0 ]]; then
+        echo $((total_minutes / count))
+    else
+        echo "0"
+    fi
+}
+
+# Get the timestamp of the last "Task assigned" entry for processing duration
+# Arguments: log_file_path
+# Returns: epoch timestamp of last task assignment, or current time if not found
+get_last_task_assigned_epoch() {
+    local log_file="$1"
+
+    if [[ ! -f "${log_file}" ]] || [[ ! -s "${log_file}" ]]; then
+        date +%s
+        return 0
+    fi
+
+    # Extract timestamp from last "Task assigned" line
+    local timestamp
+    timestamp=$(grep "Task assigned:" "${log_file}" 2>/dev/null | tail -n1 | grep -oE '\[[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\]' | tr -d '[]' || true)
+
+    if [[ -z "${timestamp}" ]]; then
+        echo "$(date +%s)"
+        return 0
+    fi
+
+    # Convert timestamp to epoch
+    date -d "${timestamp}" +%s 2>/dev/null || date +%s
+}
+
+# Format processing duration for display
+# Converts seconds to human-readable format (e.g., "20m" or "1h15m")
+# Arguments: epoch_duration (seconds)
+# Returns: formatted string like "20m" or "1h15m"
+format_duration() {
+    local seconds=$1
+
+    if [[ ${seconds} -lt 0 ]]; then
+        echo "N/A"
+        return 0
+    fi
+
+    # Convert seconds to hours and minutes using bash arithmetic
+    # minutes % 60 gives remaining minutes after removing full hours
+    local minutes=$((seconds / 60))
+    local hours=$((minutes / 60))
+    local remaining_minutes=$((minutes % 60))
+
+    # If >= 1 hour, show "XhYm"; otherwise show "Xm"
+    if [[ ${hours} -gt 0 ]]; then
+        echo "${hours}h${remaining_minutes}m"
+    else
+        echo "${minutes}m"
+    fi
+}
+
 # Discover all agents and their status
 # Arguments: format (human, json)
 # Returns: formatted output of agent statuses
@@ -149,8 +243,22 @@ discover_agents() {
         # Get last log timestamp
         last_timestamp=$(get_last_log_timestamp "${log_path}")
 
-        # Store agent data
-        agents_data+=("${agent_name}|${status}|${last_timestamp}|${log_path}|${script_path}")
+        # Calculate processing duration (for running agents)
+        local processing_seconds=0
+        if [[ "${status}" == "running" ]]; then
+            processing_seconds=$(($(date +%s) - $(get_last_task_assigned_epoch "${log_path}")))
+        fi
+
+        # Count task assignments
+        local task_count
+        task_count=$(count_task_assignments "${log_path}")
+
+        # Calculate average duration
+        local avg_duration
+        avg_duration=$(calculate_avg_duration "${log_path}")
+
+        # Store agent data: name|status|processing_seconds|task_count|avg_duration|log_path|script_path
+        agents_data+=("${agent_name}|${status}|${processing_seconds}|${task_count}|${avg_duration}|${log_path}|${script_path}")
     done
 
     # Output based on format
@@ -164,7 +272,7 @@ discover_agents() {
 # Output status in human-readable format
 output_human() {
     local -a agents_data=("$@")
-    local agent_name status last_timestamp log_path script_path
+    local agent_name status processing_seconds task_count avg_duration log_path script_path
 
     info "Agent Status"
     info "============"
@@ -175,58 +283,133 @@ output_human() {
         return 0
     fi
 
-    # Find maximum agent name length for alignment
-    local max_name_len=0
+    # Column headers
+    local name_header="Name"
+    local status_header="Status"
+    local processing_header="Processing In"
+    local count_header="Task Count"
+    local duration_header="Avg Duration"
+
+    # Find column widths
+    local max_name_len=${#name_header}
+    local max_status_len=${#status_header}
+    local max_processing_len=${#processing_header}
+    local max_count_len=${#count_header}
+    local max_duration_len=${#duration_header}
+
     for entry in "${agents_data[@]}"; do
-        agent_name="${entry%%|*}"
+        IFS='|' read -r agent_name status processing_seconds task_count avg_duration log_path script_path <<< "${entry}"
+
+        # Update name column width
         if [[ ${#agent_name} -gt ${max_name_len} ]]; then
             max_name_len=${#agent_name}
         fi
+
+        # Update status column width
+        local status_len
+        case "${status}" in
+            running)
+                status_len=7  # RUNNING length
+                ;;
+            idle)
+                status_len=4  # IDLE length
+                ;;
+            *)
+                status_len=7  # UNKNOWN length
+                ;;
+        esac
+        if [[ ${status_len} -gt ${max_status_len} ]]; then
+            max_status_len=${status_len}
+        fi
+
+        # Update processing column width
+        local processing_str
+        if [[ "${status}" == "running" ]]; then
+            processing_str=$(format_duration "${processing_seconds}")
+        else
+            processing_str="IDLE"
+        fi
+        if [[ ${#processing_str} -gt ${max_processing_len} ]]; then
+            max_processing_len=${#processing_str}
+        fi
+
+        # Update count column width
+        local count_str="${task_count}"
+        if [[ ${#count_str} -gt ${max_count_len} ]]; then
+            max_count_len=${#count_str}
+        fi
+
+        # Update duration column width
+        local duration_str="${avg_duration}m"
+        if [[ ${#duration_str} -gt ${max_duration_len} ]]; then
+            max_duration_len=${#duration_str}
+        fi
     done
+
+    # Print header row
+    printf "  %-$(printf '%d' ${max_name_len})s  " "${name_header}"
+    printf "%-$(printf '%d' ${max_status_len})s  " "${status_header}"
+    printf "%-$(printf '%d' ${max_processing_len})s  " "${processing_header}"
+    printf "%-$(printf '%d' ${max_count_len})s  " "${count_header}"
+    printf "%s\n" "${duration_header}"
+
+    # Print separator row
+    printf "  "
+    printf "%-${max_name_len}s  " "$(printf '%0.s=' $(seq 1 ${max_name_len}) | tr '=' '-')"
+    printf "%-${max_status_len}s  " "$(printf '%0.s=' $(seq 1 ${max_status_len}) | tr '=' '-')"
+    printf "%-${max_processing_len}s  " "$(printf '%0.s=' $(seq 1 ${max_processing_len}) | tr '=' '-')"
+    printf "%-${max_count_len}s  " "$(printf '%0.s=' $(seq 1 ${max_count_len}) | tr '=' '-')"
+    printf "%s\n" "$(printf '%0.s=' $(seq 1 ${max_duration_len}) | tr '=' '-')"
 
     # Display each agent
     for entry in "${agents_data[@]}"; do
-        IFS='|' read -r agent_name status last_timestamp log_path script_path <<< "${entry}"
+        IFS='|' read -r agent_name status processing_seconds task_count avg_duration log_path script_path <<< "${entry}"
 
-        # Add status indicator
-        local status_indicator
+        # Format status
+        local status_str
         case "${status}" in
             running)
-                status_indicator="RUNNING"
+                status_str="RUNNING"
                 ;;
             idle)
-                status_indicator="IDLE"
+                status_str="IDLE"
                 ;;
             *)
-                status_indicator="UNKNOWN"
+                status_str="UNKNOWN"
                 ;;
         esac
 
-        # Format output with alignment
-        printf "  %-$(printf '%d' ${max_name_len})s  [%s]" "${agent_name}" "${status_indicator}"
+        # Format processing duration
+        local processing_str
+        if [[ "${status}" == "running" ]]; then
+            processing_str=$(format_duration "${processing_seconds}")
+        else
+            processing_str="IDLE"
+        fi
 
-        # Add extra info if available
-        if [[ -n "${last_timestamp}" ]]; then
-            printf "  (last: %s)" "${last_timestamp}"
-        fi
-        if [[ -n "${script_path}" ]]; then
-            printf "  script: %s" "${script_path}"
-        fi
-        printf "\n"
+        # Format duration with 'm' suffix
+        local duration_str="${avg_duration}m"
+
+        # Print row
+        printf "  %-$(printf '%d' ${max_name_len})s  " "${agent_name}"
+        printf "%-$(printf '%d' ${max_status_len})s  " "${status_str}"
+        printf "%-$(printf '%d' ${max_processing_len})s  " "${processing_str}"
+        printf "%-$(printf '%d' ${max_count_len})s  " "${task_count}"
+        printf "%s\n" "${duration_str}"
     done
 }
 
 # Output status in JSON format
 output_json() {
     local -a agents_data=("$@")
-    local agent_name status last_timestamp log_path script_path
+    local agent_name status processing_seconds task_count avg_duration log_path script_path
     local first=true
 
     echo "{"
     echo '  "agents": ['
 
     for entry in "${agents_data[@]}"; do
-        IFS='|' read -r agent_name status last_timestamp log_path script_path <<< "${entry}"
+        IFS='|' read -r agent_name status processing_seconds task_count avg_duration log_path script_path <<< "${entry}"
 
         if [[ "${first}" == "true" ]]; then
             first=false
@@ -234,11 +417,19 @@ output_json() {
             echo ","
         fi
 
+        # Format processing duration as string
+        local processing_str="IDLE"
+        if [[ "${status}" == "running" ]]; then
+            processing_str=$(format_duration "${processing_seconds}")
+        fi
+
         # Output JSON object for this agent
         printf '    {\n'
         printf '      "name": "%s",\n' "${agent_name}"
         printf '      "status": "%s",\n' "${status}"
-        printf '      "last_timestamp": "%s",\n' "${last_timestamp}"
+        printf '      "processing_in": "%s",\n' "${processing_str}"
+        printf '      "task_count": %s,\n' "${task_count}"
+        printf '      "avg_duration": %s,\n' "${avg_duration}"
         printf '      "log_path": "%s",\n' "${log_path}"
         printf '      "script_path": "%s"\n' "${script_path}"
         printf '    }'
@@ -270,6 +461,18 @@ Description:
       - "idle" if the last log line IS "Task processing complete" or no log exists
 
     If an agent has never run (no log file), it is considered idle.
+
+    Human-readable output shows:
+      - Name: Agent name
+      - Status: RUNNING or IDLE
+      - Processing In: Duration since last task assignment (for running agents)
+      - Task Count: Number of tasks processed
+      - Avg Duration: Average processing time per task
+
+    JSON output includes:
+      - processing_in: Formatted processing duration string
+      - task_count: Total tasks processed
+      - avg_duration: Average processing time (integer minutes)
 
 Examples:
     $(basename "$0")              Show human-readable status
