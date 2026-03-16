@@ -21,16 +21,16 @@ import (
 	"maestro/pkg/watcher"
 )
 
-const (
-	watchPath = "./backlog/tasks"
-)
-
 func main() {
 	log.Println("Starting file monitor...")
 
+	// Load maestro configuration
+	cfg := config.LoadMaestroConfig()
+	log.Printf("Loaded configuration: watch_paths=%v, debounce_ms=%d, log_dir=%s",
+		cfg.WatchPaths, cfg.DebounceMs, cfg.LogDir)
+
 	// Create log directory and logger
-	logDir := "."
-	logPath := filepath.Join(logDir, "assignee_changes.log")
+	logPath := filepath.Join(cfg.LogDir, "assignee_changes.log")
 	logger, err := logs.NewLogger(logPath)
 	if err != nil {
 		log.Fatalf("Failed to create logger: %v", err)
@@ -63,18 +63,19 @@ func main() {
 	notifier := notifier.NewNotifier(notifier.NotificationConfig{})
 	detector.SetNotifier(notifier)
 
-	// Create watcher
-	w, err := watcher.NewWatcher()
+	// Create watcher with configured watch paths
+	w, err := watcher.NewWatcher(watcher.WithWatchPaths(cfg.WatchPaths))
 	if err != nil {
 		log.Fatalf("Failed to create watcher: %v", err)
 	}
 
-	// Add watch path
-	if err := w.AddWatch(watchPath); err != nil {
-		log.Fatalf("Failed to add watch path %s: %v", watchPath, err)
+	// Add watch paths from config
+	for _, path := range cfg.WatchPaths {
+		if err := w.AddWatch(path); err != nil {
+			log.Fatalf("Failed to add watch path %s: %v", path, err)
+		}
+		log.Printf("Watching directory: %s", path)
 	}
-
-	log.Printf("Watching directory: %s", watchPath)
 
 	// Start watching in background
 	if err := w.Watch(); err != nil {

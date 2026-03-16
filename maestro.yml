@@ -1,0 +1,16 @@
+# Maestro Configuration File
+# This file is optional - defaults will be used if not present
+
+# watch_paths: Directories to watch for markdown file changes
+# Default: ["./backlog/tasks"]
+watch_paths:
+  - "./backlog/tasks"
+
+# debounce_ms: Time in milliseconds to wait before processing a file after changes
+# This prevents duplicate processing when files are rapidly saved
+# Default: 50
+debounce_ms: 50
+
+# log_dir: Directory where assignee change logs will be written
+# Default: "."
+log_dir: "."

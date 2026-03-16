@@ -23,19 +23,36 @@ type Watcher struct {
 	watchPaths []string
 }
 
+// WatcherOption configures a Watcher
+type WatcherOption func(*Watcher)
+
+// WithWatchPaths sets the watch paths for the watcher
+func WithWatchPaths(paths []string) WatcherOption {
+	return func(w *Watcher) {
+		w.watchPaths = paths
+	}
+}
+
 // NewWatcher creates a new file watcher
-func NewWatcher() (*Watcher, error) {
+func NewWatcher(opts ...WatcherOption) (*Watcher, error) {
 	fsWatcher, err := fsnotify.NewWatcher()
 	if err != nil {
 		return nil, err
 	}
 
-	return &Watcher{
+	w := &Watcher{
 		watcher:   fsWatcher,
 		eventChan: make(chan cache.FileEvent, 100),
 		done:      make(chan struct{}),
 		processor: NewEventProcessor(),
-	}, nil
+	}
+
+	// Apply options
+	for _, opt := range opts {
+		opt(w)
+	}
+
+	return w, nil
 }
 
 // AddWatch adds a directory to watch recursively
