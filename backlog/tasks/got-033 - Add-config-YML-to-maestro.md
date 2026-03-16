@@ -5,7 +5,7 @@ status: To Do
 assignee:
   - Catarina
 created_date: '2026-03-16 17:36'
-updated_date: '2026-03-16 17:37'
+updated_date: '2026-03-16 17:38'
 labels: []
 dependencies: []
 ---
@@ -16,6 +16,34 @@ dependencies: []
 Configuration file for watch paths (currently hardcoded `./backlog/tasks`)
 the file should be in ./
 <!-- SECTION:DESCRIPTION:END -->
+
+## Definition of Done
+<!-- DOD:BEGIN -->
+- [ ] #1 Code follows existing project conventions package structure naming error handling
+- [ ] #2 go vet passes with no warnings
+- [ ] #3 go build succeeds without errors
+- [ ] #4 Unit tests added or updated for new or changed functionality
+- [ ] #5 go test ... passes with no failures
+- [ ] #6 Code comments added for non-obvious logic
+- [ ] #7 README or docs updated if public behavior changes
+- [ ] #8 make build succeeds
+- [ ] #9 make run works as expected
+- [ ] #10 Errors are logged not silently ignored
+- [ ] #11 Graceful degradation monitor continues if individual file processing fails
+- [ ] #12 No resource leaks channels closed files closed goroutines stopped
+<!-- DOD:END -->
+
+## Acceptance Criteria
+<!-- AC:BEGIN -->
+- [ ] #1 Config file maestro.yml created at project root with watch_paths field
+- [ ] #2 pkg/config package exports MaestroConfig struct and LoadMaestroConfig function
+- [ ] #3 cmd/monitor/main.go loads config and uses configured watch paths
+- [ ] #4 Default behavior preserved when config file is missing
+- [ ] #5 go vet passes with no warnings
+- [ ] #6 go build succeeds without errors
+- [ ] #7 Unit tests added for config loading
+- [ ] #8 make build and make run work correctly
+<!-- AC:END -->
 
 ## Implementation Plan
 
@@ -80,19 +108,3 @@ Follow existing project conventions:
 - **Debounce override**: Current hardcoded 50ms in `pkg/cache/cache.go` - config should either override or add config for it
 - **Watch path validation**: Watcher already validates paths exist; config should validate paths are directories
 <!-- SECTION:PLAN:END -->
-
-## Definition of Done
-<!-- DOD:BEGIN -->
-- [ ] #1 Code follows existing project conventions package structure naming error handling
-- [ ] #2 go vet passes with no warnings
-- [ ] #3 go build succeeds without errors
-- [ ] #4 Unit tests added or updated for new or changed functionality
-- [ ] #5 go test ... passes with no failures
-- [ ] #6 Code comments added for non-obvious logic
-- [ ] #7 README or docs updated if public behavior changes
-- [ ] #8 make build succeeds
-- [ ] #9 make run works as expected
-- [ ] #10 Errors are logged not silently ignored
-- [ ] #11 Graceful degradation monitor continues if individual file processing fails
-- [ ] #12 No resource leaks channels closed files closed goroutines stopped
-<!-- DOD:END -->
