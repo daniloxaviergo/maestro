@@ -4,7 +4,7 @@ title: Check if tmux session exists before creating new session in notifier
 status: To Do
 assignee: []
 created_date: '2026-03-16 11:47'
-updated_date: '2026-03-16 11:48'
+updated_date: '2026-03-16 11:49'
 labels:
   - bug
   - tmux
@@ -33,14 +33,6 @@ Implement a session existence check before creating new tmux sessions in the not
 - [ ] #10 Errors are logged not silently ignored
 - [ ] #11 Graceful degradation monitor continues if individual file processing fails
 - [ ] #12 No resource leaks channels closed files closed goroutines stopped
-- [ ] #13 - [ ] Code follows existing project conventions (package structure, naming, error handling)
-- [ ] #14 - [ ] go vet ./... passes with no warnings
-- [ ] #15 - [ ] go build ./... succeeds without errors
-- [ ] #16 - [ ] Manual testing: session exists scenario (attach to session, run monitor, verify no error)
-- [ ] #17 - [ ] Manual testing: session does not exist scenario (no session, run monitor, verify session created and script executes)
-- [ ] #18 - [ ] Error handling: if 'tmux list-sessions' fails, log warning and skip session creation check (fallback to current behavior)
-- [ ] #19 - [ ] Code comments added for non-obvious logic
-- [ ] #20 - [ ] No breaking changes to existing functionality
 <!-- DOD:END -->
 
 ## Acceptance Criteria
