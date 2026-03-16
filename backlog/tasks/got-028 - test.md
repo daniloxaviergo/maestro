@@ -51,15 +51,23 @@ The comprehensive README update will be structured to serve both new users and d
 ### 2. Files to Modify
 
 | File | Action | Purpose |
-|------|--------|---------|
+|------|--------|--|
 | `README.md` | **Rewrite** | Comprehensive project documentation |
 | `QWEN.md` | **Update** | Remove redundancy, link to README for installation/usage |
 | `docs/` | **Review** | Verify docs are referenced correctly and consistent |
 
 **Files to Reference (read-only for planning):**
-- `cmd/monitor/main.go` - CLI entry point
-- `pkg/*/*.go` - Package documentation
-- `Makefile` - Build commands
+- `cmd/monitor/main.go` - CLI entry point with signal handling and component wiring
+- `pkg/watcher/*.go` - fsnotify wrapper for file monitoring
+- `pkg/parser/*.go` - YAML frontmatter extraction
+- `pkg/cache/*.go` - File state caching with debouncing
+- `pkg/change_detect/*.go` - Assignee change detection and logging
+- `pkg/notifier/*.go` - Tmux notification and script execution
+- `pkg/matcher/*.go` - Agent-assignee matching logic
+- `pkg/agent/*.go` - Agent identity and configuration management
+- `pkg/config/*.go` - Configuration loading
+- `pkg/logs/*.go` - JSON logging
+- `Makefile` - Build commands (build, run, tmux-*)
 - `docs/agent-configuration.md` - Agent config details
 - `docs/agent-orchestration-quickstart.md` - Agent setup guide
 - `docs/setup-monitor.md` - Monitor setup details
@@ -68,8 +76,13 @@ The comprehensive README update will be structured to serve both new users and d
 
 **Prerequisites:**
 - All features from tasks GOT-008 through GOT-029 must be implemented (all marked as Done in backlog)
-- tmux installed for notifications and script execution
-- Go 1.25.7+ for building
+- tmux installed for notifications and script execution (verified via `tmux --version`)
+- Go 1.25.7+ for building (verified via `go version`)
+- `./backlog/tasks` directory exists
+
+**Build Verification:**
+- `make build` succeeds without errors
+- `go vet ./...` passes with no warnings
 
 **No blocking tasks** - All core functionality is implemented and documented.
 
@@ -78,9 +91,13 @@ The comprehensive README update will be structured to serve both new users and d
 **Conventions to Follow:**
 1. **YAML code blocks**: Use triple backticks with `yaml` language identifier
 2. **Bash commands**: Use triple backticks with `bash` language identifier
-3. **Tables**: Use Markdown tables for configuration options and reference
-4. **Error handling**: Show `if err != nil` pattern in code examples
-5. **Paths**: Use relative paths from project root (`./backlog/tasks`, not `/absolute/path`)
+3. **Go code blocks**: Use triple backticks with `go` language identifier
+4. **Tables**: Use Markdown tables for configuration options and reference
+5. **Error handling**: Show `if err != nil { return err }` pattern in code examples
+6. **Paths**: Use relative paths from project root (`./backlog/tasks`, not `/absolute/path`)
+7. **Package names**: lowercase, short (e.g., `cache`, `watcher`, `parser`)
+8. **Function names**: CamelCase (e.g., `NewWatcher`, `ProcessFile`)
+9. **Variables**: camelCase (e.g., `fileWatcher`, `eventQueue`)
 
 **Example format:**
 ```markdown
@@ -90,15 +107,16 @@ script_path: "./agents/my-agent/script.sh"
 tmux_session: "my-agent"
 enabled: true
 ```
-```
+``
 
 ### 5. Testing Strategy
 
 **Verification approach:**
-1. **Build test**: Run `make build` and verify binary exists
-2. **Run test**: Execute `make run` with sample task file
+1. **Build test**: Run `make build` and verify binary exists at `bin/monitor`
+2. **Run test**: Execute `make run` with sample task file, verify file events are output
 3. **Documentation test**: Verify all code examples are syntactically correct
 4. **Link check**: Ensure all internal links (docs/, backlog/) are valid
+5. **Example test**: Run manual testing examples from README to verify they work
 
 **No unit tests required** - README changes are documentation-only.
 
@@ -109,17 +127,79 @@ enabled: true
 2. **Documentation drift**: Changes to code may not update README - need maintenance process
 3. **Link rot**: Internal links may break if file structure changes
 4. **Example accuracy**: Code examples must match actual implementation
+5. **Version mismatch**: README may reference outdated features or versions
 
 **Mitigation strategies:**
 - Use modular section structure for easy updates
 - Link to detailed docs instead of duplicating information
 - Include "Last updated" date or version information
 - Create maintenance checklist for documentation updates
+- Review against current codebase before finalizing plan
 
 **Rollout considerations:**
 - No code changes required - pure documentation update
 - No deployment required - static file update
 - No breaking changes for existing users
+- No configuration changes required
+- Backward compatible - existing users unaffected
+
+### 7. Detailed README Structure
+
+**Proposed section order:**
+1. **Project Header**: Name, description, status badges (if any)
+2. **Overview**: High-level description of what Maestro does
+3. **Features**: Bullet list of key capabilities
+4. **Technology Stack**: Language, core libraries, tools
+5. **Quick Start**: 3-step setup for immediate use
+6. **Installation**: Detailed installation instructions
+7. **Usage**: Basic monitoring, tmux notifications, testing
+8. **Configuration**: Agent setup, environment variables
+9. **Architecture**: Component overview with data flow
+10. **Development**: Building, testing, code style
+11. **Backlog.md Integration**: Task management workflow
+12. **Troubleshooting**: Common issues and solutions
+13. **Contributing**: How to contribute (if applicable)
+14. **License**: MIT license notice
+
+**Sections to reference:**
+- Link to `QWEN.md` for detailed architecture (component interactions, data structures)
+- Link to `docs/` for deep dives on specific topics
+- Link to `backlog/tasks/` for implementation details
+
+### 8. Implementation Steps
+
+**Phase 1: Content Audit**
+1. Read current README.md, QWEN.md, AGENTS.md
+2. Review all files in `docs/` directory
+3. Identify overlapping content and gaps
+4. Create content outline
+
+**Phase 2: README Rewrite**
+1. Rewrite Overview and Features sections
+2. Add Quick Start section with working example
+3. Expand Installation with prerequisites
+4. Add Usage examples for different scenarios
+5. Document Configuration options
+6. Include Architecture overview
+7. Add Development workflow
+8. Document Backlog.md integration
+
+**Phase 3: QWEN.md Update**
+1. Add link to README for installation/usage
+2. Remove redundant installation sections
+3. Keep architecture and development details
+4. Update links to docs/ directory
+
+**Phase 4: Verification**
+1. Run `make build` with README changes
+2. Run `make run` and verify examples work
+3. Check all links are valid
+4. Verify code examples compile
+
+**Phase 5: Documentation Review**
+1. Review docs/ files for consistency
+2. Update any outdated information
+3. Ensure all features are documented
 <!-- SECTION:PLAN:END -->
 
 ## Definition of Done

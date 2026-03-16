@@ -1,12 +1,13 @@
 ---
 id: GOT-031
 title: agent running
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-16 14:35'
 updated_date: '2026-03-16 15:07'
 labels: []
 dependencies: []
+ordinal: 1000
 ---
 
 ## Description
