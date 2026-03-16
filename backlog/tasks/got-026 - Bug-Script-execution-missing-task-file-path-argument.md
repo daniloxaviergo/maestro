@@ -1,15 +1,18 @@
 ---
 id: GOT-026
 title: 'Bug: Script execution missing task file path argument'
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-03-16 00:30'
-updated_date: '2026-03-16 00:38'
+updated_date: '2026-03-16 02:05'
 labels:
   - bug
   - script-execution
 dependencies: []
+documentation:
+  - backlog/docs/doc-006.md
 priority: high
+ordinal: 2000
 ---
 
 ## Description

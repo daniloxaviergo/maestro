@@ -5,7 +5,7 @@ status: In Progress
 assignee:
   - qwen-code
 created_date: '2026-03-16 00:48'
-updated_date: '2026-03-16 02:02'
+updated_date: '2026-03-16 02:04'
 labels: []
 dependencies: []
 references:
@@ -13,6 +13,7 @@ references:
 documentation:
   - backlog/docs/doc-006.md
 priority: medium
+ordinal: 1000
 ---
 
 ## Description
