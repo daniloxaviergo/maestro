@@ -4,6 +4,7 @@ title: agent running
 status: To Do
 assignee: []
 created_date: '2026-03-16 14:35'
+updated_date: '2026-03-16 14:59'
 labels: []
 dependencies: []
 ---
@@ -12,7 +13,10 @@ dependencies: []
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
 agents running
-pegar o último log deve ter um padrao
+write a script to check if agents is running
+check if the last log is `Task processing complete` to each if true agent idle if not running
+
+write the script in ./scripts/agent_status.sh
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Definition of Done
