@@ -4,6 +4,7 @@ title: 'Bug: Script execution missing task file path argument'
 status: To Do
 assignee: []
 created_date: '2026-03-16 00:30'
+updated_date: '2026-03-16 00:31'
 labels:
   - bug
   - script-execution
@@ -20,6 +21,9 @@ Fix the script execution to pass the task file path as an argument to agent scri
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [ ] #1 - When assignee changes, agent scripts are invoked with the task file path as the first argument
+- [ ] #2 - [ ] #2 The script receives the full absolute path to the task file (e.g., `/home/danilo/scripts/github/maestro/backlog/tasks/task.md`)
+- [ ] #3 - [ ] #3 Agent scripts can access and process the task file content via the passed argument
+- [ ] #4 - [ ] #4 The script execution command in notifier.go uses `fmt.Sprintf("bash %s %s", cfg.ScriptPath, change.FilePath)` to pass the file path
 <!-- AC:END -->
 
 ## Definition of Done
