@@ -5,7 +5,7 @@ status: To Do
 assignee:
   - Catarina
 created_date: '2026-03-16 17:36'
-updated_date: '2026-03-16 17:36'
+updated_date: '2026-03-16 17:37'
 labels: []
 dependencies: []
 ---
@@ -16,6 +16,70 @@ dependencies: []
 Configuration file for watch paths (currently hardcoded `./backlog/tasks`)
 the file should be in ./
 <!-- SECTION:DESCRIPTION:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### 1. Technical Approach
+
+Create a YAML configuration file (`maestro.yml`) at the project root to externalize hardcoded paths and add flexible configuration loading. The approach:
+
+- **Define configuration structure**: Create `pkg/config/types.go` extension with a `MaestroConfig` struct containing watch paths, logging options, and debounce settings
+- **Add config loading**: Extend `pkg/config/config.go` with `LoadMaestroConfig()` function that reads `./maestro.yml` and returns default values if missing
+- **Update watcher**: Modify `pkg/watcher/watcher.go` to accept watch paths via config instead of hardcoded `./backlog/tasks`
+- **Update monitor**: Modify `cmd/monitor/main.go` to load the config and use configured paths
+- **Graceful fallback**: If `maestro.yml` doesn't exist, default to current behavior (`./backlog/tasks`)
+
+**Key design decisions**:
+- YAML format for consistency with existing agent configs
+- Optional file (missing = use defaults) to avoid breaking existing deployments
+- Watch paths as array to support multiple directories in future
+
+### 2. Files to Modify
+
+| File | Action | Reason |
+|------|--------|--------|
+| `pkg/config/types.go` | Modify | Add `MaestroConfig` struct with fields for watch paths, debounce ms, log directory |
+| `pkg/config/config.go` | Modify | Add `LoadMaestroConfig()` function with YAML parsing and defaults |
+| `pkg/watcher/watcher.go` | Modify | Remove hardcoded watch path, accept paths from config |
+| `cmd/monitor/main.go` | Modify | Load config, use configured watch paths |
+| `maestro.yml` | Create | Example configuration file with documented defaults |
+| `docs/configuration.md` | Create | Document the new config file format and options |
+
+### 3. Dependencies
+
+- **No new dependencies** - uses existing `gopkg.in/yaml.v3`
+- **GOT-015** (Done) - `pkg/config` package provides foundation
+- **GOT-016** (Done) - `pkg/agent` package shows similar config pattern
+- Existing `make build` and `go build` tooling works as-is
+
+### 4. Code Patterns
+
+Follow existing project conventions:
+
+- **Error handling**: Log warnings on missing config, return defaults
+- **YAML tags**: Use snake_case (`watch_paths`, `debounce_ms`)
+- **Config loading pattern**: Same as `LoadConfig()` in `pkg/config/config.go`
+- **Naming**: `MaestroConfig` struct, `LoadMaestroConfig()` function
+- **Debounce handling**: Keep existing 50ms default in `pkg/cache/cache.go`, config should override if needed
+
+### 5. Testing Strategy
+
+- **Unit tests**: Add `pkg/config/config_test.go` test for `LoadMaestroConfig()` with:
+  - Missing config file (uses defaults)
+  - Valid config file with custom paths
+  - Invalid YAML (graceful degradation)
+- **Integration test**: Verify `make run` works with custom `maestro.yml`
+- **Edge cases**: Empty paths array, non-existent directories (handled by watcher)
+
+### 6. Risks and Considerations
+
+- **Breaking change**: None - missing config = current behavior
+- **Backward compatibility**: Fully maintained - defaults match current hardcoded values
+- **File naming**: `maestro.yml` follows existing pattern (like `backlog/config.yml`)
+- **Debounce override**: Current hardcoded 50ms in `pkg/cache/cache.go` - config should either override or add config for it
+- **Watch path validation**: Watcher already validates paths exist; config should validate paths are directories
+<!-- SECTION:PLAN:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
