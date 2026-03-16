@@ -41,8 +41,8 @@ the file should be in ./
 - [x] #4 Default behavior preserved when config file is missing
 - [x] #5 go vet passes with no warnings
 - [x] #6 go build succeeds without errors
-- [ ] #7 Unit tests added for config loading
-- [ ] #8 make build and make run work correctly
+- [x] #7 Unit tests added for config loading
+- [x] #8 make build and make run work correctly
 <!-- AC:END -->
 
 ## Implementation Plan
