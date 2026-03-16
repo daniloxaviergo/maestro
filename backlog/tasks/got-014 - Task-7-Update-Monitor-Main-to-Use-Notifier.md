@@ -4,7 +4,7 @@ title: 'Task 7: Update Monitor Main to Use Notifier'
 status: Done
 assignee: []
 created_date: '2026-03-15'
-updated_date: '2026-03-15 17:24'
+updated_date: '2026-03-16 11:02'
 labels:
   - tmux
   - notifier
@@ -17,7 +17,7 @@ dependencies:
 references:
   - backlog/docs/doc-003 - PRD-Maestro-Feature-Set-1.md
 priority: high
-ordinal: 1000
+ordinal: 7000
 ---
 
 ## Description
