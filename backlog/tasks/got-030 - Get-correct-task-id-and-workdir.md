@@ -2,10 +2,9 @@
 id: GOT-030
 title: Get correct task id and workdir
 status: To Do
-assignee:
-  - Catarina
+assignee: []
 created_date: '2026-03-16 14:31'
-updated_date: '2026-03-16 14:32'
+updated_date: '2026-03-16 14:39'
 labels: []
 dependencies: []
 ---
