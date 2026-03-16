@@ -1,11 +1,11 @@
 ---
 id: GOT-033
 title: Add config YML to maestro
-status: In Progress
+status: Done
 assignee:
   - Thomas
 created_date: '2026-03-16 17:36'
-updated_date: '2026-03-16 17:57'
+updated_date: '2026-03-16 17:58'
 labels: []
 dependencies: []
 ---
@@ -114,3 +114,45 @@ Follow existing project conventions:
 <!-- SECTION:NOTES:BEGIN -->
 Implementation complete. All acceptance criteria verified and checked. The code follows existing project conventions with proper error handling, graceful fallback when config is missing, and comprehensive unit tests covering all edge cases.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+## Summary
+
+Added external configuration file (`maestro.yml`) to the Maestro project to allow flexible configuration of watch paths, debounce settings, and log directory.
+
+## Changes Made
+
+### New Files
+- **`maestro.yml`**: Default configuration file with documented options
+- **`pkg/config/config_test.go`**: Unit tests for config loading (7 test cases)
+
+### Modified Files
+- **`pkg/config/types.go`**: Added `MaestroConfig` struct and `DefaultMaestroConfig()` function
+- **`pkg/config/config.go`**: Added `DefaultConfigPath` variable and `LoadMaestroConfig()` function
+- **`pkg/watcher/watcher.go`**: Added `WatcherOption` pattern with `WithWatchPaths()` option
+- **`cmd/monitor/main.go`**: Load config on startup, use configured watch paths
+
+## Test Results
+```
+go vet ./...        # PASS (no warnings)
+go build ./...      # PASS
+make build          # PASS
+go test ./...       # PASS (66 tests)
+```
+
+## Backward Compatibility
+- Missing `maestro.yml` defaults to original behavior (`./backlog/tasks`)
+- No breaking changes to existing deployments
+
+## Acceptance Criteria Met
+- [x] Config file created with watch_paths field
+- [x] pkg/config exports MaestroConfig and LoadMaestroConfig
+- [x] cmd/monitor loads config and uses configured paths
+- [x] Default behavior preserved when config missing
+- [x] go vet passes with no warnings
+- [x] go build succeeds without errors
+- [x] Unit tests added for config loading
+- [x] make build and make run work correctly
+<!-- SECTION:FINAL_SUMMARY:END -->
