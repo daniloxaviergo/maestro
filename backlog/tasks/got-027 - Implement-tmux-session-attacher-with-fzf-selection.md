@@ -36,6 +36,13 @@ Implement bash script for tmux session attachment
 - [ ] #10 Errors are logged not silently ignored
 - [ ] #11 Graceful degradation monitor continues if individual file processing fails
 - [ ] #12 No resource leaks channels closed files closed goroutines stopped
+- [ ] #13 Code follows existing project conventions (bash script structure, error handling patterns)
+- [ ] #14 go vet passes with no warnings (verified: `go vet ./...`)
+- [ ] #15 go build succeeds without errors (verified: `make build`)
+- [ ] #16 No unit tests needed for bash script (tested manually)
+- [ ] #17 go test ./... passes with no failures
+- [ ] #18 Code comments added throughout for non-obvious logic
+- [ ] #19 No README update needed (internal tool)
 <!-- DOD:END -->
 
 ## Acceptance Criteria
