@@ -4,7 +4,7 @@ title: Check if tmux session exists before creating new session in notifier
 status: Done
 assignee: []
 created_date: '2026-03-16 11:47'
-updated_date: '2026-03-16 12:13'
+updated_date: '2026-03-16 12:14'
 labels:
   - bug
   - tmux
@@ -283,3 +283,49 @@ Implementation note: README/doc updates not required as this is an internal impl
 
 Verification: make build succeeds and all tests pass. make run works correctly with session existence check in place.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+## Summary
+
+Implemented session existence check before creating tmux sessions in the notifier package to prevent errors when sessions already exist.
+
+### What Changed
+
+**Modified Files:**
+- `pkg/notifier/notifier.go`: Added `sessionExists()` helper function and updated `ExecuteScript()` and `executeScriptForAgent()` to check session existence before creating new sessions
+- `pkg/notifier/notifier_test.go`: Added unit tests `TestSessionExists` and `TestSessionExists_SessionNameParsing`
+
+### Implementation Details
+
+1. **sessionExists()**: A helper function that uses `tmux list-sessions` to check if a session exists by parsing the output format `sessionName:windows=...`
+
+2. **ExecuteScript()**: Now calls `sessionExists()` before attempting to create a session. If the session exists, it logs a message and skips creation.
+
+3. **executeScriptForAgent()**: Same pattern as ExecuteScript() - checks session existence first, logs "Session already exists" when no creation is needed.
+
+4. **Error Handling**: If `tmux list-sessions` fails, logs a warning and continues with session creation (graceful degradation).
+
+### Why This Fix
+
+Previously, when a user was attached to a tmux session or a session already existed from a previous run, the monitor would attempt to create a new session with `tmux new-session -d -s name` which would fail with exit status 1, causing errors in the logs.
+
+With this fix:
+- If a session doesn't exist, it's created normally
+- If a session exists (even with user attached), the script executes in the existing session without error
+- No more "tmux session creation failed" errors when the monitor runs while a user is attached to a session
+
+### Tests
+
+All tests pass including:
+- New unit tests for `sessionExists()` function
+- Existing tests continue to pass, confirming backward compatibility
+- Integration tests verify the behavior with existing sessions
+
+### Verification
+
+- `go vet ./...` - no warnings
+- `go test ./...` - all tests pass
+- `make build` - builds successfully
+<!-- SECTION:FINAL_SUMMARY:END -->
