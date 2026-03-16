@@ -2,10 +2,9 @@
 id: GOT-031
 title: agent running
 status: To Do
-assignee:
-  - Catarina
+assignee: []
 created_date: '2026-03-16 14:35'
-updated_date: '2026-03-16 15:02'
+updated_date: '2026-03-16 15:07'
 labels: []
 dependencies: []
 ---
