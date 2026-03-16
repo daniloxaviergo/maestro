@@ -4,7 +4,7 @@ title: 'Bug: Script execution missing task file path argument'
 status: In Progress
 assignee: []
 created_date: '2026-03-16 00:30'
-updated_date: '2026-03-16 02:05'
+updated_date: '2026-03-16 02:31'
 labels:
   - bug
   - script-execution
@@ -23,9 +23,9 @@ Fix the script execution to pass the task file path as an argument to agent scri
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 - [ ] When assignee changes, agent scripts are invoked with the task file path as the first argument
-- [ ] #2 - [ ] The script receives the full absolute path to the task file
-- [ ] #3 - [ ] Agent scripts can access and process the task file content via the passed argument
+- [x] #1 - [ ] When assignee changes, agent scripts are invoked with the task file path as the first argument
+- [x] #2 - [ ] The script receives the full absolute path to the task file
+- [x] #3 - [ ] Agent scripts can access and process the task file content via the passed argument
 - [ ] #4 - [ ] Manual test: Create a task with assignee `[agent-bar]`, verify script receives the file path in the log output
 <!-- AC:END -->
 
@@ -165,6 +165,12 @@ The fix requires:
    - Verify script log contains file path
 ```
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Fixed test compilation error: variable name `agent` was shadowing the imported `agent` package in `notifier_test.go`. Renamed local variables to `agentInstance` in `TestExecuteScriptsForAgents_DisabledAgent` and `TestExecuteScriptsForAgents_MissingScriptPath`.
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
