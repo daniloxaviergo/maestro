@@ -49,6 +49,10 @@ maestro/
 ├── go.mod               # Go module definition
 ├── go.sum               # Go dependencies checksum
 ├── Makefile             # Build and run commands
+├── maestro.yml          # Maestro configuration (optional)
+├── assignee_changes.log # Assignee change log (generated)
+├── AGENTS.md            # Backlog.md MCP workflow guidelines
+└── QWEN.md              # This file - project context
 ```
 
 ### Architecture
@@ -110,6 +114,21 @@ Events are output in format: `[timestamp] TYPE: /absolute/path/to/file.md`
 
 ### Configuration
 
+#### Maestro Configuration
+
+Optional `maestro.yml` file in project root:
+
+```yaml
+watch_paths:
+  - "./backlog/tasks"
+debounce_ms: 50
+log_dir: "."
+```
+
+- **watch_paths**: Directories to monitor for markdown files
+- **debounce_ms**: Time to wait before processing (prevents duplicate events)
+- **log_dir**: Directory for assignee change logs
+
 #### Agent Configuration
 
 Agents are defined in YAML config files (default path: `./agents/{agent_name}/config.yml`):
@@ -165,7 +184,7 @@ go run cmd/monitor/main.go
 The monitor will:
 1. Start watching `./backlog/tasks` recursively
 2. Output file events to stdout in real-time
-3. Log assignee changes to `assignee_changes.log` (JSON)
+3. Log assignee changes to `assignee_changes.log` (JSON format)
 4. Send tmux notifications for assignee changes (if configured)
 5. Execute agent scripts for matched assignees (if configured)
 6. Continue until SIGINT (Ctrl+C) or SIGTERM

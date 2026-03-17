@@ -32,7 +32,7 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] catarina: Task ID: $TASK_ID"
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] catarina: Project path: $PROJECT_PATH"
 
 # Log the assignment to a file
-LOG_FILE="./agents/catarina/execution.log"
+LOG_FILE="/home/danilo/scripts/github/maestro/agents/catarina/execution.log"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 echo "[$TIMESTAMP] Task assigned: $TASK_FILE (Task ID: $TASK_ID, Project: $PROJECT_PATH)" >> "$LOG_FILE"
 

@@ -32,7 +32,7 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] thomas: Task ID: $TASK_ID"
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] thomas: Project path: $PROJECT_PATH"
 
 # Log the assignment to a file
-LOG_FILE="./agents/thomas/execution.log"
+LOG_FILE="/home/danilo/scripts/github/maestro/agents/thomas/execution.log"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 echo "[$TIMESTAMP] Task assigned: $TASK_FILE (Task ID: $TASK_ID, Project: $PROJECT_PATH)" >> "$LOG_FILE"
 
@@ -62,7 +62,6 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] thomas: Task processing complete" >> "$LOG_
 
 notify-send \
   -i /home/danilo/scripts/github/maestro/agents/thomas/icon.png \
-  -w \
   -a "Maestro" \
   "Thomas" \
   "Finished task: $TASK_ID ${ELAPSED_MINUTES}m"

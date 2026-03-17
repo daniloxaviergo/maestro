@@ -926,3 +926,389 @@
     "Thomas"
   ]
 }
+{
+  "timestamp": "2026-03-16T18:06:09Z",
+  "file": "/home/danilo/scripts/github/maestro/backlog/tasks/got-033 - Add-config-YML-to-maestro.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T19:36:46Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-001 - Task-1-Initialize-Go-module-with-dependencies.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T19:38:19Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-001 - Task-1-Initialize-Go-module-with-dependencies.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T19:38:28Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-001 - Task-1-Initialize-Go-module-with-dependencies.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-16T19:48:57Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-001 - Task-1-Initialize-Go-module-with-dependencies.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T19:51:14Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-002 - Task-2-Create-main-Bubbletea-application-entry-point.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T19:53:26Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-002 - Task-2-Create-main-Bubbletea-application-entry-point.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T19:53:39Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-002 - Task-2-Create-main-Bubbletea-application-entry-point.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-16T19:59:52Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-002 - Task-2-Create-main-Bubbletea-application-entry-point.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T20:00:28Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-003 - Task-3-Add-interactive-exit-functionality.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T20:02:18Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-003 - Task-3-Add-interactive-exit-functionality.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T20:02:24Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-003 - Task-3-Add-interactive-exit-functionality.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-16T20:10:59Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-003 - Task-3-Add-interactive-exit-functionality.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T20:11:13Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-004 - Task-4-Improve-visual-presentation.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T20:13:04Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-004 - Task-4-Improve-visual-presentation.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T20:13:15Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-004 - Task-4-Improve-visual-presentation.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-16T21:31:52Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-005 - Task-1-Define-DCA-data-model-structs-JSON-serialization.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T21:33:52Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-005 - Task-1-Define-DCA-data-model-structs-JSON-serialization.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T21:33:58Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-005 - Task-1-Define-DCA-data-model-structs-JSON-serialization.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-16T21:58:37Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-006 - Task-2-Implement-CLI-input-form-with-prompts.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T22:01:19Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-006 - Task-2-Implement-CLI-input-form-with-prompts.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T22:01:24Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-006 - Task-2-Implement-CLI-input-form-with-prompts.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-16T23:03:17Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-007 - Task-3-Implement-JSON-persistence-layer.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T23:06:03Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-007 - Task-3-Implement-JSON-persistence-layer.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T23:06:31Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-007 - Task-3-Implement-JSON-persistence-layer.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-16T23:25:12Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-007 - Task-3-Implement-JSON-persistence-layer.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T23:25:22Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-008 - Task-4-Add-validation-and-error-handling.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-16T23:26:59Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-008 - Task-4-Add-validation-and-error-handling.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-16T23:27:02Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-008 - Task-4-Add-validation-and-error-handling.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T00:18:50Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-009 - Task-5-Write-unit-tests-for-new-functionality.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T00:22:52Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-009 - Task-5-Write-unit-tests-for-new-functionality.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T00:23:11Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-009 - Task-5-Write-unit-tests-for-new-functionality.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T00:43:16Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-010 - Task-1-Create-Assets-View-Model-and-Data-Aggregation.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T00:46:01Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-010 - Task-1-Create-Assets-View-Model-and-Data-Aggregation.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T00:46:05Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-010 - Task-1-Create-Assets-View-Model-and-Data-Aggregation.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T01:01:24Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-010 - Task-1-Create-Assets-View-Model-and-Data-Aggregation.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T01:01:32Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-011 - Task-2-Create-Interactive-Table-UI-Component.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T01:05:27Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-011 - Task-2-Create-Interactive-Table-UI-Component.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T01:05:32Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-011 - Task-2-Create-Interactive-Table-UI-Component.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T01:07:25Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-011 - Task-2-Create-Interactive-Table-UI-Component.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": [
+    "Qwen Code"
+  ]
+}
+{
+  "timestamp": "2026-03-17T01:09:11Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-011 - Task-2-Create-Interactive-Table-UI-Component.md",
+  "old_assignee": [
+    "Qwen Code"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T01:09:17Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-011 - Task-2-Create-Interactive-Table-UI-Component.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T08:23:56Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-011 - Task-2-Create-Interactive-Table-UI-Component.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T08:24:25Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T08:32:39Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T08:33:20Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T09:23:51Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T09:23:56Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
