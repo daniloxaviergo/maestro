@@ -1,6 +1,6 @@
 # Maestro
 
-Go-based file monitoring and agent orchestration system for Backlog.md task management.
+Go-based file monitoring and agent orchestration system for [Backlog.md](https://github.com/MrLesk/Backlog.md) task management.
 
 ## Overview
 
