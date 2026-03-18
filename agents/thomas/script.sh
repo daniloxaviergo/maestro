@@ -48,7 +48,7 @@ notify-send \
 
 echo $PROJECT_PATH
 cd $PROJECT_PATH
-qwen "/exec $TASK_ID" --yolo
+qwen "/exec $TASK_ID" --yolo --output-format stream-json --include-partial-messages | jq 'select(.type? == "assistant") | .message.content[]? | select(.type? == "text") | .text?'
 
 END_TIME=$(date +%s)
 ELAPSED=$((END_TIME - START_TIME))
