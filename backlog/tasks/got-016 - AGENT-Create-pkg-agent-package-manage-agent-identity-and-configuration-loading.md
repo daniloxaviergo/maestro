@@ -4,9 +4,10 @@ title: >-
   [AGENT] Create pkg/agent package - manage agent identity and configuration
   loading
 status: Done
-assignee: []
+assignee:
+  - catarina
 created_date: '2026-03-15 17:16'
-updated_date: '2026-03-16 17:29'
+updated_date: '2026-03-30 12:47'
 labels: []
 dependencies: []
 references:
