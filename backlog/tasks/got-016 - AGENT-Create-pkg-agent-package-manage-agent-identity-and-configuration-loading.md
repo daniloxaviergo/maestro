@@ -5,7 +5,7 @@ title: >-
   loading
 status: Done
 assignee:
-  - catarina
+  - thomas
 created_date: '2026-03-15 17:16'
 updated_date: '2026-03-30 13:23'
 labels: []
