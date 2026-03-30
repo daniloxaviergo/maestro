@@ -4,7 +4,7 @@ title: '[doc-007 Phase 2] Implement workflow orchestrator script.sh'
 status: To Do
 assignee: []
 created_date: '2026-03-30 12:25'
-updated_date: '2026-03-30 13:29'
+updated_date: '2026-03-30 13:30'
 labels:
   - implementation
   - core
@@ -199,6 +199,69 @@ backlog task list -p $(backlog config get project_key) | grep got-016
 - Timeout-based escalation
 - Workflow metrics/logging
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Implementation complete. Created `agents/workflow/script.sh` - a Bash orchestrator script that manages sequential agent execution for Backlog.md tasks.
+
+## Summary of Changes:
+
+### New File: `agents/workflow/script.sh`
+- Bash script (executable) implementing workflow orchestration
+- Reads configuration from `agents/workflow/config.yml`
+- Tracks task state in `agents/workflow/tasks.yml` (YAML format)
+- Uses 0-based indexing to determine next agent from completed count
+- Assigns tasks via `backlog task edit` command
+- Updates state file with timestamps on each operation
+- Supports status transitions: `pending` → `in_progress` → `finished`
+- Marks task as `finished` when all agents complete
+
+### Key Features:
+- Uses `set -euo pipefail` for strict error handling
+- Bash-only YAML parsing (no external dependencies like yq/jq)
+- Proper error handling with exit codes (0 for success, 1 for failure)
+- All errors logged with timestamps
+- State file format is human-readable YAML
+
+### Tests Performed:
+1. ✅ Initial state (pending → in_progress): Assigns to first agent
+2. ✅ Status transition (in_progress → finished): Assigns to next agent after completion
+3. ✅ Workflow completion (all agents finish): Marks task as finished
+4. ✅ Error handling - missing config file: Exits with code 1
+5. ✅ Error handling - invalid task ID: Exits with code 1  
+6. ✅ Error handling - missing task file: Exits with code 1
+7. ✅ Already finished task: Returns success without changes
+
+### Verification:
+- ✅ `go vet ./...` passes with no warnings
+- ✅ `go build ./...` succeeds
+- ✅ `make build` succeeds
+- ✅ No Go file modifications needed (pure Bash implementation)
+
+### Configuration:
+The workflow uses the existing configuration in `agents/workflow/config.yml`:
+```yaml
+agents: catarina, thomas
+backlog_command: backlog task edit
+enabled: true
+```
+
+State file format:
+```yaml
+got-016:
+  status: pending|in_progress|finished
+  assigned_agent: agent_name
+  assigned_at: "YYYY-MM-DD HH:MM:SS"
+  completed_at: "YYYY-MM-DD HH:MM:SS"
+```
+
+### Notes:
+- The script handles edge cases like missing config values with defaults
+- The `set -u` option requires careful array bounds checking
+- YAML parsing uses grep/sed pattern matching for flat key-value structures
+- The `|| true` pattern is used for commands that may return non-zero exit codes when values are not found
+<!-- SECTION:NOTES:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
