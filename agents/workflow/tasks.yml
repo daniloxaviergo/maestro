@@ -1,0 +1,2 @@
+# Task state tracking for workflow agent
+# Empty initial state - populated by workflow script on first task processing

@@ -1,0 +1,6 @@
+# Workflow agent configuration
+# Defines agent sequence and Backlog CLI command for task assignment
+
+agents: catarina, thomas
+backlog_command: backlog task edit
+enabled: true

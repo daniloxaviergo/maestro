@@ -1312,3 +1312,1283 @@
     "Thomas"
   ]
 }
+{
+  "timestamp": "2026-03-17T10:23:35Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T10:23:39Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T10:30:53Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T10:30:58Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T11:06:17Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-012 - Task-3-Integrate-Assets-View-into-Main-Application.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T11:22:07Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-014 - Task-1-Create-folder-structure-for-modular-refactoring.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T11:25:17Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-014 - Task-1-Create-folder-structure-for-modular-refactoring.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T11:25:21Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-014 - Task-1-Create-folder-structure-for-modular-refactoring.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T11:28:25Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-015 - Task-2-Extract-core-data-model-to-internal-dca.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T11:33:12Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-015 - Task-2-Extract-core-data-model-to-internal-dca.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T11:33:16Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-015 - Task-2-Extract-core-data-model-to-internal-dca.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T12:16:46Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-015 - Task-2-Extract-core-data-model-to-internal-dca.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T12:16:52Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-015 - Task-2-Extract-core-data-model-to-internal-dca.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T12:25:07Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-015 - Task-2-Extract-core-data-model-to-internal-dca.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T12:26:35Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-015 - Task-2-Extract-core-data-model-to-internal-dca.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T12:30:25Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-015 - Task-2-Extract-core-data-model-to-internal-dca.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T12:30:30Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-015 - Task-2-Extract-core-data-model-to-internal-dca.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T12:33:10Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-016 - Task-3-Extract-form-components-to-internal-form.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T12:36:24Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-016 - Task-3-Extract-form-components-to-internal-form.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T12:36:30Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-016 - Task-3-Extract-form-components-to-internal-form.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T13:15:06Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-016 - Task-3-Extract-form-components-to-internal-form.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T13:16:21Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T13:21:03Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T13:21:10Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T13:59:08Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T13:59:13Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T14:22:07Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T14:22:13Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T14:27:21Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T14:27:25Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T14:49:55Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T14:50:18Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-018 - Task-5-Update-main.go-to-use-new-packages.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T14:58:10Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-018 - Task-5-Update-main.go-to-use-new-packages.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T14:58:24Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T15:24:38Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-017 - Task-4-Extract-assets-view-to-internal-assets.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T15:24:47Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-018 - Task-5-Update-main.go-to-use-new-packages.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T15:29:35Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-018 - Task-5-Update-main.go-to-use-new-packages.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T15:29:51Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-018 - Task-5-Update-main.go-to-use-new-packages.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T15:42:38Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-018 - Task-5-Update-main.go-to-use-new-packages.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T15:42:50Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-019 - Task-6-Run-tests-and-verify-build.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T15:46:21Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-019 - Task-6-Run-tests-and-verify-build.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T15:46:26Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-019 - Task-6-Run-tests-and-verify-build.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T15:50:46Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-019 - Task-6-Run-tests-and-verify-build.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T15:51:50Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-020 - Create-a-README.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T15:54:53Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-020 - Create-a-README.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T15:55:00Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-020 - Create-a-README.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T16:13:59Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-020 - Create-a-README.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T16:14:03Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-020 - Create-a-README.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T16:27:32Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-020 - Create-a-README.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T17:09:58Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-021 - Create-make-commands.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarin"
+  ]
+}
+{
+  "timestamp": "2026-03-17T17:10:00Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-021 - Create-make-commands.md",
+  "old_assignee": [
+    "Catarin"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T17:10:02Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-021 - Create-make-commands.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T17:12:14Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-021 - Create-make-commands.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T17:12:18Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-021 - Create-make-commands.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T17:33:34Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-021 - Create-make-commands.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T17:39:37Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-022 - Task-1-App-starts-in-asset-list-view.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T17:42:12Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-022 - Task-1-App-starts-in-asset-list-view.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T17:42:17Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-022 - Task-1-App-starts-in-asset-list-view.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T17:50:31Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-023 - Task-2-Press-c-to-create-new-entry.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T17:54:50Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-023 - Task-2-Press-c-to-create-new-entry.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T17:54:55Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-023 - Task-2-Press-c-to-create-new-entry.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T18:19:26Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-024 - Task-3-Return-to-asset-list-after-entry.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T18:26:28Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-024 - Task-3-Return-to-asset-list-after-entry.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T18:26:35Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-024 - Task-3-Return-to-asset-list-after-entry.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T19:13:26Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-024 - Task-3-Return-to-asset-list-after-entry.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T19:13:31Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-024 - Task-3-Return-to-asset-list-after-entry.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T19:39:50Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-024 - Task-3-Return-to-asset-list-after-entry.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T19:41:01Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-024 - Task-3-Return-to-asset-list-after-entry.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T19:56:54Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-025 - Task-4-Exit-from-asset-list.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T20:01:12Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-025 - Task-4-Exit-from-asset-list.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T20:01:16Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-025 - Task-4-Exit-from-asset-list.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T20:10:06Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-025 - Task-4-Exit-from-asset-list.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T20:28:09Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-026 - Task-1-Define-Fixed-Column-Widths.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T20:30:29Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-026 - Task-1-Define-Fixed-Column-Widths.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T20:30:33Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-026 - Task-1-Define-Fixed-Column-Widths.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T20:59:29Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-027 - Task-2-Fix-Row-Value-Alignment.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T21:39:39Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-027 - Task-2-Fix-Row-Value-Alignment.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T21:39:55Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-027 - Task-2-Fix-Row-Value-Alignment.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T22:08:42Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-027 - Task-2-Fix-Row-Value-Alignment.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T22:08:50Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-028 - Task-3-Enforce-Minimum-30-Rows.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-17T22:13:13Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-028 - Task-3-Enforce-Minimum-30-Rows.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T22:13:17Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-028 - Task-3-Enforce-Minimum-30-Rows.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-17T23:19:02Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-028 - Task-3-Enforce-Minimum-30-Rows.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-17T23:19:06Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-028 - Task-3-Enforce-Minimum-30-Rows.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T00:29:40Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-030 - Task-1-Intelligent-Test-Selection.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T00:38:22Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-030 - Task-1-Intelligent-Test-Selection.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T00:38:29Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-030 - Task-1-Intelligent-Test-Selection.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T01:13:10Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-030 - Task-1-Intelligent-Test-Selection.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T01:13:18Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-030 - Task-1-Intelligent-Test-Selection.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T01:33:44Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-031 - Task-2-Optimized-Output-Logging.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T09:56:47Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-031 - Task-2-Optimized-Output-Logging.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T09:56:51Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-031 - Task-2-Optimized-Output-Logging.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T11:22:36Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-035 - Task-1-Test-Execution-Agent-Configuration.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T11:25:22Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-035 - Task-1-Test-Execution-Agent-Configuration.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T11:25:28Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-035 - Task-1-Test-Execution-Agent-Configuration.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T11:34:00Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-036 - Task-2-Intelligent-Test-Output.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T11:39:36Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-036 - Task-2-Intelligent-Test-Output.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T11:39:41Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-036 - Task-2-Intelligent-Test-Output.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T11:55:23Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-037 - Task-3-Failure-Analysis.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T12:01:58Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-037 - Task-3-Failure-Analysis.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T12:02:05Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-037 - Task-3-Failure-Analysis.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T12:10:04Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-037 - Task-3-Failure-Analysis.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T12:10:54Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-038 - Task-4-Performance-Optimization.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T12:17:41Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-038 - Task-4-Performance-Optimization.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T12:18:08Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-038 - Task-4-Performance-Optimization.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T12:38:53Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-028 - Task-3-Enforce-Minimum-30-Rows.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T13:32:52Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-029 - Task-4-Test-Table-Layout.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T13:36:34Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-029 - Task-4-Test-Table-Layout.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T13:36:40Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-029 - Task-4-Test-Table-Layout.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T14:59:12Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-039 - Bug-esc-on-form-should-go-back-to-list.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T15:02:34Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-039 - Bug-esc-on-form-should-go-back-to-list.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T15:02:41Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-039 - Bug-esc-on-form-should-go-back-to-list.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T15:51:57Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-040 - Bug-highlight-first-row-table.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T16:05:00Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-040 - Bug-highlight-first-row-table.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T18:52:31Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-041 - Task-1-Modal-UI-Component.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T18:55:55Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-041 - Task-1-Modal-UI-Component.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T18:57:05Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-041 - Task-1-Modal-UI-Component.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T19:02:13Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-041 - Task-1-Modal-UI-Component.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T19:59:53Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-042 - Task-2-Daily-Aggregation-Data-Fetching.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T20:09:54Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-042 - Task-2-Daily-Aggregation-Data-Fetching.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T20:10:08Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-042 - Task-2-Daily-Aggregation-Data-Fetching.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T21:17:10Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-043 - Task-3-Infinite-Scroll-Implementation.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T21:25:52Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-043 - Task-3-Infinite-Scroll-Implementation.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T21:25:58Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-043 - Task-3-Infinite-Scroll-Implementation.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-18T21:26:03Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-043 - Task-3-Infinite-Scroll-Implementation.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T23:11:27Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-046 - Task-1-Command-Structure-Create-prd-plan-command.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T23:25:31Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-047 - Task-2-PRD-Analysis-Extract-requirements-and-identify-dependencies.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T23:30:33Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-047 - Task-2-PRD-Analysis-Extract-requirements-and-identify-dependencies.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-18T23:30:37Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-047 - Task-2-PRD-Analysis-Extract-requirements-and-identify-dependencies.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-18T23:40:19Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-048 - Task-3-Implementation-Plan-Generation-Generate-plan-from-PRD.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T09:43:19Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-050 - TestAssetsView_UpdateLoadMore-FAIL.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T09:46:24Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-050 - TestAssetsView_UpdateLoadMore-FAIL.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-19T09:47:05Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-050 - TestAssetsView_UpdateLoadMore-FAIL.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T09:52:05Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-050 - TestAssetsView_UpdateLoadMore-FAIL.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-19T09:53:06Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-050 - TestAssetsView_UpdateLoadMore-FAIL.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T09:55:44Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-050 - TestAssetsView_UpdateLoadMore-FAIL.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-19T09:58:28Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-050 - TestAssetsView_UpdateLoadMore-FAIL.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T11:10:02Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-050 - TestAssetsView_UpdateLoadMore-FAIL.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-19T11:37:00Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-044 - Task-4-Data-Aggregation-Logic.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T11:44:43Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-044 - Task-4-Data-Aggregation-Logic.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-19T11:44:48Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-044 - Task-4-Data-Aggregation-Logic.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T12:06:55Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-044 - Task-4-Data-Aggregation-Logic.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-19T12:10:00Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-051 - Update-README.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T13:43:43Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-051 - Update-README.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-19T16:45:42Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-052 - Bug-Assert-view.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T17:03:27Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-052 - Bug-Assert-view.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-19T17:03:36Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-052 - Bug-Assert-view.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T17:14:19Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-052 - Bug-Assert-view.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-19T17:14:35Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-052 - Bug-Assert-view.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-19T17:59:37Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-053 - Bugfix-model-history-view-dont-open-the-first-row.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-19T18:13:22Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-053 - Bugfix-model-history-view-dont-open-the-first-row.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-21T11:20:20Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-054 - Bug-avg-price.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-21T11:24:27Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-054 - Bug-avg-price.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-21T11:24:32Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-054 - Bug-avg-price.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-21T11:39:10Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-054 - Bug-avg-price.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-21T11:46:35Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-054 - Bug-avg-price.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Thomas"
+  ]
+}
+{
+  "timestamp": "2026-03-21T11:53:30Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-054 - Bug-avg-price.md",
+  "old_assignee": [
+    "Thomas"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-22T23:01:49Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-054 - Bug-avg-price.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Catarina"
+  ]
+}
+{
+  "timestamp": "2026-03-22T23:08:33Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-054 - Bug-avg-price.md",
+  "old_assignee": [
+    "Catarina"
+  ],
+  "new_assignee": []
+}
+{
+  "timestamp": "2026-03-24T01:16:35Z",
+  "file": "/home/danilo/scripts/github/dca/backlog/tasks/got-055 - Test-MCP-Tool-Create-sample-task.md",
+  "old_assignee": [],
+  "new_assignee": [
+    "Qwen Code"
+  ]
+}
