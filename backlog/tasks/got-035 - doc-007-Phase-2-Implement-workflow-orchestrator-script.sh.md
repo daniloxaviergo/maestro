@@ -26,15 +26,15 @@ Implement the main orchestrator Bash script (agents/workflow/script.sh) that rea
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [x] #1 Script reads config.yml on execution
-- [ ] #2 Script reads/writes tasks.yml for state
-- [ ] #3 Next agent determined by completed agents count (0-based)
-- [ ] #4 Task assigned via backlog task edit
-- [ ] #5 State file updated with timestamps
-- [ ] #6 Status transitions implemented (pending → in_progress → finished)
-- [ ] #7 Task marked finished when all agents complete
+- [x] #2 Script reads/writes tasks.yml for state
+- [x] #3 Next agent determined by completed agents count (0-based)
+- [x] #4 Task assigned via backlog task edit
+- [x] #5 State file updated with timestamps
+- [x] #6 Status transitions implemented (pending → in_progress → finished)
+- [x] #7 Task marked finished when all agents complete
 - [ ] #8 Config changes require manual intervention
-- [ ] #9 Workflow aborts on agent failure
-- [ ] #10 Exit codes: 0 success, 1 failure
+- [x] #9 Workflow aborts on agent failure
+- [x] #10 Exit codes: 0 success, 1 failure
 - [ ] #11 #1 Script reads config.yml on execution
 <!-- AC:END -->
 
