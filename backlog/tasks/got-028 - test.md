@@ -5,7 +5,7 @@ status: To Do
 assignee:
   - Catarina
 created_date: '2026-03-16 11:14'
-updated_date: '2026-03-16 14:24'
+updated_date: '2026-03-30 18:13'
 labels: []
 dependencies: []
 ordinal: 6250
@@ -14,7 +14,7 @@ ordinal: 6250
 ## Description
 
 <!-- SECTION:DESCRIPTION:BEGIN -->
-Create a comprehensive updated README.md that covers all aspects of the Maestro project, including file monitoring, assignee change detection, agent orchestration, tmux notifications, script execution, and integration with Backlog.md task management. The README should be structured for both new users and developers, include installation, usage examples, configuration options, and architecture overview.
+Create a new version of readme and save in ./new_readme.md
 <!-- SECTION:DESCRIPTION:END -->
 
 ## Implementation Plan
