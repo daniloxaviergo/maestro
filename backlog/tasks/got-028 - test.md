@@ -5,7 +5,7 @@ status: To Do
 assignee:
   - catarina
 created_date: '2026-03-16 11:14'
-updated_date: '2026-03-30 18:21'
+updated_date: '2026-03-30 18:24'
 labels: []
 dependencies: []
 ordinal: 6250
@@ -22,157 +22,196 @@ Create a new version of readme and save in ./new_readme.md
 <!-- SECTION:PLAN:BEGIN -->
 ### 1. Technical Approach
 
-The comprehensive README update will be structured to serve both new users and developers with clear information hierarchy and practical examples.
+The comprehensive README update will consolidate and enhance documentation across multiple files while maintaining consistency with the codebase. The approach focuses on creating a well-structured, maintainable README that serves both users and developers.
+
+**Key objectives:**
+- **Restructure and expand**: Transform the current README into a comprehensive guide covering installation, usage, configuration, and architecture
+- **Consolidate from QWEN.md**: Integrate key architectural information while keeping QWEN.md as the detailed technical reference
+- **Incorporate docs/ content**: Reference and integrate information from the docs directory (agent configuration, orchestration quickstart, setup guide)
+- **Add practical examples**: Include working code examples for all major features
+- **Maintain readability**: Keep the README under ~500 lines with clear section hierarchy
 
 **Approach:**
-- **Restructure existing content**: Consolidate information from current README.md, QWEN.md, AGENTS.md, and docs/ directory
-- **Add new sections**: Project goals, quick-start guide, detailed configuration, and architecture overview
-- **Improve organization**: Logical flow from installation to advanced usage
-- **Maintain consistency**: Align with existing code patterns and project conventions
-
-**Key Sections:**
-1. Overview and features (expand current list)
-2. Quick-start guide for new users
-3. Detailed installation instructions
-4. Usage examples (basic, tmux notifications, testing)
-5. Configuration (agent setup, environment variables)
-6. Architecture overview (component diagram description)
-7. Development workflow (building, testing, code style)
-8. Backlog.md integration (task management workflow)
-9. Troubleshooting section
-10. API reference (key packages)
+- **Content audit**: Review all existing documentation files to identify overlaps and gaps
+- **Section-by-section rewrite**: Build new README with logical flow from overview to advanced usage
+- **Code block verification**: Ensure all bash and YAML examples are syntactically correct
+- **Cross-reference strategy**: Use relative links to QWEN.md for deep architecture, docs/ for specific topics
 
 **Trade-offs:**
-- Keep README under ~500 lines for readability
-- Move detailed architecture to QWEN.md (keep README high-level)
-- Use code blocks for examples, tables for reference
-- Link to docs/ for deep dives on specific topics
+- Keep README high-level; move detailed architecture to QWEN.md
+- Link to docs/ for deep dives rather than duplicating content
+- Use tables for configuration options, code blocks for examples
+- Include "Last updated" or version info to track documentation drift
 
 ### 2. Files to Modify
 
 | File | Action | Purpose |
-|------|--------|--|
-| `README.md` | **Rewrite** | Comprehensive project documentation |
-| `QWEN.md` | **Update** | Remove redundancy, link to README for installation/usage |
-| `docs/` | **Review** | Verify docs are referenced correctly and consistent |
+|------|--------|---------|
+| `README.md` | **Rewrite** | Comprehensive project documentation with all key sections |
+| `QWEN.md` | **Update** | Add link to README for installation/usage; keep architecture/development details |
+| `docs/agent-configuration.md` | **Review** | Verify consistency with README agent section |
+| `docs/agent-orchestration-quickstart.md` | **Review** | Verify consistency with README usage examples |
+| `docs/setup-monitor.md` | **Review** | Verify consistency with README installation section |
 
-**Files to Reference (read-only for planning):**
-- `cmd/monitor/main.go` - CLI entry point with signal handling and component wiring
-- `pkg/watcher/*.go` - fsnotify wrapper for file monitoring
+**Files to Reference (read-only):**
+- `cmd/monitor/main.go` - CLI entry point and component wiring
+- `pkg/watcher/*.go` - File monitoring implementation
 - `pkg/parser/*.go` - YAML frontmatter extraction
-- `pkg/cache/*.go` - File state caching with debouncing
-- `pkg/change_detect/*.go` - Assignee change detection and logging
-- `pkg/notifier/*.go` - Tmux notification and script execution
-- `pkg/matcher/*.go` - Agent-assignee matching logic
-- `pkg/agent/*.go` - Agent identity and configuration management
+- `pkg/cache/*.go` - State caching and debouncing
+- `pkg/change_detect/*.go` - Assignee change detection
+- `pkg/notifier/*.go` - Tmux notifications
+- `pkg/matcher/*.go` - Agent matching logic
+- `pkg/agent/*.go` - Agent configuration management
 - `pkg/config/*.go` - Configuration loading
 - `pkg/logs/*.go` - JSON logging
-- `Makefile` - Build commands (build, run, tmux-*)
-- `docs/agent-configuration.md` - Agent config details
-- `docs/agent-orchestration-quickstart.md` - Agent setup guide
-- `docs/setup-monitor.md` - Monitor setup details
+- `Makefile` - Build and run commands
+- `agents/workflow/*` - Workflow agent implementation
+- `scripts/agent_status.sh` - Agent status checker
+- `maestro.yml` - Example configuration
 
 ### 3. Dependencies
 
 **Prerequisites:**
-- All features from tasks GOT-008 through GOT-029 must be implemented (all marked as Done in backlog)
-- tmux installed for notifications and script execution (verified via `tmux --version`)
-- Go 1.25.7+ for building (verified via `go version`)
+- All core functionality from tasks GOT-008 through GOT-029 implemented (all marked Done)
+- Go 1.25.7+ available for building (`go version` verifies)
+- tmux installed for notifications (`tmux --version` verifies)
 - `./backlog/tasks` directory exists
+- Project builds successfully (`make build` passes)
 
 **Build Verification:**
-- `make build` succeeds without errors
-- `go vet ./...` passes with no warnings
+```bash
+go vet ./...      # Static analysis (must pass with no warnings)
+make build        # Build binary (must succeed)
+```
 
-**No blocking tasks** - All core functionality is implemented and documented.
+**No blocking tasks** - All core features are implemented and ready for documentation update.
 
 ### 4. Code Patterns
 
 **Conventions to Follow:**
-1. **YAML code blocks**: Use triple backticks with `yaml` language identifier
-2. **Bash commands**: Use triple backticks with `bash` language identifier
-3. **Go code blocks**: Use triple backticks with `go` language identifier
-4. **Tables**: Use Markdown tables for configuration options and reference
-5. **Error handling**: Show `if err != nil { return err }` pattern in code examples
-6. **Paths**: Use relative paths from project root (`./backlog/tasks`, not `/absolute/path`)
-7. **Package names**: lowercase, short (e.g., `cache`, `watcher`, `parser`)
-8. **Function names**: CamelCase (e.g., `NewWatcher`, `ProcessFile`)
-9. **Variables**: camelCase (e.g., `fileWatcher`, `eventQueue`)
 
-**Example format:**
-```markdown
-```yaml
-# Configuration example
-script_path: "./agents/my-agent/script.sh"
-tmux_session: "my-agent"
-enabled: true
-```
-``
+1. **Markdown formatting:**
+   - Use triple backticks with language identifier: ` ```yaml `, ` ```bash `, ` ```go `
+   - Tables for configuration options and reference
+   - Horizontal rules (`---`) between major sections
+
+2. **Bash code examples:**
+   - Use `make` commands where applicable
+   - Show full commands including quotes and heredocs
+   - Include `chmod +x` for scripts
+   - Show file creation with `cat > file <<EOF`
+
+3. **YAML code examples:**
+   - Use `yaml` language identifier
+   - Show minimal working configuration first, then extended
+   - Document default values in text, not just in comments
+
+4. **Go code examples:**
+   - Use `go` language identifier
+   - Show error handling patterns: `if err != nil { return err }`
+   - Include necessary imports
+
+5. **Path conventions:**
+   - Use relative paths from project root (`./backlog/tasks`, `agents/agent-name/`)
+   - Avoid absolute paths in examples
+
+6. **Naming conventions:**
+   - Package names: lowercase (`cache`, `watcher`, `parser`)
+   - Function names: CamelCase (`NewWatcher`, `ProcessFile`)
+   - Variable names: camelCase (`fileWatcher`, `eventQueue`)
+   - Error variables: `Err` prefix (`ErrWatcherStopped`)
 
 ### 5. Testing Strategy
 
-**Verification approach:**
-1. **Build test**: Run `make build` and verify binary exists at `bin/monitor`
-2. **Run test**: Execute `make run` with sample task file, verify file events are output
-3. **Documentation test**: Verify all code examples are syntactically correct
-4. **Link check**: Ensure all internal links (docs/, backlog/) are valid
-5. **Example test**: Run manual testing examples from README to verify they work
+**Documentation verification (no unit tests required for README):**
 
-**No unit tests required** - README changes are documentation-only.
+1. **Build verification:**
+   ```bash
+   make build         # Verify binary builds
+   go vet ./...       # Verify static analysis passes
+   ```
+
+2. **Example verification:**
+   - Run all bash examples in isolated shell to verify syntax
+   - Verify YAML examples are valid (can be parsed by Go yaml.v3)
+   - Check that file creation examples work (`cat > file` patterns)
+
+3. **Link verification:**
+   - Verify all relative links to docs/ files are valid
+   - Verify QWEN.md link is correct
+   - Verify backlog/ task file references are valid
+
+4. **Manual smoke test:**
+   ```bash
+   # Test quick-start example
+   mkdir -p backlog/tasks
+   touch backlog/tasks/test.md
+   make run  # Verify monitor starts and shows output
+   ```
+
+**No code changes required** - README update is documentation-only.
 
 ### 6. Risks and Considerations
 
 **Known risks:**
-1. **Information overload**: README may become too long - need to balance comprehensiveness with readability
-2. **Documentation drift**: Changes to code may not update README - need maintenance process
-3. **Link rot**: Internal links may break if file structure changes
-4. **Example accuracy**: Code examples must match actual implementation
-5. **Version mismatch**: README may reference outdated features or versions
 
-**Mitigation strategies:**
-- Use modular section structure for easy updates
-- Link to detailed docs instead of duplicating information
-- Include "Last updated" date or version information
-- Create maintenance checklist for documentation updates
-- Review against current codebase before finalizing plan
+1. **Information overload:** README may become too long
+   - *Mitigation:* Keep sections concise; use tables for reference; link to QWEN.md for depth
+
+2. **Documentation drift:** Changes to code may not update README
+   - *Mitigation:* Add maintenance checklist; include version/date marker
+
+3. **Link rot:** Internal links may break if file structure changes
+   - *Mitigation:* Use relative paths; review links after any file reorganization
+
+4. **Example inaccuracy:** Code examples must match implementation
+   - *Mitigation:* Test all examples; reference actual config files
+
+5. **Version mismatch:** README may reference outdated features
+   - *Mitigation:* Update README when features are added/changed
 
 **Rollout considerations:**
-- No code changes required - pure documentation update
-- No deployment required - static file update
+- Pure documentation update - no code changes
+- No deployment required
 - No breaking changes for existing users
 - No configuration changes required
-- Backward compatible - existing users unaffected
+- Backward compatible
 
 ### 7. Detailed README Structure
 
 **Proposed section order:**
-1. **Project Header**: Name, description, status badges (if any)
-2. **Overview**: High-level description of what Maestro does
-3. **Features**: Bullet list of key capabilities
-4. **Technology Stack**: Language, core libraries, tools
-5. **Quick Start**: 3-step setup for immediate use
-6. **Installation**: Detailed installation instructions
-7. **Usage**: Basic monitoring, tmux notifications, testing
-8. **Configuration**: Agent setup, environment variables
-9. **Architecture**: Component overview with data flow
-10. **Development**: Building, testing, code style
-11. **Backlog.md Integration**: Task management workflow
-12. **Troubleshooting**: Common issues and solutions
-13. **Contributing**: How to contribute (if applicable)
-14. **License**: MIT license notice
+
+1. **Project Header:** Name, description, status (To Do/In Progress/Done badges)
+2. **Overview:** High-level description of what Maestro does
+3. **Features:** Bullet list of key capabilities (expand current list)
+4. **Technology Stack:** Language, core libraries, tools
+5. **Quick Start:** 3-step setup for immediate use (minimal example)
+6. **Installation:** Detailed installation instructions with prerequisites
+7. **Usage:** Basic monitoring, tmux notifications, agent orchestration
+8. **Configuration:** maestro.yml, agent configuration, environment variables
+9. **Architecture:** Component overview with data flow description
+10. **Development:** Building, testing, code style, contribution guidelines
+11. **Backlog.md Integration:** Task management workflow and task IDs
+12. **Agent Orchestration:** Setting up and using agents (detailed)
+13. **Troubleshooting:** Common issues and solutions
+14. **Documentation:** Links to QWEN.md, docs/, and backlog/
+15. **Contributing:** How to contribute (if applicable)
+16. **License:** MIT license notice
 
 **Sections to reference:**
 - Link to `QWEN.md` for detailed architecture (component interactions, data structures)
-- Link to `docs/` for deep dives on specific topics
-- Link to `backlog/tasks/` for implementation details
+- Link to `docs/` for deep dives on specific topics (agent config, orchestration setup)
+- Link to `backlog/tasks/` for implementation details and task history
+- Link to `scripts/` for utility scripts (agent_status.sh, attach.sh)
 
 ### 8. Implementation Steps
 
-**Phase 1: Content Audit**
-1. Read current README.md, QWEN.md, AGENTS.md
-2. Review all files in `docs/` directory
-3. Identify overlapping content and gaps
-4. Create content outline
+**Phase 1: Content Audit and Planning (Current Phase)**
+1. Read all existing documentation files (README, QWEN, AGENTS, docs/)
+2. Identify overlapping content and gaps
+3. Create content outline with section priorities
+4. Draft test examples to verify accuracy
+5. **Decision point:** Present plan to user for approval
 
 **Phase 2: README Rewrite**
 1. Rewrite Overview and Features sections
@@ -190,16 +229,18 @@ enabled: true
 3. Keep architecture and development details
 4. Update links to docs/ directory
 
-**Phase 4: Verification**
-1. Run `make build` with README changes
-2. Run `make run` and verify examples work
-3. Check all links are valid
-4. Verify code examples compile
-
-**Phase 5: Documentation Review**
+**Phase 4: Documentation Review**
 1. Review docs/ files for consistency
 2. Update any outdated information
 3. Ensure all features are documented
+4. Verify example commands work
+
+**Phase 5: Verification**
+1. Run `make build` with README changes
+2. Run `go vet ./...` with README changes
+3. Check all links are valid
+4. Verify code examples compile
+5. Test manual examples from README
 <!-- SECTION:PLAN:END -->
 
 ## Definition of Done
