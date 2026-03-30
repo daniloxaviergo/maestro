@@ -3,9 +3,9 @@ id: GOT-035
 title: '[doc-007 Phase 2] Implement workflow orchestrator script.sh'
 status: To Do
 assignee:
-  - workflow
+  - catarina
 created_date: '2026-03-30 12:25'
-updated_date: '2026-03-30 17:57'
+updated_date: '2026-03-30 17:58'
 labels:
   - implementation
   - core
