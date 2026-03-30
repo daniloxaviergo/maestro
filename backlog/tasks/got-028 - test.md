@@ -3,7 +3,7 @@ id: GOT-028
 title: test
 status: To Do
 assignee:
-  - catarina
+  - workflow
 created_date: '2026-03-16 11:14'
 updated_date: '2026-03-30 23:23'
 labels: []
