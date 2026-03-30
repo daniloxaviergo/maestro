@@ -3,4 +3,6 @@
 
 agents: catarina, thomas
 backlog_command: backlog task edit
+
+script_path: "./agents/workflow/script.py"
 enabled: true

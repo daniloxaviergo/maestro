@@ -1,2 +1,21 @@
 # Task state tracking for workflow agent
 # Empty initial state - populated by workflow script on first task processing
+
+got-035:
+  - status: in_progress
+    assigned_agent: catarina
+    assigned_at: "2026-03-30 14:58:56"
+
+  - status: finished
+    assigned_agent: catarina
+    assigned_at: "2026-03-30 14:58:56"
+    completed_at: "2026-03-30 14:59:15"
+
+  - status: in_progress
+    assigned_agent: thomas
+    assigned_at: "2026-03-30 14:59:15"
+
+  - status: finished
+    assigned_agent: thomas
+    assigned_at: "2026-03-30 14:59:15"
+    completed_at: "2026-03-30 14:59:54"

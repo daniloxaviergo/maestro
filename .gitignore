@@ -9,3 +9,6 @@ coverage/
 
 # Go language server
 .gopls/
+agents/workflow/__*
+agents/workflow/tasks.yml
+
