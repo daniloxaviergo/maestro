@@ -4,6 +4,7 @@ title: '[doc-007 Phase 2] Implement workflow orchestrator script.sh'
 status: To Do
 assignee: []
 created_date: '2026-03-30 12:25'
+updated_date: '2026-03-30 12:40'
 labels:
   - implementation
   - core
@@ -35,6 +36,168 @@ Implement the main orchestrator Bash script (agents/workflow/script.sh) that rea
 - [ ] #9 Workflow aborts on agent failure
 - [ ] #10 Exit codes: 0 success, 1 failure
 <!-- AC:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+### 1. Technical Approach
+
+Implement the workflow orchestrator Bash script (`agents/workflow/script.sh`) that manages sequential agent execution. The implementation follows existing project conventions:
+
+**Core Logic Flow:**
+1. Parse task file path to extract task ID (e.g., `got-016`)
+2. Load workflow configuration from `agents/workflow/config.yml` (agents: catarina, thomas)
+3. Load/create task state from `agents/workflow/tasks.yml`
+4. Calculate number of completed agents from state
+5. Determine next agent using 0-based index (`completed_agents_count` → `agents[completed_agents_count]`)
+6. Assign task via `backlog task edit <task_id> --assignee <agent>`
+7. Update state file with timestamps
+8. Mark task "finished" when all agents complete
+
+**YAML Parsing Strategy (Bash-only):**
+- Read YAML files line-by-line using `grep`/`sed`
+- Extract key-value pairs with pattern matching
+- No external dependencies (`yq`, `jq`)
+- Simple flat YAML structure (no arrays/anchors)
+
+**Error Handling:**
+- `set -euo pipefail` for strict error handling
+- Validate config file exists
+- Validate task ID matches `got-XXX` pattern
+- Exit with code 1 on errors, 0 on success
+
+**Why this approach:**
+- Follows existing agent script patterns (Bash-based)
+- No external dependencies beyond Bash stdlib
+- State persisted in simple YAML for human readability
+- Single execution model (no contention issues)
+
+### 2. Files to Modify
+
+| Action | File | Purpose |
+|--------|------|---------|
+| Create | `agents/workflow/script.sh` | Main orchestrator Bash script |
+| Modify | `agents/workflow/config.yml` | Add `enabled: true` (already exists, ensure present) |
+| Modify | `agents/workflow/tasks.yml` | Add state tracking structure (initially empty comment) |
+
+**No existing Go files need modification** - this is purely a Bash script addition.
+
+### 3. Dependencies
+
+**Prerequisites (already satisfied):**
+- ✅ `agents/workflow/` directory exists (GOT-034)
+- ✅ `agents/workflow/config.yml` with agents and backlog_command defined
+- ✅ Backlog CLI installed and configured (`backlog task edit` works)
+- ✅ Agent scripts exist and function (`agents/catarina/script.sh`, `agents/thomas/script.sh`)
+
+**No new external dependencies required.**
+
+**Bash built-ins/commands used:**
+- `basename`, `dirname`, `date`, `grep`, `sed`, `awk`
+- `cat`, `echo`, `mkdir`, `test`, ` [[ ]]`
+
+### 4. Code Patterns
+
+**From existing Bash scripts to follow:**
+
+1. **`agents/catarina/script.sh` and `agents/thomas/script.sh` patterns:**
+   - `set -euo pipefail` for strict error handling
+   - Function-based organization with comments
+   - Timestamp logging format: `[YYYY-MM-DD HH:MM:SS]`
+   - Task file path as first argument
+
+2. **`scripts/agent_status.sh` patterns:**
+   - `extract_yaml_value()` helper function for YAML parsing
+   - `error()`, `warning()`, `info()` helper functions
+   - Project root detection relative to script location
+   - Exit code 0 for success, 1 for failure
+
+**Naming conventions:**
+- Functions: snake_case (e.g., `extract_task_id`, `load_config`, `determine_next_agent`)
+- Variables: snake_case
+- Constants: UPPERCASE (e.g., `TASK_ID_PATTERN`)
+
+**YAML structure for tasks.yml:**
+```yaml
+# Task state tracking
+# Format: {task_id}:
+#   status: pending|in_progress|finished
+#   assigned_agent: agent_name
+#   assigned_at: "YYYY-MM-DD HH:MM:SS"
+#   completed_at: "YYYY-MM-DD HH:MM:SS" (when finished)
+
+got-016:
+  status: pending
+  assigned_agent: catarina
+  assigned_at: "2026-03-30 12:00:00"
+  completed_at: "2026-03-30 12:05:00"
+```
+
+### 5. Testing Strategy
+
+**Test scenarios to cover:**
+
+**Unit-level (manual testing with sample tasks):**
+1. **Initial state (pending → in_progress):**
+   - Run script with task `got-016` (no state entry)
+   - Verify state created with `status: pending`
+   - Verify `assigned_agent: catarina` (0-indexed)
+   - Verify `assigned_at` timestamp set
+
+2. **Status transition (in_progress → finished):**
+   - Manually simulate first agent completion
+   - Run script again
+   - Verify `completed_at` timestamp set
+   - Verify `assigned_agent: thomas` (1-indexed)
+
+3. **Workflow completion:**
+   - Manually simulate second agent completion
+   - Run script again
+   - Verify `status: finished`
+   - Verify no further agent assignment
+
+4. **Error handling:**
+   - Missing config file → exit 1 with error message
+   - Invalid task ID pattern → exit 1 with error message
+   - Backlog CLI failure → exit 1 with error message
+
+**Test workflow:**
+```bash
+# 1. Create test task file
+cp backlog/tasks/got-016\*.md /tmp/test-got-016.md
+
+# 2. Run workflow orchestrator
+./agents/workflow/script.sh /tmp/test-got-016.md
+
+# 3. Verify state file updated
+cat agents/workflow/tasks.yml
+
+# 4. Check task assigned to catarina
+backlog task list -p $(backlog config get project_key) | grep got-016
+```
+
+### 6. Risks and Considerations
+
+**Known limitations:**
+1. **Single YAML parsing approach:** Bash string operations are fragile for complex YAML but acceptable for flat key-value structures
+2. **No concurrent execution:** Multiple calls to script could race on state file (not an issue per requirements)
+3. **No retry logic:** If `backlog task edit` fails, workflow aborts (intentional per R8)
+4. **State file format:** Simple YAML is human-readable but limited functionality
+
+**Design trade-offs:**
+1. **Bash vs. Go:** Chose Bash to match existing agent scripts, avoid Go build complexity
+2. **YAML parsing:** Bash string ops only (no `yq`/`jq`) to reduce dependencies
+3. **State management:** Flat key-value in YAML, no database or complex structures
+4. **Error handling:** Strict mode (`set -e`) for immediate failure detection
+
+**Blocking issues:** None identified.
+
+**Future enhancements (out of scope):**
+- Configurable state file path
+- Retry logic for failed assignments
+- Timeout-based escalation
+- Workflow metrics/logging
+<!-- SECTION:PLAN:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
