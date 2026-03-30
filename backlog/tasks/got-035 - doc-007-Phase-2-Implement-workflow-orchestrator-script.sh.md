@@ -4,7 +4,7 @@ title: '[doc-007 Phase 2] Implement workflow orchestrator script.sh'
 status: To Do
 assignee: []
 created_date: '2026-03-30 12:25'
-updated_date: '2026-03-30 12:40'
+updated_date: '2026-03-30 13:28'
 labels:
   - implementation
   - core
@@ -35,6 +35,7 @@ Implement the main orchestrator Bash script (agents/workflow/script.sh) that rea
 - [ ] #8 Config changes require manual intervention
 - [ ] #9 Workflow aborts on agent failure
 - [ ] #10 Exit codes: 0 success, 1 failure
+- [ ] #11 #1 Script reads config.yml on execution
 <!-- AC:END -->
 
 ## Implementation Plan
