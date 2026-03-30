@@ -60,6 +60,8 @@ echo "#############################################"
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] thomas: Total time elapsed: ${ELAPSED_MINUTES}m" >> "$LOG_FILE"
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] thomas: Task processing complete" >> "$LOG_FILE"
 
+backlog task edit "$TASK_ID" --assignee "workflow"
+
 notify-send \
   -i /home/danilo/scripts/github/maestro/agents/thomas/icon.png \
   -a "Maestro" \

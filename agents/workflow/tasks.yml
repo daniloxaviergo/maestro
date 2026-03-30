@@ -19,3 +19,16 @@ got-035:
     assigned_agent: thomas
     assigned_at: "2026-03-30 14:59:15"
     completed_at: "2026-03-30 14:59:54"
+got-028:
+  - status: in_progress
+    assigned_agent: catarina
+    assigned_at: "2026-03-30 15:34:37"
+
+  - status: finished
+    assigned_agent: catarina
+    assigned_at: "2026-03-30 15:34:37"
+    completed_at: "2026-03-30 15:39:02"
+
+  - status: in_progress
+    assigned_agent: thomas
+    assigned_at: "2026-03-30 15:39:02"

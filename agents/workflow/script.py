@@ -488,7 +488,7 @@ def run_workflow(task_id: str) -> int:
 
 def main() -> int:
     """Main entry point."""
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 1:
         print(f"Usage: {sys.argv[0]} <task_file>", file=sys.stderr)
         return 1
 
