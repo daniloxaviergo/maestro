@@ -5,9 +5,9 @@ title: >-
   loading
 status: Done
 assignee:
-  - thomas
+  - workflow
 created_date: '2026-03-15 17:16'
-updated_date: '2026-03-30 13:23'
+updated_date: '2026-03-30 14:01'
 labels: []
 dependencies: []
 references:
