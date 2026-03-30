@@ -2,7 +2,8 @@
 id: GOT-028
 title: test
 status: To Do
-assignee: []
+assignee:
+  - workflow
 created_date: '2026-03-16 11:14'
 updated_date: '2026-03-30 18:21'
 labels: []
