@@ -418,6 +418,7 @@ def run_workflow(task_id: str) -> int:
     completed_count = get_completed_agents_count(entries)
     if completed_count >= len(agents):
         error(f"No more agents available (completed: {completed_count}, agents: {len(agents)})")
+        assign_task(backlog_cmd, task_id, "next-task")
         return 1
 
     next_agent = agents[completed_count]
@@ -450,6 +451,7 @@ def run_workflow(task_id: str) -> int:
             next_completed_count = completed_count + 1
             if next_completed_count >= len(agents):
                 error(f"No more agents available (completed: {next_completed_count}, agents: {len(agents)})")
+                assign_task(backlog_cmd, task_id, "next-task")
                 return 1
             next_agent = agents[next_completed_count]
             info(f"Assigning to next agent: {next_agent}")

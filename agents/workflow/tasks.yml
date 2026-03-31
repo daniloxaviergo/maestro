@@ -22,13 +22,103 @@ got-035:
 got-028:
   - status: in_progress
     assigned_agent: catarina
-    assigned_at: "2026-03-30 15:34:37"
+    assigned_at: "2026-03-30 21:17:16"
 
   - status: finished
     assigned_agent: catarina
-    assigned_at: "2026-03-30 15:34:37"
-    completed_at: "2026-03-30 15:39:02"
+    assigned_at: "2026-03-30 21:17:16"
+    completed_at: "2026-03-30 21:18:16"
 
   - status: in_progress
     assigned_agent: thomas
-    assigned_at: "2026-03-30 15:39:02"
+    assigned_at: "2026-03-30 21:18:16"
+
+  - status: finished
+    assigned_agent: thomas
+    assigned_at: "2026-03-30 21:18:16"
+    completed_at: "2026-03-30 21:19:17"
+got-029:
+  - status: in_progress
+    assigned_agent: catarina
+    assigned_at: "2026-03-30 21:19:18"
+
+  - status: finished
+    assigned_agent: catarina
+    assigned_at: "2026-03-30 21:19:18"
+    completed_at: "2026-03-30 21:20:18"
+
+  - status: in_progress
+    assigned_agent: thomas
+    assigned_at: "2026-03-30 21:20:18"
+
+  - status: finished
+    assigned_agent: thomas
+    assigned_at: "2026-03-30 21:20:18"
+    completed_at: "2026-03-30 21:21:19"
+got-030:
+  - status: in_progress
+    assigned_agent: catarina
+    assigned_at: "2026-03-31 06:52:12"
+
+  - status: finished
+    assigned_agent: catarina
+    assigned_at: "2026-03-31 06:52:12"
+    completed_at: "2026-03-31 06:53:12"
+
+  - status: in_progress
+    assigned_agent: thomas
+    assigned_at: "2026-03-31 06:53:12"
+
+  - status: finished
+    assigned_agent: thomas
+    assigned_at: "2026-03-31 06:53:12"
+    completed_at: "2026-03-31 06:54:13"
+got-031:
+  - status: in_progress
+    assigned_agent: catarina
+    assigned_at: "2026-03-31 06:54:14"
+
+  - status: finished
+    assigned_agent: catarina
+    assigned_at: "2026-03-31 06:54:14"
+    completed_at: "2026-03-31 06:55:14"
+
+  - status: in_progress
+    assigned_agent: thomas
+    assigned_at: "2026-03-31 06:55:14"
+
+  - status: finished
+    assigned_agent: thomas
+    assigned_at: "2026-03-31 06:55:14"
+    completed_at: "2026-03-31 06:56:15"
+got-032:
+  - status: in_progress
+    assigned_agent: catarina
+    assigned_at: "2026-03-31 06:56:16"
+
+  - status: finished
+    assigned_agent: catarina
+    assigned_at: "2026-03-31 06:56:16"
+    completed_at: "2026-03-31 06:57:16"
+
+  - status: in_progress
+    assigned_agent: thomas
+    assigned_at: "2026-03-31 06:57:16"
+
+  - status: finished
+    assigned_agent: thomas
+    assigned_at: "2026-03-31 06:57:16"
+    completed_at: "2026-03-31 06:58:17"
+got-067:
+  - status: in_progress
+    assigned_agent: catarina
+    assigned_at: "2026-03-31 07:45:27"
+
+  - status: finished
+    assigned_agent: catarina
+    assigned_at: "2026-03-31 07:45:27"
+    completed_at: "2026-03-31 07:48:41"
+
+  - status: in_progress
+    assigned_agent: thomas
+    assigned_at: "2026-03-31 07:48:41"

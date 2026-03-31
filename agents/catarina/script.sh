@@ -48,7 +48,10 @@ notify-send \
 
 echo $PROJECT_PATH
 cd $PROJECT_PATH
-qwen "/plan $TASK_ID" --yolo --output-format stream-json --include-partial-messages | jq 'select(.type? == "assistant") | .message.content[]? | select(.type? == "text") | .text?'
+
+PI_CODING_AGENT_DIR=/home/danilo/.pi/plan_task pi --mode json \
+  -p "/plan_task $TASK_ID" --tools read,grep,find,ls 2>/dev/null | \
+  jq -r 'select(.type == "message_end" and .message.role == "assistant") | .message.content[] | select(.type == "text") | .text'
 
 END_TIME=$(date +%s)
 ELAPSED=$((END_TIME - START_TIME))
@@ -59,6 +62,8 @@ echo "#############################################"
 echo "#############################################"
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] catarina: Total time elapsed: ${ELAPSED_MINUTES}m" >> "$LOG_FILE"
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] catarina: Task processing complete" >> "$LOG_FILE"
+
+backlog task edit "$TASK_ID" --assignee "workflow"
 
 notify-send \
   -i /home/danilo/scripts/github/maestro/agents/catarina/icon.png \

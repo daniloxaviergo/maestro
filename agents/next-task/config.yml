@@ -1,0 +1,7 @@
+# Agent-foo configuration
+# This agent processes tasks assigned to it by executing a script in tmux
+
+script_path: "./agents/next-task/script.sh"
+tasks: 
+tmux_session: "next-task"
+enabled: true
