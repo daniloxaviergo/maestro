@@ -2,9 +2,10 @@
 id: GOT-031
 title: agent running
 status: Done
-assignee: []
+assignee:
+  - workflow
 created_date: '2026-03-16 14:35'
-updated_date: '2026-03-16 15:16'
+updated_date: '2026-03-31 09:42'
 labels: []
 dependencies: []
 ordinal: 1000
