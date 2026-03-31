@@ -2,9 +2,10 @@
 id: GOT-030
 title: Get correct task id and workdir
 status: To Do
-assignee: []
+assignee:
+  - workflow
 created_date: '2026-03-16 14:31'
-updated_date: '2026-03-16 17:28'
+updated_date: '2026-03-31 00:12'
 labels: []
 dependencies: []
 ---
