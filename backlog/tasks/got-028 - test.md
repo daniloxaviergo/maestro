@@ -3,9 +3,9 @@ id: GOT-028
 title: test
 status: To Do
 assignee:
-  - thomas
+  - workflow
 created_date: '2026-03-16 11:14'
-updated_date: '2026-03-31 00:18'
+updated_date: '2026-03-31 00:19'
 labels: []
 dependencies: []
 ordinal: 6250
