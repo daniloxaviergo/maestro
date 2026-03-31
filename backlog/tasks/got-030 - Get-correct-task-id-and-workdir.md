@@ -3,7 +3,7 @@ id: GOT-030
 title: Get correct task id and workdir
 status: To Do
 assignee:
-  - workflow
+  - thomas
 created_date: '2026-03-16 14:31'
 updated_date: '2026-03-31 00:22'
 labels: []
