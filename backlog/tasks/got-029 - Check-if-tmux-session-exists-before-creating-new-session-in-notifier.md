@@ -3,9 +3,9 @@ id: GOT-029
 title: Check if tmux session exists before creating new session in notifier
 status: Done
 assignee:
-  - '@'
+  - workflow
 created_date: '2026-03-16 11:47'
-updated_date: '2026-03-31 00:11'
+updated_date: '2026-03-31 00:12'
 labels:
   - bug
   - tmux
