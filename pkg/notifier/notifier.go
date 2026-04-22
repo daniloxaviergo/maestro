@@ -115,6 +115,7 @@ func (n *Notifier) ExecuteScript(filePath string) {
 		defer cancel()
 
 		// Check if session exists before creating
+		log.Printf("Checking tmux session existence: %s", sessionName)
 		if exists, err := sessionExists(sessionName); err != nil {
 			log.Printf("Warning: failed to check tmux session existence: %v", err)
 			// Continue with attempt to create session (graceful degradation)
@@ -122,11 +123,14 @@ func (n *Notifier) ExecuteScript(filePath string) {
 			log.Printf("Session %s already exists, skipping creation", sessionName)
 		} else {
 			// Create session if it doesn't exist
+			log.Printf("Creating new tmux session: %s", sessionName)
 			createCmd := exec.CommandContext(ctx, "tmux", "new-session", "-d", "-s", sessionName)
-			if err := createCmd.Run(); err != nil {
+			if output, err := createCmd.CombinedOutput(); err != nil {
+				log.Printf("Error: failed to create session %s: %v. Output: %s", sessionName, err, string(output))
 				fmt.Fprintf(os.Stderr, "warning: %v: %v\n", ErrSessionCreationFailed, err)
 				return
 			}
+			log.Printf("Successfully created tmux session: %s", sessionName)
 		}
 
 		// Execute script via tmux send-keys with file path as argument
@@ -195,6 +199,7 @@ func (n *Notifier) executeScriptForAgent(agent *agent.Agent, cfg config.AgentCon
 	defer cancel()
 
 	// Check if session exists before creating
+	log.Printf("Checking tmux session existence for agent %s: %s", agent.GetName(), sessionName)
 	if exists, err := sessionExists(sessionName); err != nil {
 		log.Printf("Warning: failed to check tmux session existence for agent %s: %v", agent.GetName(), err)
 		// Continue with attempt to create session (graceful degradation)
@@ -202,11 +207,14 @@ func (n *Notifier) executeScriptForAgent(agent *agent.Agent, cfg config.AgentCon
 		log.Printf("Session %s already exists for agent %s, skipping creation", sessionName, agent.GetName())
 	} else {
 		// Create session if it doesn't exist
+		log.Printf("Creating new tmux session for agent %s: %s", agent.GetName(), sessionName)
 		createCmd := exec.CommandContext(ctx, "tmux", "new-session", "-d", "-s", sessionName)
-		if err := createCmd.Run(); err != nil {
-			log.Printf("Warning: %v: %v", ErrSessionCreationFailed, err)
+		if output, err := createCmd.CombinedOutput(); err != nil {
+			log.Printf("Error: failed to create session %s for agent %s: %v. Output: %s", sessionName, agent.GetName(), err, string(output))
+			log.Printf("Warning: %v", ErrSessionCreationFailed)
 			return
 		}
+		log.Printf("Successfully created tmux session for agent %s: %s", agent.GetName(), sessionName)
 	}
 
 	// Execute script via tmux send-keys with file path as argument

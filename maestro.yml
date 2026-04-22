@@ -6,6 +6,7 @@
 watch_paths:
   - "./backlog/tasks"
   - "/home/danilo/scripts/github/dca/backlog/tasks"
+  - "/home/danilo/scripts/github/go-reading-log-api-next/backlog/tasks"
 
 # debounce_ms: Time in milliseconds to wait before processing a file after changes
 # This prevents duplicate processing when files are rapidly saved
