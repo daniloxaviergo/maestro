@@ -48,7 +48,10 @@ notify-send \
 
 echo $PROJECT_PATH
 cd $PROJECT_PATH
-qwen "/exec $TASK_ID" --yolo --output-format stream-json --include-partial-messages | jq 'select(.type? == "assistant") | .message.content[]? | select(.type? == "text") | .text?'
+# qwen "/exec $TASK_ID" --yolo --output-format stream-json --include-partial-messages | jq 'select(.type? == "assistant") | .message.content[]? | select(.type? == "text") | .text?'
+PI_CODING_AGENT_DIR=/home/danilo/.pi/exec_task pi --mode json \
+  -p "/exec_task $TASK_ID" 2>/dev/null | \
+  jq -r 'select(.type == "message_end" and .message.role == "assistant") | .message.content[] | select(.type == "text") | .text'
 
 END_TIME=$(date +%s)
 ELAPSED=$((END_TIME - START_TIME))

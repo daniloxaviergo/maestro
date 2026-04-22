@@ -84,7 +84,13 @@ if [[ ${#NEW_TASKS[@]} -gt 0 ]]; then
     NEXT_TASK="${NEW_TASKS[0]}"
     echo "NEXT_TASK: $NEXT_TASK - $PROJECT_PATH" >> "$LOG_FILE"
     cd $PROJECT_PATH
-    backlog task edit "$NEXT_TASK" --assignee "workflow"
+    sleep 3
+    echo "NEXT_TASK: $NEXT_TASK - book" >> "$LOG_FILE"
+    backlog task edit "$NEXT_TASK" --assignee "book" >> "$LOG_FILE"
+    sleep 3
+    echo "NEXT_TASK: $NEXT_TASK - workflow" >> "$LOG_FILE"
+    backlog task edit "$NEXT_TASK" --assignee "workflow" >> "$LOG_FILE"
+    sleep 3
 else
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] next-task: No more tasks in queue" >> "$LOG_FILE"
 fi
